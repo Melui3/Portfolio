@@ -12,8 +12,8 @@ export const projects = [
     description:
       'Site vitrine pour une agence de tourisme. Interface React côté client, API Django REST Framework, base de données PostgreSQL. Déployé sur architecture trois tiers gratuite (Infomaniak / Koyeb / Neon).',
     tags: ['React', 'Django', 'PostgreSQL', 'Koyeb', 'Neon'],
-    url: 'https://honey-group.infomaniak.ch', // à mettre à jour
-    github: null,
+    url: 'https://honeygroupmadatourism.com/', // à mettre à jour
+    github: 'https://github.com/Melui3/Honey_Group',
     type: 'client',
     status: 'live',
   },
@@ -24,10 +24,10 @@ export const projects = [
     description:
       'Application de gestion de prospection pour freelances et petites équipes. Suivi des contacts, des relances et de l\'avancement des dossiers en un seul endroit.',
     tags: ['React', 'Vite', 'TailwindCSS'],
-    url: null,
-    github: null,
+    url: 'https://melui3.github.io/Prospect/',
+    github: 'https://github.com/Melui3/Prospect',
     type: 'lab',
-    status: 'wip',
+    status: 'live',
   },
   {
     id: 'mindlap',
@@ -39,7 +39,7 @@ export const projects = [
     url: null,
     github: null,
     type: 'lab',
-    status: 'wip',
+    status: 'soon',
   },
   {
     id: 'pitbudget',
@@ -49,9 +49,9 @@ export const projects = [
       'Application de gestion budgétaire simple et intuitive. Catégories, objectifs d\'épargne, et vue mensuelle claire — pour ceux qui veulent contrôler leurs finances sans s\'y perdre.',
     tags: ['React', 'Vite', 'TailwindCSS'],
     url: null,
-    github: null,
+    github: 'https://github.com/Melui3/PitBudget',
     type: 'lab',
-    status: 'wip',
+    status: 'soon',
   },
   {
     id: 'f1-manager',
@@ -60,10 +60,10 @@ export const projects = [
     description:
       'Application de management d\'écurie inspirée de la Formule 1. Gestion des pilotes, stratégies de course et développement technique. Projet passion.',
     tags: ['React', 'Vite', 'TailwindCSS'],
-    url: null,
-    github: null,
+    url: "https://melui3.github.io/F1-Manager-2026/",
+    github: 'https://github.com/Melui3/F1-Manager-2026',
     type: 'lab',
-    status: 'wip',
+    status: 'live',
   },
   {
     id: 'player-two',

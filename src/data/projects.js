@@ -5,6 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const projects = [
+  // ── live ──────────────────────────────────────────────────────────────────
   {
     id: 'honey-group',
     title: 'Honey Group',
@@ -30,30 +31,6 @@ export const projects = [
     status: 'live',
   },
   {
-    id: 'mindlap',
-    title: 'MINDLAP',
-    tagline: 'Tableau de bord analytique personnel',
-    description:
-      'Outil de visualisation et d\'analyse de données pour les profils analytiques. Prise de notes structurée, tableaux de bord personnalisables et suivi de métriques custom.',
-    tags: ['React', 'Vite', 'TailwindCSS'],
-    url: null,
-    github: null,
-    type: 'lab',
-    status: 'soon',
-  },
-  {
-    id: 'pitbudget',
-    title: 'PitBudget',
-    tagline: 'Gérer son budget sans prise de tête',
-    description:
-      'Application de gestion budgétaire simple et intuitive. Catégories, objectifs d\'épargne, et vue mensuelle claire — pour ceux qui veulent contrôler leurs finances sans s\'y perdre.',
-    tags: ['React', 'Vite', 'TailwindCSS'],
-    url: null,
-    github: 'https://github.com/Melui3/PitBudget',
-    type: 'lab',
-    status: 'soon',
-  },
-  {
     id: 'f1-manager',
     title: 'F1 Manager 2026',
     tagline: 'Interface de gestion d\'écurie F1',
@@ -64,6 +41,32 @@ export const projects = [
     github: 'https://github.com/Melui3/F1-Manager-2026',
     type: 'lab',
     status: 'live',
+  },
+  // ── wip ───────────────────────────────────────────────────────────────────
+  {
+    id: 'pitbudget',
+    title: 'PitBudget',
+    tagline: 'Gérer son budget sans prise de tête',
+    description:
+      'Application de gestion budgétaire simple et intuitive. Catégories, objectifs d\'épargne, et vue mensuelle claire — pour ceux qui veulent contrôler leurs finances sans s\'y perdre.',
+    tags: ['React', 'Vite', 'TailwindCSS'],
+    url: null,
+    github: 'https://github.com/Melui3/PitBudget',
+    type: 'lab',
+    status: 'wip',
+  },
+  // ── soon ──────────────────────────────────────────────────────────────────
+  {
+    id: 'mindlap',
+    title: 'MINDLAP',
+    tagline: 'Tableau de bord analytique personnel',
+    description:
+      'Outil de visualisation et d\'analyse de données pour les profils analytiques. Prise de notes structurée, tableaux de bord personnalisables et suivi de métriques custom.',
+    tags: ['React', 'Vite', 'TailwindCSS'],
+    url: null,
+    github: null,
+    type: 'lab',
+    status: 'soon',
   },
   {
     id: 'player-two',

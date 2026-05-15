@@ -63,10 +63,10 @@ export const projects = [
     description:
       'Outil de visualisation et d\'analyse de données pour les profils analytiques. Prise de notes structurée, tableaux de bord personnalisables et suivi de métriques custom.',
     tags: ['React', 'Vite', 'TailwindCSS'],
-    url: null,
-    github: null,
+    url: 'https://melui3.github.io/MINDLAP/login',
+    github: 'https://github.com/Melui3/MINDLAP',
     type: 'lab',
-    status: 'soon',
+    status: 'live',
   },
   {
     id: 'player-two',

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"g:\\\\Projets\\\\Portfolio\" -Recurse -Force)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174)",
+      "Bash(Remove-Item -Recurse -Force \"g:\\\\Projets\\\\Portfolio\\\\Portfolio\")",
+      "Bash(npm install *)"
+    ]
+  }
+}

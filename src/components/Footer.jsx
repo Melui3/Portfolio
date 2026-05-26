@@ -72,9 +72,17 @@ export default function Footer() {
           <p className="font-body text-xs text-muted">
             © {year} Nathaniel — Tous droits réservés
           </p>
-          <p className="font-body text-xs text-muted italic">
-            Fait avec soin, sans template
-          </p>
+          <div className="flex items-center gap-4">
+            <NavLink
+              to="/mentions-legales"
+              className="font-body text-xs text-muted hover:text-parchment transition-colors duration-200"
+            >
+              Mentions légales
+            </NavLink>
+            <p className="font-body text-xs text-muted italic">
+              Fait avec soin, sans template
+            </p>
+          </div>
         </div>
       </div>
     </footer>

@@ -12,7 +12,7 @@ export const projects = [
     description:
       'Site vitrine pour une agence de tourisme. Interface React côté client, API Django REST Framework, base de données PostgreSQL. Déployé sur architecture trois tiers gratuite (Infomaniak / Koyeb / Neon).',
     tags: ['React', 'Django', 'PostgreSQL', 'Koyeb', 'Neon'],
-    url: 'https://honey-group.infomaniak.ch',
+    url: 'https://www.honeygroupmadatourism.com/',
     github: null,
     type: 'client',
     status: 'live',

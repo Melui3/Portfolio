@@ -2,12 +2,32 @@ import { useState } from 'react'
 import { projects } from '../data/projects'
 
 const STATUS_LABEL = {
-  live: { label: 'En ligne',   className: 'text-emerald-400 border-emerald-400/40' },
-  wip:  { label: 'En cours',  className: 'text-gold border-gold/40'               },
-  soon: { label: 'Bientôt',   className: 'text-muted border-muted/40'             },
+  live: { label: 'En ligne',  className: 'text-emerald-400 border-emerald-400/40' },
+  wip:  { label: 'En cours', className: 'text-gold border-gold/40'               },
+  soon: { label: 'Bientôt',  className: 'text-muted border-muted/40'             },
+}
+
+function ProcessSection({ process }) {
+  return (
+    <div className="mt-5 pt-5 border-t border-gold-dim/20 space-y-4">
+      <div>
+        <p className="font-body text-xs text-gold tracking-widest uppercase mb-1.5">Pourquoi</p>
+        <p className="font-body text-sm text-parchment/70 leading-relaxed">{process.why}</p>
+      </div>
+      <div>
+        <p className="font-body text-xs text-gold tracking-widest uppercase mb-1.5">Comment</p>
+        <p className="font-body text-sm text-parchment/70 leading-relaxed">{process.how}</p>
+      </div>
+      <div>
+        <p className="font-body text-xs text-gold tracking-widest uppercase mb-1.5">Défis</p>
+        <p className="font-body text-sm text-parchment/70 leading-relaxed">{process.challenges}</p>
+      </div>
+    </div>
+  )
 }
 
 function ProjectCard({ project }) {
+  const [open, setOpen] = useState(false)
   const status = STATUS_LABEL[project.status]
 
   return (
@@ -37,34 +57,66 @@ function ProjectCard({ project }) {
         </div>
       )}
 
-      <div className="flex gap-4">
-        {project.url && (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-body text-sm text-gold hover:text-cream transition-colors duration-200"
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex gap-4">
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-sm text-gold hover:text-cream transition-colors duration-200"
+            >
+              Voir le projet →
+            </a>
+          )}
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-sm text-muted hover:text-parchment transition-colors duration-200"
+            >
+              GitHub →
+            </a>
+          )}
+        </div>
+
+        {project.process && (
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex items-center gap-1.5 font-body text-xs text-muted hover:text-gold transition-colors duration-200 ml-auto shrink-0"
           >
-            Voir le projet →
-          </a>
-        )}
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-body text-sm text-muted hover:text-parchment transition-colors duration-200"
-          >
-            GitHub →
-          </a>
+            <span>{open ? 'Fermer' : 'Process & réflexion'}</span>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+            >
+              <path d="M1 3l4 4 4-4" />
+            </svg>
+          </button>
         )}
       </div>
+
+      {project.process && (
+        <div
+          className={`overflow-hidden transition-all duration-400 ease-in-out ${
+            open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <ProcessSection process={project.process} />
+        </div>
+      )}
     </div>
   )
 }
 
 export default function Projects() {
-  const [filter, setFilter] = useState('all') // 'all' | 'client' | 'lab'
+  const [filter, setFilter] = useState('all')
 
   const filtered = filter === 'all'
     ? projects
@@ -73,7 +125,6 @@ export default function Projects() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
 
-      {/* Header page */}
       <div className="mb-14">
         <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-4">Portfolio</p>
         <h1 className="font-display text-5xl text-cream mb-4">Mes projets</h1>
@@ -83,12 +134,11 @@ export default function Projects() {
         </p>
       </div>
 
-      {/* Filtres */}
       <div className="flex gap-2 mb-10">
         {[
-          { key: 'all',    label: 'Tous'           },
-          { key: 'client', label: 'Clients'        },
-          { key: 'lab',    label: 'Projets perso'  },
+          { key: 'all',    label: 'Tous'          },
+          { key: 'client', label: 'Clients'       },
+          { key: 'lab',    label: 'Projets perso' },
         ].map(({ key, label }) => (
           <button
             key={key}
@@ -104,7 +154,6 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Grille projets */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filtered.map((project) => (
           <ProjectCard key={project.id} project={project} />

@@ -6,14 +6,14 @@
 export const creations = [
   // ── Logos ──────────────────────────────────────────────────────────────────
   {
-    id: 'logo-exemple-1',
-    title: '[Nom du logo]',
+    id: 'logo-melui',
+    title: 'Premier logo pour mon identité digitale',
     category: 'logo',
     context: '[Pour qui — streamer, asso, projet perso]',
     reflexion:
       '[Ta réflexion design ici — pourquoi ces couleurs, ces formes, cette typographie, quelle ambiance tu voulais transmettre.]',
-    tools: ['Illustrator'],
-    image: null,
+    tools: ['Inkscape'],
+    image: '/creations/logo-melui.png',
   },
 
   // ── Bannières ──────────────────────────────────────────────────────────────

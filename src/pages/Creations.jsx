@@ -16,9 +16,18 @@ function CreationCard({ creation }) {
       <span className="absolute top-0 right-0 w-5 h-5 border-t border-r border-gold/30 group-hover:border-gold/60 transition-colors duration-300" />
       <span className="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-gold/15 group-hover:border-gold/40 transition-colors duration-300" />
 
-      {/* Image ou placeholder */}
+      {/* Média ou placeholder */}
       <div className="relative w-full aspect-video bg-dust/60 overflow-hidden border-b border-gold-dim/20">
-        {creation.image ? (
+        {creation.image && creation.image.endsWith('.mp4') ? (
+          <video
+            src={creation.image}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        ) : creation.image ? (
           <img
             src={creation.image}
             alt={creation.title}

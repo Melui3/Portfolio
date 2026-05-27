@@ -14,7 +14,7 @@ export default function Footer() {
           {/* Colonne 1 — Identité */}
           <div>
             <img
-              src="/logo-full.svg"
+              src={`${import.meta.env.BASE_URL}logo-full.svg`}
               alt="Nathaniel"
               className="w-24 mb-4 opacity-80"
             />

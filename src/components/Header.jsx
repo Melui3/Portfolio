@@ -32,7 +32,7 @@ export default function Header() {
         {/* Logo */}
         <NavLink to="/" className="group opacity-90 hover:opacity-100 transition-opacity duration-300">
           <img
-            src="/logo-horizontal.svg"
+            src={`${import.meta.env.BASE_URL}logo-horizontal.svg`}
             alt="Nathaniel — Développeur Web Freelance"
             className="h-10 w-auto"
           />

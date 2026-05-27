@@ -59,7 +59,7 @@ function ProjectCard({ project }) {
 
       <div className="flex items-center justify-between gap-4">
         <div className="flex gap-4">
-          {project.url && (
+          {project.status === 'live' && project.url && (
             <a
               href={project.url}
               target="_blank"

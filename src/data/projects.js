@@ -29,8 +29,8 @@ export const projects = [
     description:
       'Application de gestion de prospection pour freelances et petites équipes. Suivi des contacts, des relances et de l\'avancement des dossiers en un seul endroit.',
     tags: ['React', 'Vite', 'TailwindCSS'],
-    url: null,
-    github: null,
+    url: "https://melui3.github.io/Prospect/",
+    github: "https://github.com/Melui3/Prospect",
     type: 'lab',
     status: 'live',
     process: {
@@ -46,8 +46,8 @@ export const projects = [
     description:
       'Outil de visualisation et d\'analyse de données pour les profils analytiques. Prise de notes structurée, tableaux de bord personnalisables et suivi de métriques custom.',
     tags: ['React', 'Vite', 'TailwindCSS'],
-    url: null,
-    github: null,
+    url: "https://melui3.github.io/MINDLAP/",
+    github: "https://github.com/Melui3/MINDLAP",
     type: 'lab',
     status: 'live',
     process: {
@@ -80,8 +80,8 @@ export const projects = [
     description:
       'Application de management d\'écurie inspirée de la Formule 1. Gestion des pilotes, stratégies de course et développement technique. Projet passion.',
     tags: ['React', 'Vite', 'TailwindCSS'],
-    url: null,
-    github: null,
+    url:"https://melui3.github.io/F1-Manager-2026/#/login" ,
+    github: "https://github.com/Melui3/F1-Manager-2026",
     type: 'lab',
     status: 'live',
     process: {
@@ -102,6 +102,18 @@ export const projects = [
     status: 'soon',
     process: null,
   },
+  {
+    id: 'nate_studio_os',
+    title: 'Nate Studio OS',
+    tagline: 'Bientôt disponible',
+    description: 'Un projet en cours de définition. Stay tuned.',
+    tags: [],
+    url: null,
+    github: null,
+    type: 'lab',
+    status: 'soon',
+    process: null,
+  }
 ]
 
 export const clientProjects = projects.filter((p) => p.type === 'client')

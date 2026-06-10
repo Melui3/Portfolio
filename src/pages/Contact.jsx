@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SITE_EMAIL } from '../seo'
 
 export default function Contact() {
   const [form, setForm]     = useState({ name: '', email: '', subject: '', message: '' })
@@ -12,7 +13,7 @@ export default function Contact() {
   const handleSubmit = () => {
     if (!form.name || !form.email || !form.message) return
 
-    const mailto = `mailto:TON_EMAIL@ici.fr?subject=${encodeURIComponent(
+    const mailto = `mailto:${SITE_EMAIL}?subject=${encodeURIComponent(
       form.subject || `Contact portfolio — ${form.name}`
     )}&body=${encodeURIComponent(
       `Nom : ${form.name}\nEmail : ${form.email}\n\n${form.message}`

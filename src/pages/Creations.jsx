@@ -10,6 +10,9 @@ const FILTERS = [
 
 function CreationCard({ creation }) {
   const meta = categoryMeta[creation.category]
+  const mediaSrc = creation.image
+    ? `${import.meta.env.BASE_URL}${creation.image.replace(/^\//, '')}`
+    : null
 
   return (
     <div className="group relative border border-gold-dim/25 bg-leather/30 hover:bg-leather/60 hover:border-gold-dim/60 transition-all duration-400">
@@ -18,19 +21,21 @@ function CreationCard({ creation }) {
 
       {/* Média ou placeholder */}
       <div className="relative w-full aspect-video bg-dust/60 overflow-hidden border-b border-gold-dim/20">
-        {creation.image && creation.image.endsWith('.mp4') ? (
+        {mediaSrc && mediaSrc.endsWith('.mp4') ? (
           <video
-            src={creation.image}
+            src={mediaSrc}
             autoPlay
             loop
             muted
             playsInline
+            preload="metadata"
             className="w-full h-full object-cover"
           />
-        ) : creation.image ? (
+        ) : mediaSrc ? (
           <img
-            src={creation.image}
+            src={mediaSrc}
             alt={creation.title}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (

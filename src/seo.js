@@ -1,6 +1,6 @@
 export const SITE_BASE_URL = 'https://melui3.github.io/Portfolio'
 export const SITE_NAME = 'Nathaniel Dujardin'
-export const SITE_EMAIL = '3d.nathaniel1@gmail.com'
+export const SITE_EMAIL = 'nathaniel@nathaniel-dev.fr'
 export const SITE_IMAGE_URL = `${SITE_BASE_URL}/logo-full.svg`
 
 export const SEO_ROUTES = [

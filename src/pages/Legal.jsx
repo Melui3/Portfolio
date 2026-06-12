@@ -1,3 +1,5 @@
+import { SITE_EMAIL } from '../seo'
+
 export default function Legal() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
@@ -15,8 +17,8 @@ export default function Legal() {
           <p>Développeur web freelance — activité en cours de création</p>
           <p>France</p>
           <p>
-            <a href="mailto:3d.nathaniel1@gmail.com" className="text-gold hover:text-cream transition-colors duration-200">
-              3d.nathaniel1@gmail.com
+            <a href={`mailto:${SITE_EMAIL}`} className="text-gold hover:text-cream transition-colors duration-200">
+              {SITE_EMAIL}
             </a>
           </p>
         </section>

@@ -1,4 +1,4 @@
-<svg width="200" height="48" viewBox="0 0 520 124" xmlns="http://www.w3.org/2000/svg">
+<svg width="240" height="58" viewBox="0 0 520 124" xmlns="http://www.w3.org/2000/svg">
   <!-- Monogramme N compact -->
   <circle cx="62" cy="62" r="52" stroke="#9b6b22" stroke-width="0.8" fill="none"/>
   <circle cx="62" cy="62" r="42" stroke="#f4c95d" stroke-width="0.8" fill="none"/>
@@ -20,6 +20,6 @@
   <line x1="140" y1="22" x2="140" y2="102" stroke="#9b6b22" stroke-width="0.5"/>
 
   <!-- Texte wordmark -->
-  <text x="160" y="55" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#fff3dc" letter-spacing="4">NATHANIEL</text>
-  <text x="160" y="80" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic" fill="#b09078" letter-spacing="1.5">Développeur Web Freelance</text>
+  <text x="160" y="57" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="600" fill="#fff3dc" letter-spacing="2.5">NATHANIEL</text>
+  <text x="160" y="84" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-style="italic" fill="#eadfc9" letter-spacing="1">Développeur Web Freelance</text>
 </svg>

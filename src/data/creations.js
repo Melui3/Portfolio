@@ -7,17 +7,6 @@ export const creations = [
 
   // ── Logos ──────────────────────────────────────────────────────────────────
   {
-    id: 'logo-melui',
-    title: 'Logo — Melui',
-    category: 'logo',
-    context: 'Identité visuelle personnelle',
-    reflexion:
-      'Melui est pensé comme une signature personnelle: court, mémorisable, doux à l’oreille, avec une touche presque fantasy. Le logo cherche l’équilibre entre élégance premium et lisibilité numérique: formes simples pour rester reconnaissable en petit format, doré et ivoire pour le côté précieux, jade en accent pour rappeler l’énergie créative et technique.',
-    tools: ['Inkscape'],
-    image: '/creations/logo-melui.png',
-    fit: 'contain',
-  },
-  {
     id: 'logo-moonrage-1',
     title: 'Logo Moonrage — v1',
     category: 'logo',

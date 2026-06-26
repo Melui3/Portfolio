@@ -30,12 +30,24 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
 
         {/* Logo */}
-        <NavLink to="/" className="group opacity-90 hover:opacity-100 transition-opacity duration-300">
-          <img
-            src={`${import.meta.env.BASE_URL}logo-horizontal.svg`}
-            alt="Nathaniel — Développeur Web Freelance"
-            className="h-12 md:h-14 w-auto"
-          />
+        <NavLink
+          to="/"
+          className="group flex items-center gap-3 opacity-95 hover:opacity-100 transition-opacity duration-300"
+          aria-label="Nate Os — Design et développement web"
+        >
+          <span className="relative grid h-12 w-12 place-items-center overflow-hidden rounded-[15px] border border-gold-dim/40 bg-ink shadow-[0_12px_32px_rgba(0,0,0,0.32)] md:h-14 md:w-14">
+            <img
+              src={`${import.meta.env.BASE_URL}logo-nateos-mark.jpg`}
+              alt=""
+              className="h-full w-full scale-110 object-cover"
+            />
+          </span>
+          <span className="hidden leading-none sm:flex sm:flex-col">
+            <span className="font-display text-xl tracking-[0.1em] text-cream">Nate Os</span>
+            <span className="mt-1 font-body text-xs italic tracking-[0.14em] text-muted">
+              Design & développement web
+            </span>
+          </span>
         </NavLink>
 
         {/* Nav desktop */}

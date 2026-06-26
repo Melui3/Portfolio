@@ -13,13 +13,23 @@ export default function Footer() {
 
           {/* Colonne 1 — Identité */}
           <div>
-            <img
-              src={`${import.meta.env.BASE_URL}logo-full.svg`}
-              alt="Nathaniel"
-              className="w-24 mb-4 opacity-80"
-            />
+            <div className="mb-4 flex items-center gap-3">
+              <span className="relative grid h-14 w-14 place-items-center overflow-hidden rounded-[15px] border border-gold-dim/35 bg-ink shadow-[0_12px_32px_rgba(0,0,0,0.32)]">
+                <img
+                  src={`${import.meta.env.BASE_URL}logo-nateos-mark.jpg`}
+                  alt=""
+                  className="h-full w-full scale-110 object-cover"
+                />
+              </span>
+              <div className="leading-none">
+                <p className="font-display text-xl tracking-[0.1em] text-cream">Nate Os</p>
+                <p className="mt-1 font-body text-xs italic tracking-[0.14em] text-muted">
+                  Design & développement web
+                </p>
+              </div>
+            </div>
             <p className="font-body text-sm text-muted leading-relaxed">
-              Développeur web freelance. Je crée des sites et applications
+              Design & développement web freelance. Je crée des sites et applications
               sur-mesure pour les indépendants, associations et petites
               entreprises.
             </p>
@@ -70,7 +80,7 @@ export default function Footer() {
         {/* Bas de footer */}
         <div className="pt-6 border-t border-dust flex flex-col md:flex-row items-center justify-between gap-2">
           <p className="font-body text-xs text-muted">
-            © {year} Nathaniel — Tous droits réservés
+            © {year} Nate Os — Tous droits réservés
           </p>
           <div className="flex items-center gap-4">
             <NavLink

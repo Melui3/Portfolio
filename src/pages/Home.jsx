@@ -3,7 +3,7 @@ import { clientProjects } from '../data/projects'
 import { creations, categoryMeta } from '../data/creations'
 
 const featuredCreations = creations.filter((creation) =>
-  ['logo-melui', 'logo-moonrage-2'].includes(creation.id)
+  ['logo-moonrage-1', 'logo-moonrage-2'].includes(creation.id)
 )
 
 // ─── Composant carte projet ────────────────────────────────────────────────
@@ -146,29 +146,14 @@ export default function Home() {
     <div className="max-w-6xl mx-auto px-6">
 
       {/* ── Hero ── */}
-      <section className="min-h-[80vh] flex flex-col justify-center py-20 relative">
+      <section className="min-h-[80vh] flex flex-col justify-center py-20 relative overflow-hidden">
         {/* Ornement décoratif fond */}
-        <div className="sigil-orbit absolute right-[-1.5rem] md:right-0 top-1/2 -translate-y-1/2 w-96 h-96 md:w-[28rem] md:h-[28rem] opacity-10 pointer-events-none">
-          <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="120" cy="120" r="94" stroke="#9b6b22" strokeWidth="0.8" fill="none" />
-            <circle cx="120" cy="120" r="74" stroke="#f4c95d" strokeWidth="0.9" fill="none" />
-            <circle cx="120" cy="120" r="52" stroke="#31d8b0" strokeWidth="0.55" fill="none" />
-            <line x1="120" y1="26" x2="120" y2="48" stroke="#f4c95d" strokeWidth="0.9" />
-            <line x1="120" y1="192" x2="120" y2="214" stroke="#f4c95d" strokeWidth="0.9" />
-            <line x1="26" y1="120" x2="48" y2="120" stroke="#f4c95d" strokeWidth="0.9" />
-            <line x1="192" y1="120" x2="214" y2="120" stroke="#f4c95d" strokeWidth="0.9" />
-            <path d="M120 14 L127 26 L120 38 L113 26 Z" fill="#f4c95d" />
-            <path d="M120 202 L127 214 L120 226 L113 214 Z" fill="#f4c95d" />
-            <path d="M14 120 L26 113 L38 120 L26 127 Z" fill="#f4c95d" />
-            <path d="M202 120 L214 113 L226 120 L214 127 Z" fill="#f4c95d" />
-            <line x1="174" y1="66" x2="188" y2="80" stroke="#0f7f6e" strokeWidth="0.7" />
-            <line x1="66" y1="66" x2="52" y2="80" stroke="#0f7f6e" strokeWidth="0.7" />
-            <line x1="174" y1="174" x2="188" y2="160" stroke="#0f7f6e" strokeWidth="0.7" />
-            <line x1="66" y1="174" x2="52" y2="160" stroke="#0f7f6e" strokeWidth="0.7" />
-            <text x="120" y="151" fontFamily="Georgia, 'Times New Roman', serif" fontSize="88" fill="#fff3dc" textAnchor="middle">
-              N
-            </text>
-          </svg>
+        <div className="sigil-orbit absolute right-[-3rem] md:right-[-1rem] top-1/2 -translate-y-1/2 w-96 h-96 md:w-[30rem] md:h-[30rem] opacity-20 pointer-events-none">
+          <img
+            src={`${import.meta.env.BASE_URL}logo-nateos-mark.jpg`}
+            alt=""
+            className="h-full w-full object-contain mix-blend-screen"
+          />
         </div>
 
         <div className="max-w-3xl fade-up">

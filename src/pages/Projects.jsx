@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { projectCategories, projects, projectsByCategory } from '../data/projects'
 
 const STATUS_LABEL = {
-  live: { label: 'En ligne', className: 'text-jade border-jade/45' },
+  live: { label: 'En ligne', className: 'text-gold border-gold/45' },
   wip: { label: 'En cours', className: 'text-gold border-gold/40' },
   soon: { label: 'Bientôt', className: 'text-muted border-muted/40' },
 }

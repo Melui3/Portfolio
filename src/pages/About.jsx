@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
 
-      <div className="mb-14">
+      <div className="mb-14 scroll-reveal">
         <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-4">À propos</p>
         <h1 className="font-display text-5xl text-cream mb-4">Qui je suis</h1>
       </div>
@@ -10,7 +10,7 @@ export default function About() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
         {/* Texte principal */}
-        <div className="md:col-span-2 space-y-6 font-body text-parchment/80 leading-relaxed">
+        <div className="md:col-span-2 space-y-6 font-body text-parchment/80 leading-relaxed scroll-reveal">
           <p>
             Je suis développeur web freelance, spécialisé dans la création de sites
             et d'applications sur-mesure. Mon approche est simple : comprendre vos
@@ -32,7 +32,7 @@ export default function About() {
 
         {/* Sidebar infos */}
         <div className="space-y-6">
-          <div>
+          <div className="motion-card scroll-reveal border border-gold-dim/20 bg-leather/20 p-5">
             <p className="font-display text-sm text-gold tracking-widest uppercase mb-3">Stack</p>
             <ul className="font-body text-sm text-muted space-y-1">
               <li>React + Vite</li>
@@ -41,7 +41,7 @@ export default function About() {
               <li>PostgreSQL</li>
             </ul>
           </div>
-          <div>
+          <div className="motion-card scroll-reveal border border-gold-dim/20 bg-leather/20 p-5">
             <p className="font-display text-sm text-gold tracking-widest uppercase mb-3">Pour qui</p>
             <ul className="font-body text-sm text-muted space-y-1">
               <li>Indépendants & freelances</li>

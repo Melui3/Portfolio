@@ -15,7 +15,7 @@ export const SEO_ROUTES = [
     path: '/projets',
     title: 'Projets web - Nathaniel Dujardin',
     description:
-      'Découvrez mes réalisations client et projets personnels en React, Django, PostgreSQL et TailwindCSS.',
+      'Découvrez mes projets clients, concepts réalistes et concepts passion: interfaces web, branding, UX et déploiements complets.',
     priority: '0.9',
   },
   {

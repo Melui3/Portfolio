@@ -4,15 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink:      '#0f0c09',
-        leather:  '#1c1510',
-        parchment:'#e8dcc8',
-        cream:    '#f4ede0',
-        gold:     '#c9a84c',
-        'gold-dim':'#8a6f30',
-        burgundy: '#6b2d3e',
-        dust:     '#2e2218',
-        muted:    '#7a6a56',
+        ink:      '#080104',
+        leather:  '#1a0409',
+        parchment:'#eadfc9',
+        cream:    '#fff3dc',
+        gold:     '#f4c95d',
+        'gold-dim':'#9b6b22',
+        burgundy: '#6f0f20',
+        carmin:   '#b5162d',
+        oxblood:  '#4b0712',
+        jade:     '#31d8b0',
+        'jade-dim':'#0f7f6e',
+        dust:     '#2a0610',
+        muted:    '#b09078',
       },
       fontFamily: {
         display: ['"Playfair Display"', 'Georgia', 'serif'],

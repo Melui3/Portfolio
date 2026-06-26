@@ -27,7 +27,7 @@ export default function Contact() {
     <div className="max-w-4xl mx-auto px-6 py-16">
 
       {/* Header */}
-      <div className="mb-14">
+      <div className="mb-14 scroll-reveal">
         <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-4">Contact</p>
         <h1 className="font-display text-5xl text-cream mb-4">Parlons de votre projet</h1>
         <p className="font-body text-muted max-w-lg">
@@ -39,9 +39,9 @@ export default function Contact() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
         {/* Formulaire */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 scroll-reveal">
           {sent ? (
-            <div className="border border-gold/40 bg-gold/5 p-8 text-center">
+            <div className="motion-card border border-gold/40 bg-gold/5 p-8 text-center">
               <p className="font-display text-2xl text-cream mb-2">Merci !</p>
               <p className="font-body text-muted">
                 Votre client mail s'est ouvert avec votre message pré-rempli.
@@ -124,15 +124,15 @@ export default function Contact() {
 
         {/* Sidebar */}
         <div className="space-y-8">
-          <div>
+          <div className="motion-card scroll-reveal border border-gold-dim/20 bg-leather/20 p-5">
             <p className="font-display text-sm text-gold tracking-widest uppercase mb-3">Réponse</p>
             <p className="font-body text-sm text-muted">Sous 48h, toujours.</p>
           </div>
-          <div>
+          <div className="motion-card scroll-reveal border border-gold-dim/20 bg-leather/20 p-5">
             <p className="font-display text-sm text-gold tracking-widest uppercase mb-3">Localisation</p>
             <p className="font-body text-sm text-muted">France — travail en remote.</p>
           </div>
-          <div>
+          <div className="motion-card scroll-reveal border border-gold-dim/20 bg-leather/20 p-5">
             <p className="font-display text-sm text-gold tracking-widest uppercase mb-3">Disponibilité</p>
             <p className="font-body text-sm text-muted">Ouvert aux nouveaux projets.</p>
           </div>

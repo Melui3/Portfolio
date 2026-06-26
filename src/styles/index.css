@@ -5,15 +5,19 @@
 @tailwind utilities;
 
 :root {
-  --ink:       #0f0c09;
-  --leather:   #1c1510;
-  --parchment: #e8dcc8;
-  --cream:     #f4ede0;
-  --gold:      #c9a84c;
-  --gold-dim:  #8a6f30;
-  --burgundy:  #6b2d3e;
-  --dust:      #2e2218;
-  --muted:     #7a6a56;
+  --ink:       #080104;
+  --leather:   #1a0409;
+  --parchment: #eadfc9;
+  --cream:     #fff3dc;
+  --gold:      #f4c95d;
+  --gold-dim:  #9b6b22;
+  --burgundy:  #6f0f20;
+  --carmin:    #b5162d;
+  --oxblood:   #4b0712;
+  --jade:      #31d8b0;
+  --jade-dim:  #0f7f6e;
+  --dust:      #2a0610;
+  --muted:     #b09078;
 }
 
 * {
@@ -26,6 +30,10 @@ html {
 
 body {
   background-color: var(--ink);
+  background-image:
+    linear-gradient(145deg, rgba(111, 15, 32, 0.48) 0%, rgba(26, 4, 9, 0.36) 34%, rgba(8, 1, 4, 0.96) 72%),
+    linear-gradient(180deg, #080104 0%, #160207 52%, #080104 100%);
+  background-attachment: fixed;
   color: var(--parchment);
   font-family: 'EB Garamond', serif;
   font-size: 18px;
@@ -38,7 +46,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
 }
@@ -46,7 +54,12 @@ body::before {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--ink); }
-::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--gold), var(--burgundy)); border-radius: 3px; }
+
+::selection {
+  background: rgba(244, 201, 93, 0.24);
+  color: var(--cream);
+}
 
 /* Typography base */
 h1, h2, h3, h4 {
@@ -54,6 +67,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   line-height: 1.2;
   color: var(--cream);
+  text-shadow: 0 0 24px rgba(244, 201, 93, 0.08);
 }
 
 a {
@@ -64,6 +78,11 @@ a {
 
 a:hover {
   color: var(--cream);
+}
+
+button,
+a[class*="px-"] {
+  border-radius: 15px;
 }
 
 /* Decorative separator */
@@ -79,7 +98,7 @@ a:hover {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  background: linear-gradient(to right, transparent, var(--burgundy), var(--gold), var(--jade-dim), transparent);
 }
 
 /* Gold underline effect */
@@ -94,7 +113,7 @@ a:hover {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--gold);
+  background: linear-gradient(90deg, var(--gold), var(--jade));
   transition: width 0.3s ease;
 }
 
@@ -103,6 +122,15 @@ a:hover {
 }
 
 /* Section fade-in animation */
+@keyframes pageIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -114,6 +142,26 @@ a:hover {
   }
 }
 
+@keyframes revealUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSeal {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(1.5deg);
+  }
+}
+
 .fade-up {
   animation: fadeUp 0.7s ease forwards;
 }
@@ -122,3 +170,72 @@ a:hover {
 .fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
 .fade-up-delay-3 { animation-delay: 0.35s; opacity: 0; }
 .fade-up-delay-4 { animation-delay: 0.5s; opacity: 0; }
+
+.page-shell {
+  animation: pageIn 0.55s ease both;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  animation: revealUpSoft 0.75s ease var(--reveal-delay, 0ms) both;
+}
+
+.motion-card {
+  position: relative;
+  transform: translateY(0);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.motion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+.media-frame img,
+.media-frame video {
+  filter: saturate(0.96) contrast(1.02);
+}
+
+.media-frame:hover img,
+.media-frame:hover video {
+  filter: saturate(1.08) contrast(1.05);
+}
+
+.sigil-orbit svg {
+  animation: floatSeal 12s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .motion-card:hover {
+    transform: none;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

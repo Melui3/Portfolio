@@ -1,38 +1,142 @@
 import { Link } from 'react-router-dom'
 import { clientProjects } from '../data/projects'
+import { creations, categoryMeta } from '../data/creations'
+
+const featuredCreations = creations.filter((creation) =>
+  ['logo-melui', 'logo-moonrage-2'].includes(creation.id)
+)
 
 // ─── Composant carte projet ────────────────────────────────────────────────
 function ProjectCard({ project }) {
+  const mediaSrc = project.image
+    ? `${import.meta.env.BASE_URL}${project.image.replace(/^\//, '')}`
+    : null
+  const mediaClassName = project.imageFit === 'contain'
+    ? 'w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-[1.025]'
+    : 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.035]'
+
   return (
-    <div className="group relative border border-gold-dim/30 bg-leather/40 p-6 hover:border-gold/60 hover:bg-leather/70 transition-all duration-400">
+    <article className="motion-card scroll-reveal group relative overflow-hidden border border-gold-dim/30 bg-leather/40 hover:border-gold/60 hover:bg-leather/70 transition-all duration-400">
       {/* Coin décoratif */}
       <span className="absolute top-0 right-0 w-6 h-6 border-t border-r border-gold/40 group-hover:border-gold transition-colors duration-300" />
       <span className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-gold/40 group-hover:border-gold transition-colors duration-300" />
 
-      <p className="font-body text-xs text-gold tracking-widest uppercase mb-3">Réalisation client</p>
-      <h3 className="font-display text-2xl text-cream mb-2">{project.title}</h3>
-      <p className="font-body text-muted text-sm mb-4 italic">{project.tagline}</p>
-      <p className="font-body text-parchment/80 text-sm leading-relaxed mb-5">{project.description}</p>
+      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr]">
+        {mediaSrc && (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="media-frame relative block min-h-[260px] overflow-hidden border-b border-gold-dim/20 bg-dust/60 lg:border-b-0 lg:border-r"
+            aria-label={`Visiter ${project.title}`}
+          >
+            <img
+              src={mediaSrc}
+              alt={`Aperçu du projet ${project.title}`}
+              loading="lazy"
+              className={mediaClassName}
+            />
+            <span className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-[15px] bg-gold px-4 py-2 font-body text-sm text-ink shadow-[0_10px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 group-hover:translate-x-0.5">
+              Visiter le site
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
+            </span>
+          </a>
+        )}
 
-      <div className="flex flex-wrap gap-2 mb-5">
-        {project.tags.map((tag) => (
-          <span key={tag} className="text-xs font-body text-muted border border-dust px-2 py-0.5">
-            {tag}
-          </span>
-        ))}
+        <div className="p-6">
+          <p className="font-body text-xs text-gold tracking-widest uppercase mb-3">Réalisation client</p>
+          <h3 className="font-display text-2xl text-cream mb-2">{project.title}</h3>
+          <p className="font-body text-muted text-sm mb-4 italic">{project.tagline}</p>
+          <p className="font-body text-parchment/80 text-sm leading-relaxed mb-5">{project.description}</p>
+
+          <div className="flex flex-wrap gap-2 mb-5">
+            {project.tags.map((tag) => (
+              <span key={tag} className="text-xs font-body text-muted border border-dust px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border border-gold bg-gold px-5 py-2.5 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200"
+              >
+                Visiter le site
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                  <path d="M7 17 17 7" />
+                  <path d="M8 7h9v9" />
+                </svg>
+              </a>
+            )}
+            <Link
+              to="/projets"
+              className="inline-flex items-center justify-center border border-gold/40 px-5 py-2.5 font-body text-sm text-parchment hover:border-gold hover:text-cream transition-all duration-200"
+            >
+              Voir le détail
+            </Link>
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+function CreationPreviewCard({ creation }) {
+  const meta = categoryMeta[creation.category]
+  const mediaSrc = creation.image
+    ? `${import.meta.env.BASE_URL}${creation.image.replace(/^\//, '')}`
+    : null
+  const isVideo = mediaSrc?.endsWith('.mp4')
+  const mediaClassName = creation.fit === 'contain'
+    ? 'w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.03]'
+    : 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105'
+
+  return (
+    <Link
+      to="/creations"
+      className="motion-card scroll-reveal group relative overflow-hidden border border-gold-dim/25 bg-leather/30 hover:bg-leather/60 hover:border-gold-dim/60 transition-all duration-400"
+    >
+      <div className="media-frame relative aspect-[16/10] overflow-hidden border-b border-gold-dim/20 bg-dust/60">
+        {mediaSrc && isVideo ? (
+          <video
+            src={mediaSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className={mediaClassName}
+          />
+        ) : mediaSrc ? (
+          <img
+            src={mediaSrc}
+            alt={creation.title}
+            loading="lazy"
+            className={mediaClassName}
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center font-body text-sm text-muted">Visuel à venir</div>
+        )}
+        <span className="absolute top-3 left-3 font-body text-xs border px-2 py-0.5 text-gold border-gold/40 bg-ink/80 backdrop-blur-sm">
+          {meta.label}
+        </span>
       </div>
 
-      {project.url && (
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-body text-sm text-gold hover:text-cream transition-colors duration-200"
-        >
-          Voir le projet →
-        </a>
-      )}
-    </div>
+      <div className="p-5">
+        <h3 className="font-display text-xl text-cream mb-1">{creation.title}</h3>
+        <p className="font-body text-sm text-gold/70 italic mb-3">{creation.context}</p>
+        <p className="font-body text-sm text-parchment/70 leading-relaxed line-clamp-4">
+          {creation.reflexion}
+        </p>
+      </div>
+    </Link>
   )
 }
 
@@ -44,13 +148,26 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="min-h-[80vh] flex flex-col justify-center py-20 relative">
         {/* Ornement décoratif fond */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 opacity-5 pointer-events-none">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="100" r="80" stroke="#c9a84c" strokeWidth="1" fill="none" />
-            <circle cx="100" cy="100" r="60" stroke="#c9a84c" strokeWidth="0.5" fill="none" />
-            <circle cx="100" cy="100" r="40" stroke="#c9a84c" strokeWidth="0.5" fill="none" />
-            <line x1="20" y1="100" x2="180" y2="100" stroke="#c9a84c" strokeWidth="0.5" />
-            <line x1="100" y1="20" x2="100" y2="180" stroke="#c9a84c" strokeWidth="0.5" />
+        <div className="sigil-orbit absolute right-[-1.5rem] md:right-0 top-1/2 -translate-y-1/2 w-96 h-96 md:w-[28rem] md:h-[28rem] opacity-10 pointer-events-none">
+          <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="120" cy="120" r="94" stroke="#9b6b22" strokeWidth="0.8" fill="none" />
+            <circle cx="120" cy="120" r="74" stroke="#f4c95d" strokeWidth="0.9" fill="none" />
+            <circle cx="120" cy="120" r="52" stroke="#31d8b0" strokeWidth="0.55" fill="none" />
+            <line x1="120" y1="26" x2="120" y2="48" stroke="#f4c95d" strokeWidth="0.9" />
+            <line x1="120" y1="192" x2="120" y2="214" stroke="#f4c95d" strokeWidth="0.9" />
+            <line x1="26" y1="120" x2="48" y2="120" stroke="#f4c95d" strokeWidth="0.9" />
+            <line x1="192" y1="120" x2="214" y2="120" stroke="#f4c95d" strokeWidth="0.9" />
+            <path d="M120 14 L127 26 L120 38 L113 26 Z" fill="#f4c95d" />
+            <path d="M120 202 L127 214 L120 226 L113 214 Z" fill="#f4c95d" />
+            <path d="M14 120 L26 113 L38 120 L26 127 Z" fill="#f4c95d" />
+            <path d="M202 120 L214 113 L226 120 L214 127 Z" fill="#f4c95d" />
+            <line x1="174" y1="66" x2="188" y2="80" stroke="#0f7f6e" strokeWidth="0.7" />
+            <line x1="66" y1="66" x2="52" y2="80" stroke="#0f7f6e" strokeWidth="0.7" />
+            <line x1="174" y1="174" x2="188" y2="160" stroke="#0f7f6e" strokeWidth="0.7" />
+            <line x1="66" y1="174" x2="52" y2="160" stroke="#0f7f6e" strokeWidth="0.7" />
+            <text x="120" y="151" fontFamily="Georgia, 'Times New Roman', serif" fontSize="88" fill="#fff3dc" textAnchor="middle">
+              N
+            </text>
           </svg>
         </div>
 
@@ -90,11 +207,11 @@ export default function Home() {
       </div>
 
       {/* ── Projets clients ── */}
-      <section className="py-16">
+      <section className="py-16 scroll-reveal">
         <h2 className="font-display text-3xl text-cream mb-2">Ce que j'ai construit</h2>
         <p className="font-body text-muted mb-10">Des projets réels, pour des clients réels.</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 gap-6 mb-8">
           {clientProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -106,6 +223,33 @@ export default function Home() {
         >
           Voir tous les projets →
         </Link>
+      </section>
+
+      {/* Séparateur */}
+      <div className="separator">
+        <span className="font-body text-xs text-muted tracking-widest uppercase">Créations</span>
+      </div>
+
+      {/* ── Créations visuelles ── */}
+      <section className="py-16 scroll-reveal">
+        <div className="flex flex-col gap-3 mb-10 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="font-display text-3xl text-cream mb-2">Créations visuelles</h2>
+            <p className="font-body text-muted">Quelques identités et visuels pensés pour poser une ambiance dès le premier regard.</p>
+          </div>
+          <Link
+            to="/creations"
+            className="font-body text-sm text-gold hover:text-cream transition-colors duration-200"
+          >
+            Voir les créations →
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredCreations.map((creation) => (
+            <CreationPreviewCard key={creation.id} creation={creation} />
+          ))}
+        </div>
       </section>
 
       {/* Séparateur */}
@@ -125,7 +269,7 @@ export default function Home() {
             { num: '03', title: 'On construit',     desc: 'Je développe votre site par étapes. Vous validez à chaque grande étape.' },
             { num: '04', title: 'Vous êtes en ligne', desc: 'Je m\'occupe de la mise en ligne. Votre site est prêt, vous êtes autonome.' },
           ].map(({ num, title, desc }) => (
-            <div key={num} className="relative pl-4 border-l border-gold-dim/30">
+            <div key={num} className="motion-card scroll-reveal relative pl-4 border-l border-gold-dim/30">
               <span className="font-display text-5xl text-gold/10 absolute -top-2 -left-1 select-none">{num}</span>
               <p className="font-display text-lg text-cream mb-2 mt-4">{title}</p>
               <p className="font-body text-sm text-muted leading-relaxed">{desc}</p>
@@ -135,7 +279,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA final ── */}
-      <section className="py-20 text-center">
+      <section className="py-20 text-center scroll-reveal">
         <div className="max-w-xl mx-auto">
           <p className="font-body text-gold tracking-widest uppercase text-xs mb-4">Prêt à commencer ?</p>
           <h2 className="font-display text-4xl text-cream mb-4">Un projet en tête ?</h2>

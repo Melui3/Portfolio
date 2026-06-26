@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { creations, categoryMeta } from '../data/creations'
 
 const FILTERS = [
@@ -8,39 +9,57 @@ const FILTERS = [
   { key: 'transition', label: 'Transitions Twitch'},
 ]
 
-function CreationCard({ creation }) {
+function CreationCard({ creation, onOpen }) {
   const meta = categoryMeta[creation.category]
   const mediaSrc = creation.image
     ? `${import.meta.env.BASE_URL}${creation.image.replace(/^\//, '')}`
     : null
+  const isVideo = mediaSrc?.endsWith('.mp4')
+  const mediaClassName = creation.fit === 'contain'
+    ? 'w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.03]'
+    : 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105'
 
   return (
-    <div className="group relative border border-gold-dim/25 bg-leather/30 hover:bg-leather/60 hover:border-gold-dim/60 transition-all duration-400">
+    <article className="motion-card scroll-reveal group relative border border-gold-dim/25 bg-leather/30 hover:bg-leather/60 hover:border-gold-dim/60 transition-all duration-400">
       <span className="absolute top-0 right-0 w-5 h-5 border-t border-r border-gold/30 group-hover:border-gold/60 transition-colors duration-300" />
       <span className="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-gold/15 group-hover:border-gold/40 transition-colors duration-300" />
 
       {/* Média ou placeholder */}
-      <div className="relative w-full aspect-video bg-dust/60 overflow-hidden border-b border-gold-dim/20">
-        {mediaSrc && mediaSrc.endsWith('.mp4') ? (
-          <video
-            src={mediaSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover"
-          />
+      <div className="media-frame relative w-full aspect-[16/10] bg-dust/60 overflow-hidden border-b border-gold-dim/20">
+        {mediaSrc && isVideo ? (
+          <button
+            type="button"
+            onClick={() => onOpen(creation)}
+            className="block w-full h-full cursor-zoom-in text-left"
+            aria-label={`Agrandir ${creation.title}`}
+          >
+            <video
+              src={mediaSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className={mediaClassName}
+            />
+          </button>
         ) : mediaSrc ? (
-          <img
-            src={mediaSrc}
-            alt={creation.title}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+          <button
+            type="button"
+            onClick={() => onOpen(creation)}
+            className="block w-full h-full cursor-zoom-in text-left"
+            aria-label={`Agrandir ${creation.title}`}
+          >
+            <img
+              src={mediaSrc}
+              alt={creation.title}
+              loading="lazy"
+              className={mediaClassName}
+            />
+          </button>
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-3 text-muted/40">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
               <rect x="3" y="3" width="18" height="18" rx="1" />
               <circle cx="8.5" cy="8.5" r="1.5" />
               <path d="M21 15l-5-5L5 21" />
@@ -75,21 +94,85 @@ function CreationCard({ creation }) {
           </div>
         )}
       </div>
-    </div>
+    </article>
+  )
+}
+
+function MediaLightbox({ creation, onClose }) {
+  if (!creation) return null
+
+  const mediaSrc = `${import.meta.env.BASE_URL}${creation.image.replace(/^\//, '')}`
+  const isVideo = mediaSrc.endsWith('.mp4')
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[10000] bg-ink/95 backdrop-blur-md px-4 py-6 flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label={creation.title}
+      onClick={onClose}
+    >
+      <div className="relative w-full max-w-5xl" onClick={(event) => event.stopPropagation()}>
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute -top-12 right-0 px-4 py-2 border border-gold/40 bg-leather/90 font-body text-sm text-gold hover:text-cream hover:border-gold transition-all duration-200"
+        >
+          Fermer
+        </button>
+        <div className="border border-gold-dim/50 bg-gradient-to-br from-leather/95 via-ink to-dust/80 p-3 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
+          {isVideo ? (
+            <video
+              src={mediaSrc}
+              controls
+              autoPlay
+              loop
+              playsInline
+              className="max-h-[78vh] w-full object-contain bg-ink"
+            />
+          ) : (
+            <img
+              src={mediaSrc}
+              alt={creation.title}
+              className="max-h-[78vh] w-full object-contain bg-ink/70"
+            />
+          )}
+        </div>
+      </div>
+    </div>,
+    document.body
   )
 }
 
 export default function Creations() {
   const [filter, setFilter] = useState('all')
+  const [selectedCreation, setSelectedCreation] = useState(null)
 
   const filtered = filter === 'all'
     ? creations
     : creations.filter((c) => c.category === filter)
 
+  useEffect(() => {
+    if (!selectedCreation) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setSelectedCreation(null)
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [selectedCreation])
+
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
 
-      <div className="mb-14">
+      <div className="mb-14 scroll-reveal">
         <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-4">Design & Motion</p>
         <h1 className="font-display text-5xl text-cream mb-4">Créations visuelles</h1>
         <p className="font-body text-muted max-w-lg">
@@ -98,7 +181,7 @@ export default function Creations() {
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-10">
+      <div className="flex flex-wrap gap-2 mb-10 scroll-reveal">
         {FILTERS.map(({ key, label }) => (
           <button
             key={key}
@@ -115,16 +198,18 @@ export default function Creations() {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-24 text-muted font-body">
+        <div className="scroll-reveal text-center py-24 text-muted font-body">
           Aucune création dans cette catégorie pour le moment.
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filtered.map((creation) => (
-            <CreationCard key={creation.id} creation={creation} />
+            <CreationCard key={creation.id} creation={creation} onOpen={setSelectedCreation} />
           ))}
         </div>
       )}
+
+      <MediaLightbox creation={selectedCreation} onClose={() => setSelectedCreation(null)} />
     </div>
   )
 }

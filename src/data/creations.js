@@ -12,9 +12,10 @@ export const creations = [
     category: 'logo',
     context: 'Identité visuelle personnelle',
     reflexion:
-      '[Ta réflexion ici — pourquoi ces couleurs, ces formes, quelle ambiance tu voulais transmettre pour ton identité digitale.]',
+      'Melui est pensé comme une signature personnelle: court, mémorisable, doux à l’oreille, avec une touche presque fantasy. Le logo cherche l’équilibre entre élégance premium et lisibilité numérique: formes simples pour rester reconnaissable en petit format, doré et ivoire pour le côté précieux, jade en accent pour rappeler l’énergie créative et technique.',
     tools: ['Inkscape'],
     image: '/creations/logo-melui.png',
+    fit: 'contain',
   },
   {
     id: 'logo-moonrage-1',
@@ -25,6 +26,7 @@ export const creations = [
       'Première version du logo pour l\'identité visuelle de la chaîne Twitch de Moonrage. Univers gaming avec une énergie brute — formes et typographie pensées pour être lisibles en petit format (overlay, icône de chaîne) comme en grand.',
     tools: ['Inkscape'],
     image: '/creations/logo_moonrage-1.png',
+    fit: 'contain',
   },
   {
     id: 'logo-moonrage-2',
@@ -35,6 +37,7 @@ export const creations = [
       'Évolution du logo après retours — affinage du trait, meilleure lisibilité sur fonds sombres et clairs. La direction artistique reste dans le même univers gaming mais avec plus de personnalité et de précision dans les détails.',
     tools: ['Inkscape'],
     image: '/creations/logo-moonrage-2.png',
+    fit: 'contain',
   },
 
   // ── Bannières ──────────────────────────────────────────────────────────────

@@ -34,7 +34,7 @@ export default function Header() {
           <img
             src={`${import.meta.env.BASE_URL}logo-horizontal.svg`}
             alt="Nathaniel — Développeur Web Freelance"
-            className="h-10 w-auto"
+            className="h-12 md:h-14 w-auto"
           />
         </NavLink>
 

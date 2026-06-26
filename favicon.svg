@@ -1,14 +1,14 @@
 <svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100" height="100" fill="#080104"/>
-  <circle cx="50" cy="50" r="44" stroke="#9b6b22" stroke-width="1" fill="none"/>
-  <circle cx="50" cy="50" r="36" stroke="#f4c95d" stroke-width="1.2" fill="none"/>
-  <line x1="50" y1="6"  x2="50" y2="14" stroke="#f4c95d" stroke-width="1.2"/>
-  <line x1="50" y1="86" x2="50" y2="94" stroke="#f4c95d" stroke-width="1.2"/>
-  <line x1="6"  y1="50" x2="14" y2="50" stroke="#f4c95d" stroke-width="1.2"/>
-  <line x1="86" y1="50" x2="94" y2="50" stroke="#f4c95d" stroke-width="1.2"/>
-  <path d="M50 2  L53 6  L50 10 L47 6  Z" fill="#f4c95d"/>
-  <path d="M50 90 L53 94 L50 98 L47 94 Z" fill="#f4c95d"/>
-  <path d="M2  50 L6 47  L10 50 L6  53 Z" fill="#f4c95d"/>
-  <path d="M90 50 L94 47 L98 50 L94 53 Z" fill="#f4c95d"/>
-  <text x="50" y="66" font-family="Georgia, 'Times New Roman', serif" font-size="52" fill="#fff3dc" text-anchor="middle">N</text>
+  <rect width="100" height="100" fill="#0D0D0D"/>
+  <circle cx="50" cy="50" r="44" stroke="#7E5B2E" stroke-width="1" fill="none"/>
+  <circle cx="50" cy="50" r="36" stroke="#C28D39" stroke-width="1.2" fill="none"/>
+  <line x1="50" y1="6"  x2="50" y2="14" stroke="#C28D39" stroke-width="1.2"/>
+  <line x1="50" y1="86" x2="50" y2="94" stroke="#C28D39" stroke-width="1.2"/>
+  <line x1="6"  y1="50" x2="14" y2="50" stroke="#C28D39" stroke-width="1.2"/>
+  <line x1="86" y1="50" x2="94" y2="50" stroke="#C28D39" stroke-width="1.2"/>
+  <path d="M50 2  L53 6  L50 10 L47 6  Z" fill="#C28D39"/>
+  <path d="M50 90 L53 94 L50 98 L47 94 Z" fill="#C28D39"/>
+  <path d="M2  50 L6 47  L10 50 L6  53 Z" fill="#C28D39"/>
+  <path d="M90 50 L94 47 L98 50 L94 53 Z" fill="#C28D39"/>
+  <text x="50" y="66" font-family="Georgia, 'Times New Roman', serif" font-size="52" fill="#EFE5D2" text-anchor="middle">N</text>
 </svg>

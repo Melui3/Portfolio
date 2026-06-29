@@ -93,6 +93,38 @@ export const projects = [
       },
     ],
   },
+  {
+    id: 'sunstrider-agency',
+    title: 'Sunstrider Agency',
+    tagline: "Portail royal fictif de Quel'Thalas",
+    description:
+      "Concept de portail officiel fictif pour Quel'Thalas, pensé comme une vitrine royale immersive, lisible et capable de guider le visiteur entre histoire, monarchie, lieux, culture et informations pratiques.",
+    tags: ['Worldbuilding', 'Portail fictif', 'UX', 'Responsive', 'Identité visuelle'],
+    url: 'https://melui3.github.io/sunstrider-agency/',
+    github: null,
+    image: '/projects/sunstrider-agency.png',
+    imageFit: 'contain',
+    category: 'passion-concept',
+    status: 'live',
+    details: [
+      {
+        label: "L'objectif",
+        body: "Créer un portail fictif qui donne l'impression d'un vrai site officiel pour Quel'Thalas. Le but était d'accueillir le visiteur, poser l'ambiance du royaume et lui donner rapidement accès aux grandes rubriques: histoire, monarchie, lieux à découvrir, culture, visite et contacts.",
+      },
+      {
+        label: "L'identité visuelle",
+        body: "J'ai construit une direction artistique premium, avec noir profond, burgundy, or antique et ivoire chaud. L'idée était de mélanger le côté royal et arcane des Sin'dorei avec une interface élégante, lisible et pas juste décorative.",
+      },
+      {
+        label: 'La démarche UX',
+        body: "Le parcours devait rester évident même pour quelqu'un qui ne connaît pas l'univers. Les boutons, les cartes et les rubriques guident vers les informations principales, comme sur un vrai portail public, tout en gardant le côté immersif.",
+      },
+      {
+        label: 'Le responsive',
+        body: "Le site devait rester agréable sur téléphone: navigation compacte, textes lisibles, grands appels à l'action et sections bien séparées pour consulter facilement l'histoire, les lieux ou les informations de visite depuis un petit écran.",
+      },
+    ],
+  },
 ]
 
 export const projectsByCategory = (category) =>

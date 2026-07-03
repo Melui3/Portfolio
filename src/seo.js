@@ -8,7 +8,7 @@ export const SEO_ROUTES = [
     path: '/',
     title: 'Nathaniel Dujardin - Développeur Web Freelance',
     description:
-      'Développeur web freelance, je crée des sites et applications sur-mesure pour indépendants, associations et petites entreprises.',
+      'Développeur web freelance, je crée des landing pages, sites vitrines, espaces membres et identités visuelles web pour indépendants, associations et petites entreprises.',
     priority: '1.0',
   },
   {

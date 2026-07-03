@@ -6,6 +6,64 @@ const featuredCreations = creations.filter((creation) =>
   ['logo-moonrage-1', 'logo-moonrage-2'].includes(creation.id)
 )
 
+const services = [
+  {
+    title: 'Landing page',
+    price: '400 à 600 €',
+    summary:
+      "Une page unique pensée pour présenter une offre, lancer une activité ou transformer une visite en prise de contact.",
+    includes: [
+      'Un message clair dès les premières secondes',
+      'Une structure orientée conversion',
+      'Un formulaire ou appel à l’action visible',
+    ],
+  },
+  {
+    title: 'Site vitrine',
+    price: '700 à 1 000 €',
+    summary:
+      'Un site complet pour présenter votre activité, vos services, votre histoire et donner confiance avant le premier contact.',
+    includes: [
+      'Plusieurs pages structurées',
+      'Une présentation claire de vos services',
+      'Une base propre pour être compris par Google',
+    ],
+  },
+  {
+    title: 'Site avec espace membre',
+    price: '1 400 à 2 000 €',
+    summary:
+      'Un site avec connexion pour donner accès à des contenus, documents ou espaces réservés à certains utilisateurs.',
+    includes: [
+      'Connexion et comptes utilisateurs',
+      'Pages ou contenus protégés',
+      'Parcours pensé pour les membres',
+    ],
+  },
+  {
+    title: 'Réservation / fonctionnalités avancées',
+    price: '2 000 à 3 000 €',
+    summary:
+      'Des fonctionnalités sur mesure pour simplifier une organisation, automatiser une demande ou gérer un parcours plus précis.',
+    includes: [
+      'Réservation, demande de devis ou workflow dédié',
+      'Interfaces adaptées à votre manière de travailler',
+      'Moins de tâches répétitives à gérer à la main',
+    ],
+  },
+  {
+    title: 'Identité visuelle',
+    price: '250 à 500 €',
+    summary:
+      "Une direction visuelle exploitable pour le web: ambiance, couleurs, typographies et cohérence des supports numériques.",
+    includes: [
+      'Palette, typographies et principes visuels',
+      'Cohérence entre logo, site et supports',
+      "Design d’usage, pas illustration sur mesure",
+    ],
+  },
+]
+
 // ─── Composant carte projet ────────────────────────────────────────────────
 function ProjectCard({ project }) {
   const mediaSrc = project.image
@@ -140,6 +198,32 @@ function CreationPreviewCard({ creation }) {
   )
 }
 
+function ServiceCard({ service, index }) {
+  return (
+    <article
+      className="motion-card scroll-reveal relative overflow-hidden border border-gold-dim/25 bg-leather/30 p-6 hover:bg-leather/60 hover:border-gold-dim/60 transition-all duration-400"
+      style={{ '--reveal-delay': `${index * 70}ms` }}
+    >
+      <span className="absolute top-0 right-0 w-5 h-5 border-t border-r border-gold/30" />
+      <p className="font-body text-xs text-gold tracking-widest uppercase mb-4">
+        {String(index + 1).padStart(2, '0')}
+      </p>
+      <h3 className="font-display text-2xl text-cream mb-2">{service.title}</h3>
+      <p className="font-display text-3xl text-gold mb-4">{service.price}</p>
+      <p className="font-body text-sm text-parchment/75 leading-relaxed mb-5">{service.summary}</p>
+
+      <ul className="space-y-3">
+        {service.includes.map((item) => (
+          <li key={item} className="flex gap-3 font-body text-sm text-muted leading-relaxed">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </article>
+  )
+}
+
 // ─── Page Home ─────────────────────────────────────────────────────────────
 export default function Home() {
   return (
@@ -234,6 +318,54 @@ export default function Home() {
           {featuredCreations.map((creation) => (
             <CreationPreviewCard key={creation.id} creation={creation} />
           ))}
+        </div>
+      </section>
+
+      {/* Séparateur */}
+      <div className="separator">
+        <span className="font-body text-xs text-muted tracking-widest uppercase">Services & tarifs</span>
+      </div>
+
+      {/* ── Services & tarifs ── */}
+      <section id="services" className="py-16 scroll-reveal">
+        <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-3">Tarifs indicatifs</p>
+            <h2 className="font-display text-3xl text-cream mb-2">Services web & direction visuelle</h2>
+            <p className="font-body text-muted max-w-2xl">
+              Les fourchettes servent à cadrer le budget dès le départ. Le devis final dépend du contenu,
+              du nombre de pages, des fonctionnalités et du niveau d’accompagnement attendu.
+            </p>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center border border-gold bg-gold px-6 py-3 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200"
+          >
+            Demander un devis
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} service={service} index={index} />
+          ))}
+        </div>
+
+        <div className="scroll-reveal mt-8 border border-gold-dim/25 bg-ink/35 p-6 md:flex md:items-center md:justify-between md:gap-8">
+          <div>
+            <p className="font-body text-xs text-gold tracking-widest uppercase mb-2">Précision importante</p>
+            <p className="font-body text-sm text-parchment/75 leading-relaxed">
+              Pour l’identité visuelle, je me positionne comme designer web: je définis une direction,
+              une cohérence et une expérience visuelle. Je ne propose pas de prestation de graphiste
+              illustrateur, donc pas de dessin ou d’illustration sur mesure.
+            </p>
+          </div>
+          <Link
+            to="/contact"
+            className="mt-5 inline-flex shrink-0 items-center justify-center border border-gold/50 px-5 py-2.5 font-body text-sm text-parchment hover:border-gold hover:text-cream transition-all duration-200 md:mt-0"
+          >
+            Cadrer mon besoin
+          </Link>
         </div>
       </section>
 

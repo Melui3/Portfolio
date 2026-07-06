@@ -95,7 +95,7 @@ function ProjectCard({ project }) {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border border-gold bg-gold px-5 py-2.5 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 rounded-[15px] border border-gold bg-gold px-5 py-2.5 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200"
               >
                 Ouvrir le site
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
@@ -120,7 +120,7 @@ function ProjectCard({ project }) {
             <button
               type="button"
               onClick={() => setOpen(!open)}
-              className="flex w-fit items-center gap-1.5 border border-dust px-4 py-2 font-body text-xs text-muted hover:border-gold-dim hover:text-gold transition-colors duration-200 shrink-0"
+              className="flex w-fit items-center gap-1.5 rounded-[15px] border border-dust px-4 py-2 font-body text-xs text-muted hover:border-gold-dim hover:text-gold transition-colors duration-200 shrink-0"
             >
               <span>{open ? 'Masquer la démarche' : 'Lire la démarche'}</span>
               <svg

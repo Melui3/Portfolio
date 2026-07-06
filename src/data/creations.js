@@ -5,6 +5,18 @@
 
 export const creations = [
 
+  {
+    id: 'logo-nate-os',
+    title: 'Logo Nate Os',
+    category: 'logo',
+    context: 'Identité visuelle personnelle — design & développement web',
+    reflexion:
+      "Logo personnel réalisé sur Canva pour poser une identité plus premium et cohérente avec la direction artistique du portfolio. Le monogramme, le cercle sombre, le bordeaux profond et l'or antique servent à créer une présence élégante, lisible et mémorable, sans partir sur une illustration dessinée.",
+    tools: ['Canva'],
+    image: '/creations/logo-nate-os.png',
+    fit: 'contain',
+  },
+
   // ── Logos ──────────────────────────────────────────────────────────────────
   {
     id: 'logo-moonrage-1',

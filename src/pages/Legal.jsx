@@ -41,9 +41,9 @@ export default function Legal() {
         <section>
           <h2 className="font-display text-xl text-cream mb-3">Données personnelles</h2>
           <p>
-            Ce site ne collecte aucune donnée personnelle via un serveur. Le formulaire de contact
-            ouvre votre client mail via le protocole <code className="text-gold/80 text-sm">mailto:</code> — aucune
-            information n'est transmise ni stockée par ce site.
+            Les informations envoyées via le formulaire de contact servent uniquement à répondre à votre demande.
+            Le formulaire est transmis par FormSubmit, un service externe qui redirige le message vers mon adresse email.
+            Vous pouvez aussi me contacter directement par email si vous préférez éviter le formulaire.
           </p>
           <p className="mt-3">
             Aucun cookie tiers, aucun outil de tracking ni de publicité n'est utilisé.

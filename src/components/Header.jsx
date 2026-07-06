@@ -35,11 +35,11 @@ export default function Header() {
           className="group flex items-center gap-3 opacity-95 hover:opacity-100 transition-opacity duration-300"
           aria-label="Nate Os — Design et développement web"
         >
-          <span className="relative grid h-12 w-12 place-items-center overflow-hidden rounded-[15px] border border-gold-dim/40 bg-ink shadow-[0_12px_32px_rgba(0,0,0,0.32)] md:h-14 md:w-14">
+          <span className="relative grid h-14 w-14 place-items-center md:h-16 md:w-16">
             <img
-              src={`${import.meta.env.BASE_URL}logo-nateos-mark.jpg`}
+              src={`${import.meta.env.BASE_URL}logo-nateos-full.png`}
               alt=""
-              className="h-full w-full scale-110 object-cover"
+              className="h-full w-full object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.35)]"
             />
           </span>
           <span className="hidden leading-none sm:flex sm:flex-col">
@@ -68,9 +68,9 @@ export default function Header() {
           ))}
           <NavLink
             to="/contact"
-            className="font-body text-sm px-5 py-2 border border-gold/50 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 tracking-wide"
+            className="font-body text-sm px-5 py-2 border border-gold/50 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 tracking-wide rounded-[15px]"
           >
-            Obtenir un devis
+            Devis gratuit
           </NavLink>
         </nav>
 
@@ -107,9 +107,9 @@ export default function Header() {
           <NavLink
             to="/contact"
             onClick={() => setMenuOpen(false)}
-            className="font-body text-sm mt-2 px-5 py-3 border border-gold/50 text-gold text-center"
+            className="font-body text-sm mt-2 px-5 py-3 border border-gold/50 text-gold text-center rounded-[15px]"
           >
-            Obtenir un devis
+            Demander un devis gratuit
           </NavLink>
         </nav>
       </div>

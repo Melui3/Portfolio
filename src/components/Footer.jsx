@@ -14,11 +14,11 @@ export default function Footer() {
           {/* Colonne 1 — Identité */}
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <span className="relative grid h-14 w-14 place-items-center overflow-hidden rounded-[15px] border border-gold-dim/35 bg-ink shadow-[0_12px_32px_rgba(0,0,0,0.32)]">
+              <span className="relative grid h-16 w-16 place-items-center">
                 <img
-                  src={`${import.meta.env.BASE_URL}logo-nateos-mark.jpg`}
+                  src={`${import.meta.env.BASE_URL}logo-nateos-full.png`}
                   alt=""
-                  className="h-full w-full scale-110 object-cover"
+                  className="h-full w-full object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.35)]"
                 />
               </span>
               <div className="leading-none">
@@ -70,9 +70,9 @@ export default function Footer() {
             </p>
             <NavLink
               to="/contact"
-              className="inline-block font-body text-sm px-5 py-2 border border-gold/40 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300"
+              className="inline-block font-body text-sm px-5 py-2 border border-gold/40 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 rounded-[15px]"
             >
-              Discutons-en →
+              Demander un devis →
             </NavLink>
           </div>
         </div>

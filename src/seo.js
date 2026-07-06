@@ -1,14 +1,14 @@
 export const SITE_BASE_URL = 'https://nathaniel-dev.fr'
 export const SITE_NAME = 'Nathaniel Dujardin'
 export const SITE_EMAIL = 'nathaniel@nathaniel-dev.fr'
-export const SITE_IMAGE_URL = `${SITE_BASE_URL}/logo-nateos-full.jpg`
+export const SITE_IMAGE_URL = `${SITE_BASE_URL}/logo-nateos-full.png`
 
 export const SEO_ROUTES = [
   {
     path: '/',
     title: 'Nathaniel Dujardin - Développeur Web Freelance',
     description:
-      'Développeur web freelance, je crée des landing pages, sites vitrines, espaces membres et identités visuelles web pour indépendants, associations et petites entreprises.',
+      'Développeur web freelance, je crée des sites vitrines, landing pages et interfaces sur-mesure pour inspirer confiance et recevoir plus facilement des demandes.',
     priority: '1.0',
   },
   {
@@ -36,7 +36,7 @@ export const SEO_ROUTES = [
     path: '/contact',
     title: 'Contact - Nathaniel Dujardin',
     description:
-      'Parlez-moi de votre projet web. Je réponds sous 48h pour cadrer votre besoin, votre budget et les prochaines étapes.',
+      'Demandez un devis gratuit pour votre site vitrine, landing page ou projet web. Réponse sous 48h avec une première lecture claire du besoin.',
     priority: '0.8',
   },
   {

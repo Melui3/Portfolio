@@ -3,63 +3,125 @@ import { clientProjects } from '../data/projects'
 import { creations, categoryMeta } from '../data/creations'
 
 const featuredCreations = creations.filter((creation) =>
-  ['logo-moonrage-1', 'logo-moonrage-2'].includes(creation.id)
+  ['logo-nate-os', 'logo-moonrage-2'].includes(creation.id)
 )
+
+const trustSignals = [
+  {
+    title: 'Devis clair',
+    text: 'Budget, délais et livrables cadrés avant de commencer.',
+  },
+  {
+    title: 'Mise en ligne incluse',
+    text: 'Le site ne reste pas coincé sur un dossier: je vous aide à le publier.',
+  },
+  {
+    title: 'Responsive',
+    text: 'Un rendu propre sur mobile, tablette et ordinateur.',
+  },
+  {
+    title: 'SEO de base',
+    text: 'Structure, titres, métas et indexation pensés dès le départ.',
+  },
+]
 
 const services = [
   {
     title: 'Landing page',
-    price: '400 à 600 €',
+    price: 'À partir de 400 €',
+    range: '400 à 600 €',
+    delay: '1 à 2 semaines',
     summary:
-      "Une page unique pensée pour présenter une offre, lancer une activité ou transformer une visite en prise de contact.",
+      "Une page unique pour présenter une offre, lancer une activité ou transformer une visite en prise de contact.",
     includes: [
-      'Un message clair dès les premières secondes',
-      'Une structure orientée conversion',
-      'Un formulaire ou appel à l’action visible',
+      '1 page complète structurée pour convaincre',
+      'Message, sections et appels à l’action clairs',
+      'Formulaire ou lien de contact visible',
+      'Responsive mobile, tablette et desktop',
+      'SEO de base et mise en ligne incluse',
     ],
   },
   {
     title: 'Site vitrine',
-    price: '700 à 1 000 €',
+    price: 'À partir de 700 €',
+    range: '700 à 1 000 €',
+    delay: '2 à 4 semaines',
     summary:
       'Un site complet pour présenter votre activité, vos services, votre histoire et donner confiance avant le premier contact.',
     includes: [
-      'Plusieurs pages structurées',
-      'Une présentation claire de vos services',
-      'Une base propre pour être compris par Google',
+      '3 à 5 pages selon le besoin',
+      'Présentation claire de vos services',
+      'Parcours pensé pour rassurer et convertir',
+      'Formulaire de contact et liens utiles',
+      'Responsive, SEO de base et mise en ligne',
     ],
   },
   {
     title: 'Site avec espace membre',
-    price: '1 400 à 2 000 €',
+    price: 'À partir de 1 400 €',
+    range: '1 400 à 2 000 €',
+    delay: '4 à 6 semaines',
     summary:
       'Un site avec connexion pour donner accès à des contenus, documents ou espaces réservés à certains utilisateurs.',
     includes: [
       'Connexion et comptes utilisateurs',
       'Pages ou contenus protégés',
       'Parcours pensé pour les membres',
+      'Interface claire pour accéder aux contenus',
+      'Base technique propre et évolutive',
     ],
   },
   {
     title: 'Réservation / fonctionnalités avancées',
-    price: '2 000 à 3 000 €',
+    price: 'À partir de 2 000 €',
+    range: '2 000 à 3 000 €',
+    delay: '5 à 8 semaines',
     summary:
       'Des fonctionnalités sur mesure pour simplifier une organisation, automatiser une demande ou gérer un parcours plus précis.',
     includes: [
-      'Réservation, demande de devis ou workflow dédié',
+      'Réservation, demande de devis ou parcours dédié',
       'Interfaces adaptées à votre manière de travailler',
       'Moins de tâches répétitives à gérer à la main',
+      'Tests sur les parcours importants',
+      'Accompagnement à la prise en main',
     ],
   },
   {
     title: 'Identité visuelle',
-    price: '250 à 500 €',
+    price: 'À partir de 250 €',
+    range: '250 à 500 €',
+    delay: '3 à 7 jours',
     summary:
       "Une direction visuelle exploitable pour le web: ambiance, couleurs, typographies et cohérence des supports numériques.",
     includes: [
       'Palette, typographies et principes visuels',
       'Cohérence entre logo, site et supports',
+      "Moodboard et direction d’interface",
+      "Conseils d’usage pour rester cohérent",
       "Design d’usage, pas illustration sur mesure",
+    ],
+  },
+]
+
+const serviceBoundaries = [
+  {
+    title: 'Inclus dans l’accompagnement',
+    items: [
+      'Cadrage du besoin avant le devis',
+      'Conseils sur la structure et les contenus',
+      'Responsive mobile et desktop',
+      'SEO de base pour partir proprement',
+      'Mise en ligne et vérifications finales',
+    ],
+  },
+  {
+    title: 'Hors périmètre',
+    items: [
+      'Illustration ou dessin sur mesure',
+      'Logo complexe dessiné de zéro',
+      'Rédaction complète de tous vos textes',
+      'Publicité payante ou gestion réseaux sociaux',
+      'Maintenance longue durée sans accord dédié',
     ],
   },
 ]
@@ -95,7 +157,7 @@ function ProjectCard({ project }) {
               className={mediaClassName}
             />
             <span className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-[15px] bg-gold px-4 py-2 font-body text-sm text-ink shadow-[0_10px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 group-hover:translate-x-0.5">
-              Visiter le site
+              Voir le site en ligne
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                 <path d="M7 17 17 7" />
                 <path d="M8 7h9v9" />
@@ -124,9 +186,9 @@ function ProjectCard({ project }) {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border border-gold bg-gold px-5 py-2.5 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 rounded-[15px] border border-gold bg-gold px-5 py-2.5 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200"
               >
-                Visiter le site
+                Voir le site en ligne
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                   <path d="M7 17 17 7" />
                   <path d="M8 7h9v9" />
@@ -135,9 +197,9 @@ function ProjectCard({ project }) {
             )}
             <Link
               to="/projets"
-              className="inline-flex items-center justify-center border border-gold/40 px-5 py-2.5 font-body text-sm text-parchment hover:border-gold hover:text-cream transition-all duration-200"
+              className="inline-flex items-center justify-center rounded-[15px] border border-gold/40 px-5 py-2.5 font-body text-sm text-parchment hover:border-gold hover:text-cream transition-all duration-200"
             >
-              Voir le détail
+              Lire la démarche
             </Link>
           </div>
         </div>
@@ -209,9 +271,18 @@ function ServiceCard({ service, index }) {
         {String(index + 1).padStart(2, '0')}
       </p>
       <h3 className="font-display text-2xl text-cream mb-2">{service.title}</h3>
-      <p className="font-display text-3xl text-gold mb-4">{service.price}</p>
+      <p className="font-display text-3xl text-gold mb-3">{service.price}</p>
+      <div className="mb-5 flex flex-wrap gap-2">
+        <span className="border border-dust px-2 py-0.5 font-body text-xs text-muted">
+          Budget habituel: {service.range}
+        </span>
+        <span className="border border-dust px-2 py-0.5 font-body text-xs text-muted">
+          Délai moyen: {service.delay}
+        </span>
+      </div>
       <p className="font-body text-sm text-parchment/75 leading-relaxed mb-5">{service.summary}</p>
 
+      <p className="font-body text-xs text-gold tracking-widest uppercase mb-3">Ce qui est inclus</p>
       <ul className="space-y-3">
         {service.includes.map((item) => (
           <li key={item} className="flex gap-3 font-body text-sm text-muted leading-relaxed">
@@ -234,7 +305,7 @@ export default function Home() {
         {/* Ornement décoratif fond */}
         <div className="sigil-orbit absolute right-[-3rem] md:right-[-1rem] top-1/2 -translate-y-1/2 w-96 h-96 md:w-[30rem] md:h-[30rem] opacity-20 pointer-events-none">
           <img
-            src={`${import.meta.env.BASE_URL}logo-nateos-mark.jpg`}
+            src={`${import.meta.env.BASE_URL}logo-nateos-full.png`}
             alt=""
             className="h-full w-full object-contain mix-blend-screen"
           />
@@ -242,30 +313,38 @@ export default function Home() {
 
         <div className="max-w-3xl fade-up">
           <p className="font-body text-gold tracking-[0.3em] uppercase text-sm mb-6 fade-up fade-up-delay-1">
-            Développeur Web Freelance
+            Nate OS Enterprise
           </p>
           <h1 className="font-display text-5xl md:text-7xl text-cream mb-6 leading-tight fade-up fade-up-delay-2">
-            Votre présence en ligne,{' '}
-            <em className="text-gold not-italic">enfin à votre image.</em>
+            Un site premium, clair et prêt à{' '}
+            <em className="text-gold not-italic">convaincre vos clients.</em>
           </h1>
           <p className="font-body text-lg text-parchment/75 max-w-xl mb-10 fade-up fade-up-delay-3">
-            Je conçois des sites web et applications sur-mesure pour les
-            indépendants, associations et petites entreprises. Pas de jargon,
-            pas de surprise — juste un résultat qui vous ressemble.
+            Je conçois des sites vitrines, landing pages et interfaces sur-mesure pour les
+            indépendants, associations et petites entreprises qui veulent inspirer confiance,
+            être compris vite et recevoir plus facilement des demandes.
           </p>
           <div className="flex flex-wrap gap-4 fade-up fade-up-delay-4">
             <Link
               to="/contact"
-              className="font-body px-8 py-3 bg-gold text-ink hover:bg-gold/90 transition-colors duration-200 tracking-wide"
+              className="font-body px-8 py-3 bg-gold text-ink hover:bg-gold/90 transition-colors duration-200 tracking-wide rounded-[15px]"
             >
-              Parler de mon projet
+              Demander un devis gratuit
             </Link>
             <Link
               to="/projets"
-              className="font-body px-8 py-3 border border-gold/50 text-parchment hover:border-gold hover:text-cream transition-all duration-200 tracking-wide"
+              className="font-body px-8 py-3 border border-gold/50 text-parchment hover:border-gold hover:text-cream transition-all duration-200 tracking-wide rounded-[15px]"
             >
-              Voir mes réalisations
+              Voir un projet client réel
             </Link>
+          </div>
+          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {trustSignals.map((signal) => (
+              <div key={signal.title} className="border border-gold-dim/25 bg-ink/35 p-4">
+                <p className="font-display text-base text-cream mb-1">{signal.title}</p>
+                <p className="font-body text-xs leading-relaxed text-muted">{signal.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -277,8 +356,10 @@ export default function Home() {
 
       {/* ── Projets clients ── */}
       <section className="py-16 scroll-reveal">
-        <h2 className="font-display text-3xl text-cream mb-2">Ce que j'ai construit</h2>
-        <p className="font-body text-muted mb-10">Des projets réels, pour des clients réels.</p>
+        <h2 className="font-display text-3xl text-cream mb-2">Un vrai lancement client</h2>
+        <p className="font-body text-muted mb-10">
+          Honey Group partait de zéro: le site devait poser une image crédible dès le lancement de l’entreprise.
+        </p>
 
         <div className="grid grid-cols-1 gap-6 mb-8">
           {clientProjects.map((project) => (
@@ -290,7 +371,7 @@ export default function Home() {
           to="/projets"
           className="font-body text-sm text-gold hover:text-cream transition-colors duration-200"
         >
-          Voir tous les projets →
+          Voir le projet client réel et les concepts →
         </Link>
       </section>
 
@@ -339,9 +420,9 @@ export default function Home() {
           </div>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center border border-gold bg-gold px-6 py-3 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200"
+            className="inline-flex items-center justify-center border border-gold bg-gold px-6 py-3 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200 rounded-[15px]"
           >
-            Demander un devis
+            Demander un devis gratuit
           </Link>
         </div>
 
@@ -351,20 +432,33 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="scroll-reveal mt-8 border border-gold-dim/25 bg-ink/35 p-6 md:flex md:items-center md:justify-between md:gap-8">
-          <div>
-            <p className="font-body text-xs text-gold tracking-widest uppercase mb-2">Précision importante</p>
-            <p className="font-body text-sm text-parchment/75 leading-relaxed">
-              Pour l’identité visuelle, je me positionne comme designer web: je définis une direction,
-              une cohérence et une expérience visuelle. Je ne propose pas de prestation de graphiste
-              illustrateur, donc pas de dessin ou d’illustration sur mesure.
-            </p>
-          </div>
+        <div className="scroll-reveal mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {serviceBoundaries.map((block) => (
+            <div key={block.title} className="border border-gold-dim/25 bg-ink/35 p-6">
+              <p className="font-body text-xs text-gold tracking-widest uppercase mb-4">{block.title}</p>
+              <ul className="space-y-3">
+                {block.items.map((item) => (
+                  <li key={item} className="flex gap-3 font-body text-sm text-parchment/75 leading-relaxed">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="scroll-reveal mt-8 border border-gold-dim/25 bg-leather/25 p-6 md:flex md:items-center md:justify-between md:gap-8">
+          <p className="font-body text-sm text-parchment/75 leading-relaxed">
+            Pour l’identité visuelle, je me positionne comme designer web: je définis une direction,
+            une cohérence et une expérience visuelle exploitable sur votre site. Je ne remplace pas
+            un illustrateur ou un graphiste spécialisé en logo complexe.
+          </p>
           <Link
             to="/contact"
-            className="mt-5 inline-flex shrink-0 items-center justify-center border border-gold/50 px-5 py-2.5 font-body text-sm text-parchment hover:border-gold hover:text-cream transition-all duration-200 md:mt-0"
+            className="mt-5 inline-flex shrink-0 items-center justify-center border border-gold/50 px-5 py-2.5 font-body text-sm text-parchment hover:border-gold hover:text-cream transition-all duration-200 rounded-[15px] md:mt-0"
           >
-            Cadrer mon besoin
+            Parler de mon site
           </Link>
         </div>
       </section>
@@ -403,9 +497,9 @@ export default function Home() {
           <p className="font-body text-muted mb-8">Je réponds à tous les messages sous 48h.</p>
           <Link
             to="/contact"
-            className="font-body px-10 py-4 bg-gold text-ink hover:bg-gold/90 transition-colors duration-200 tracking-wide text-lg"
+            className="font-body px-10 py-4 bg-gold text-ink hover:bg-gold/90 transition-colors duration-200 tracking-wide text-lg rounded-[15px]"
           >
-            Me contacter
+            Demander un devis gratuit
           </Link>
         </div>
       </section>

@@ -62,6 +62,38 @@ export const projects = [
     ],
   },
   {
+    id: 'les-pattes-heureuses',
+    title: 'Les Pattes Heureuses',
+    tagline: 'Site vitrine fictif pour cabinet vétérinaire',
+    description:
+      'Concept réaliste de cabinet vétérinaire pensé pour rassurer les propriétaires, présenter les soins, afficher les tarifs et faciliter la prise de rendez-vous.',
+    tags: ['Santé animale', 'Site vitrine', 'Prise de RDV', 'Tarifs', 'Responsive'],
+    url: 'https://melui3.github.io/les-pattes-heureuses/',
+    github: null,
+    image: '/projects/les-pattes-heureuses.png',
+    imageFit: 'contain',
+    category: 'realistic-concept',
+    status: 'live',
+    details: [
+      {
+        label: "L'objectif",
+        body: "Créer un site fictif crédible pour un cabinet vétérinaire de proximité. Le but était de rassurer les propriétaires, présenter clairement les soins proposés et rendre la prise de rendez-vous plus simple dès les premières secondes.",
+      },
+      {
+        label: "L'identité visuelle",
+        body: "L'univers devait être doux, propre et professionnel, sans tomber dans quelque chose de trop enfantin. Les verts, les bleus calmes, les fonds crème et les photos lumineuses servent à créer une sensation de confiance, de soin et de proximité.",
+      },
+      {
+        label: 'La démarche UX',
+        body: "Le parcours a été pensé pour répondre vite aux questions essentielles: quels animaux sont pris en charge, quels soins sont proposés, quels sont les tarifs, comment prendre rendez-vous et quoi faire en cas d'urgence.",
+      },
+      {
+        label: 'Le responsive',
+        body: "Le site devait rester très pratique sur mobile, parce qu'un propriétaire peut avoir besoin de consulter les horaires, appeler le cabinet ou demander un rendez-vous rapidement depuis son téléphone.",
+      },
+    ],
+  },
+  {
     id: 'piastries',
     title: 'Piastries',
     tagline: 'Boulangerie fictive inspirée F1',

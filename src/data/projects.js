@@ -94,6 +94,38 @@ export const projects = [
     ],
   },
   {
+    id: 'le-coup-de-feu',
+    title: 'Le Coup de Feu',
+    tagline: 'Restaurant fictif sous pression',
+    description:
+      "Concept réaliste de restaurant gastronomique à forte personnalité, pensé pour présenter l'univers, faire découvrir le menu et rendre la réservation simple malgré une ambiance volontairement intense.",
+    tags: ['Restaurant', 'Réservation', 'Menu filtrable', 'UX', 'Responsive', 'Identité visuelle'],
+    url: 'https://melui3.github.io/le-coup-de-feu/',
+    github: null,
+    image: '/projects/le-coup-de-feu.webp',
+    imageFit: 'contain',
+    category: 'realistic-concept',
+    status: 'live',
+    details: [
+      {
+        label: "L'objectif",
+        body: "Créer un site fictif crédible pour un restaurant gastronomique avec une identité très marquée. Le site devait donner envie de découvrir l'adresse, présenter le menu, poser l'ambiance et guider rapidement vers la réservation.",
+      },
+      {
+        label: "L'identité visuelle",
+        body: "L'univers repose sur un noir charbon, des accents dorés, du rouge feu et une ambiance de cuisine ouverte sous tension. L'idée était de mélanger le côté premium d'un restaurant gastronomique avec un ton plus mordant, mémorable et volontairement théâtral.",
+      },
+      {
+        label: 'La démarche UX',
+        body: "Le parcours a été pensé pour répondre aux questions principales d'un visiteur: quelle est l'ambiance, qu'est-ce qu'on mange, peut-on réserver facilement, quelle table choisir et est-ce que l'expérience vaut le détour. Le menu filtrable, les avis, la galerie, la FAQ et la réservation rendent le site vivant sans perdre en lisibilité.",
+      },
+      {
+        label: 'Le responsive',
+        body: "Le site devait rester pratique sur mobile, parce qu'un client peut vouloir consulter le menu, vérifier les disponibilités, montrer l'adresse ou réserver rapidement depuis son téléphone.",
+      },
+    ],
+  },
+  {
     id: 'piastries',
     title: 'Piastries',
     tagline: 'Boulangerie fictive inspirée F1',

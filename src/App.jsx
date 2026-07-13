@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout    from './components/Layout'
+import ClarityConsent from './components/ClarityConsent'
 import Seo       from './components/Seo'
 import Home      from './pages/Home'
 import Projects  from './pages/Projects'
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/mentions-legales" element={<Legal />}    />
         </Routes>
       </Layout>
+      <ClarityConsent />
     </BrowserRouter>
   )
 }

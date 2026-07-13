@@ -49,6 +49,7 @@ export default function Contact() {
         <form
           action={`https://formsubmit.co/${SITE_EMAIL}`}
           method="POST"
+          data-clarity-mask="true"
           className="scroll-reveal space-y-5"
         >
           <input type="hidden" name="_subject" value="Nouvelle demande depuis nateos.fr" />

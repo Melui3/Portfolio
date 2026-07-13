@@ -46,7 +46,10 @@ export default function Legal() {
             Vous pouvez aussi me contacter directement par email si vous préférez éviter le formulaire.
           </p>
           <p className="mt-3">
-            Aucun cookie tiers, aucun outil de tracking ni de publicité n'est utilisé.
+            Microsoft Clarity et Google Analytics peuvent être utilisés pour mesurer l'audience, comprendre
+            les clics, identifier les pages consultées et améliorer l'expérience du site. Ils ne sont chargés
+            qu'après acceptation depuis le bandeau de consentement.
+            Les champs du formulaire de contact sont masqués pour éviter l'enregistrement des messages saisis.
           </p>
         </section>
 

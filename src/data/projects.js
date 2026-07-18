@@ -1,6 +1,6 @@
 // ─── PROJETS DATA ────────────────────────────────────────────────────────────
-// category: 'real-client' | 'realistic-concept' | 'passion-concept'
-// status: 'live' | 'wip' | 'soon'
+// category: 'real-client' | 'demo-tool' | 'realistic-concept' | 'passion-concept'
+// status: 'live' | 'demo' | 'wip' | 'soon'
 // details: sections affichées dans l'accordéon de la carte projet
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -11,6 +11,13 @@ export const projectCategories = [
     plural: 'Clients réels',
     intro: 'Des projets livrés pour de vrais besoins, avec contraintes métier, déploiement et suivi.',
     empty: 'Aucun client réel dans cette catégorie pour le moment.',
+  },
+  {
+    key: 'demo-tool',
+    label: 'Outil en démo',
+    plural: 'Outils en version démo',
+    intro: 'Des outils personnels ou internes rendus visitables avec des données fictives, pour montrer la logique produit sans exposer de données privées.',
+    empty: 'Aucun outil en version démo pour le moment.',
   },
   {
     key: 'realistic-concept',
@@ -58,6 +65,39 @@ export const projects = [
       {
         label: 'Le responsive',
         body: "Le site devait rester agréable sur téléphone, parce qu'un voyage se prépare souvent depuis un mobile: consultation rapide, partage à un proche, vérification d'une destination ou prise de contact après avoir vu une offre.",
+      },
+    ],
+  },
+  {
+    id: 'prospect',
+    title: 'Prospect',
+    tagline: 'Outil interne de prospection en version démo',
+    description:
+      "Un outil personnel conçu pour rechercher, qualifier et suivre des prospects locaux depuis une seule interface. La version présentée est une démo anonymisée: les données sont fictives et les actions sensibles sont bloquées.",
+    tags: ['Outil interne', 'Prospection', 'Dashboard', 'Suivi', 'Démo anonymisée'],
+    url: 'https://melui3.github.io/Prospect/?demo=1#/dashboard',
+    ctaLabel: 'Ouvrir la démo',
+    github: null,
+    image: '/projects/prospect-demo.webp',
+    imageFit: 'contain',
+    category: 'demo-tool',
+    status: 'demo',
+    details: [
+      {
+        label: "L'objectif",
+        body: "Créer un outil personnel pour organiser ma prospection sans me disperser entre plusieurs fichiers, recherches et notes. L'idée était de centraliser les prospects, garder une trace des campagnes et savoir rapidement quoi faire ensuite.",
+      },
+      {
+        label: "L'identité visuelle",
+        body: "L'interface reprend une direction sombre, sobre et concentrée, proche de l'univers Nate Os. Le but n'était pas de faire une application décorative, mais un espace de travail clair, lisible et agréable à utiliser longtemps.",
+      },
+      {
+        label: 'La démarche UX',
+        body: "Le parcours a été pensé autour d'un vrai usage: chercher des prospects, les classer, consulter leurs informations, suivre les statuts, préparer des messages et garder une vue d'ensemble. La démo montre le fonctionnement sans exposer ma vraie base de données.",
+      },
+      {
+        label: 'Le responsive',
+        body: "L'outil devait rester consultable sur mobile pour vérifier une information, suivre une campagne ou consulter une fiche rapidement. Les actions principales restent visibles, mais l'usage principal reste volontairement plus confortable sur ordinateur.",
       },
     ],
   },

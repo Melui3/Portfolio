@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { projectCategories, projects, projectsByCategory } from '../data/projects'
 
 const STATUS_LABEL = {
   live: { label: 'En ligne', className: 'text-gold border-gold/45' },
+  demo: { label: 'Démo visitable', className: 'text-gold border-gold/45' },
   wip: { label: 'En cours', className: 'text-gold border-gold/40' },
   soon: { label: 'Bientôt', className: 'text-muted border-muted/40' },
 }
@@ -26,6 +28,9 @@ function ProjectCard({ project }) {
   const [open, setOpen] = useState(false)
   const status = STATUS_LABEL[project.status]
   const category = categoryByKey[project.category]
+  const detailsId = `project-details-${project.id}`
+  const ctaLabel = project.ctaLabel || 'Ouvrir le site'
+  const canOpenProject = ['live', 'demo'].includes(project.status) && project.url
   const mediaSrc = project.image
     ? `${import.meta.env.BASE_URL}${project.image.replace(/^\//, '')}`
     : null
@@ -43,7 +48,7 @@ function ProjectCard({ project }) {
           target="_blank"
           rel="noopener noreferrer"
           className="media-frame block relative w-full aspect-[16/10] bg-dust/50 overflow-hidden border-b border-gold-dim/20"
-          aria-label={`Voir ${project.title}`}
+          aria-label={`${ctaLabel} ${project.title}`}
         >
           <img
             src={mediaSrc}
@@ -52,9 +57,9 @@ function ProjectCard({ project }) {
             className={mediaClassName}
           />
           <span className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/80 to-transparent" />
-          {project.status === 'live' && project.url && (
+          {canOpenProject && (
             <span className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-[15px] bg-gold px-4 py-2 font-body text-sm text-ink shadow-[0_10px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 group-hover:translate-x-0.5">
-              Ouvrir le site
+              {ctaLabel}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                 <path d="M7 17 17 7" />
                 <path d="M8 7h9v9" />
@@ -90,14 +95,14 @@ function ProjectCard({ project }) {
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            {project.status === 'live' && project.url && (
+            {canOpenProject && (
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-[15px] border border-gold bg-gold px-5 py-2.5 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200"
               >
-                Ouvrir le site
+                {ctaLabel}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                   <path d="M7 17 17 7" />
                   <path d="M8 7h9v9" />
@@ -120,6 +125,8 @@ function ProjectCard({ project }) {
             <button
               type="button"
               onClick={() => setOpen(!open)}
+              aria-expanded={open}
+              aria-controls={detailsId}
               className="flex w-fit items-center gap-1.5 rounded-[15px] border border-dust px-4 py-2 font-body text-xs text-muted hover:border-gold-dim hover:text-gold transition-colors duration-200 shrink-0"
             >
               <span>{open ? 'Masquer la démarche' : 'Lire la démarche'}</span>
@@ -141,6 +148,8 @@ function ProjectCard({ project }) {
 
         {project.details && (
           <div
+            id={detailsId}
+            aria-hidden={!open}
             className={`overflow-hidden transition-all duration-500 ease-in-out ${
               open ? 'max-h-[900px] opacity-100' : 'max-h-0 opacity-0'
             }`}
@@ -196,8 +205,8 @@ export default function Projects() {
         <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-4">Portfolio</p>
         <h1 className="font-display text-5xl text-cream mb-4">Mes projets</h1>
         <p className="font-body text-muted max-w-xl">
-          Projets clients, concepts réalistes et projets passion — moins de remplissage,
-          plus de contexte sur la démarche derrière chaque interface.
+          Projets clients, outils en version démo, concepts réalistes et projets passion. Le réel passe en premier,
+          les outils montrent la logique produit, les concepts montrent la direction visuelle et l’expérience.
         </p>
       </div>
 
@@ -210,6 +219,7 @@ export default function Projects() {
             key={key}
             type="button"
             onClick={() => setFilter(key)}
+            aria-pressed={filter === key}
             className={`font-body text-sm px-4 py-1.5 border transition-all duration-200 ${
               filter === key
                 ? 'border-gold bg-gold/10 text-gold'
@@ -230,6 +240,28 @@ export default function Projects() {
           />
         ))}
       </div>
+
+      <section className="scroll-reveal mt-20 border border-gold/30 bg-gold/5 p-8 text-center">
+        <p className="font-body text-gold tracking-widest uppercase text-xs mb-4">Votre projet</p>
+        <h2 className="font-display text-4xl text-cream mb-4">Vous voulez un site pensé pour votre activité ?</h2>
+        <p className="font-body text-muted mb-8 max-w-2xl mx-auto">
+          Parlez-moi de votre métier, de vos clients et de ce que le site doit déclencher. Je vous réponds avec une première lecture claire.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center rounded-[15px] bg-gold px-8 py-3 font-body text-ink hover:bg-cream transition-colors duration-200"
+          >
+            Demander un devis gratuit
+          </Link>
+          <Link
+            to="/services"
+            className="inline-flex items-center justify-center rounded-[15px] border border-gold/50 px-8 py-3 font-body text-parchment hover:border-gold hover:text-cream transition-all duration-200"
+          >
+            Voir les services
+          </Link>
+        </div>
+      </section>
     </div>
   )
 }

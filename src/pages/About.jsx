@@ -26,6 +26,21 @@ const workingSteps = [
   },
 ]
 
+const principles = [
+  {
+    title: 'Clarté avant décor',
+    text: 'Une belle interface ne sert à rien si le visiteur ne comprend pas quoi faire. Je commence par le message et le parcours.',
+  },
+  {
+    title: 'Sur-mesure raisonnable',
+    text: 'Je construis autour de votre besoin réel, sans empiler des fonctionnalités qui ne servent pas votre objectif.',
+  },
+  {
+    title: 'Communication simple',
+    text: 'Je vous explique les choix importants avec des mots compréhensibles, pas avec une démonstration technique inutile.',
+  },
+]
+
 export default function About() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
@@ -84,6 +99,18 @@ export default function About() {
                   </p>
                   <h3 className="font-display text-xl text-cream mb-2">{step.title}</h3>
                   <p className="font-body text-sm text-muted leading-relaxed">{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="scroll-reveal">
+            <h2 className="font-display text-3xl text-cream mb-6">Ce que je garde en tête sur chaque projet</h2>
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+              {principles.map((principle) => (
+                <div key={principle.title} className="motion-card border border-gold-dim/25 bg-leather/25 p-5">
+                  <h3 className="font-display text-xl text-cream mb-2">{principle.title}</h3>
+                  <p className="font-body text-sm text-muted leading-relaxed">{principle.text}</p>
                 </div>
               ))}
             </div>

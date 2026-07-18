@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="mb-4 flex items-center gap-3">
               <span className="relative grid h-16 w-16 place-items-center">
                 <img
-                  src={`${import.meta.env.BASE_URL}logo-nateos-full.png`}
+                  src={`${import.meta.env.BASE_URL}logo-nateos-mark.png`}
                   alt=""
                   className="h-full w-full object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.35)]"
                 />
@@ -44,6 +44,7 @@ export default function Footer() {
               {[
                 { to: '/',        label: 'Accueil'  },
                 { to: '/projets', label: 'Projets'  },
+                { to: '/services', label: 'Services' },
                 { to: '/apropos', label: 'À propos' },
                 { to: '/contact', label: 'Contact'  },
               ].map(({ to, label }) => (
@@ -72,7 +73,7 @@ export default function Footer() {
               to="/contact"
               className="inline-block font-body text-sm px-5 py-2 border border-gold/40 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 rounded-[15px]"
             >
-              Demander un devis →
+              Parler de mon site →
             </NavLink>
           </div>
         </div>
@@ -82,13 +83,21 @@ export default function Footer() {
           <p className="font-body text-xs text-muted">
             © {year} Nate Os — Tous droits réservés
           </p>
-          <div className="flex items-center gap-4">
-            <NavLink
-              to="/mentions-legales"
-              className="font-body text-xs text-muted hover:text-parchment transition-colors duration-200"
-            >
-              Mentions légales
-            </NavLink>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 md:justify-end">
+            {[
+              { to: '/mentions-legales', label: 'Mentions légales' },
+              { to: '/conditions-prestation', label: 'Conditions' },
+              { to: '/politique-confidentialite', label: 'Confidentialité' },
+              { to: '/cookies', label: 'Cookies' },
+            ].map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                className="font-body text-xs text-muted hover:text-parchment transition-colors duration-200"
+              >
+                {label}
+              </NavLink>
+            ))}
             <p className="font-body text-xs text-muted italic">
               Fait avec soin, sans template
             </p>

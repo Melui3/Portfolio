@@ -71,6 +71,31 @@ function routeOutputPath(route) {
   return join(distDir, route.path.replace(/^\//, ''), 'index.html')
 }
 
+function routeChangeFrequency(route) {
+  return [
+    '/mentions-legales',
+    '/conditions-prestation',
+    '/politique-confidentialite',
+    '/cookies',
+  ].includes(route.path)
+    ? 'yearly'
+    : 'monthly'
+}
+
+function renderSitemap() {
+  const urls = SEO_ROUTES.map((route) => `  <url>
+    <loc>${escapeAttribute(canonicalUrl(route.path))}</loc>
+    <changefreq>${routeChangeFrequency(route)}</changefreq>
+    <priority>${escapeAttribute(route.priority)}</priority>
+  </url>`).join('\n')
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`
+}
+
 const template = await readFile(join(distDir, 'index.html'), 'utf8')
 
 for (const route of SEO_ROUTES) {
@@ -81,5 +106,6 @@ for (const route of SEO_ROUTES) {
 
 const fallbackRoute = SEO_ROUTES[0]
 await writeFile(join(distDir, '404.html'), renderRouteHtml(template, fallbackRoute, 'noindex, follow'), 'utf8')
+await writeFile(join(distDir, 'sitemap.xml'), renderSitemap(), 'utf8')
 
 console.log(`Generated SEO HTML for ${SEO_ROUTES.length} routes.`)

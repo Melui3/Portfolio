@@ -19,6 +19,13 @@ export const SEO_ROUTES = [
     priority: '0.9',
   },
   {
+    path: '/services',
+    title: 'Services et tarifs web - Nathaniel Dujardin',
+    description:
+      'Services de création de site web freelance: landing page, site vitrine, espace membre, fonctionnalités avancées et direction visuelle web.',
+    priority: '0.9',
+  },
+  {
     path: '/creations',
     title: 'Créations visuelles - Nathaniel Dujardin',
     description:
@@ -44,6 +51,27 @@ export const SEO_ROUTES = [
     title: 'Mentions légales - Nathaniel Dujardin',
     description:
       'Mentions légales, hébergement, données personnelles et propriété intellectuelle du portfolio de Nathaniel Dujardin.',
+    priority: '0.3',
+  },
+  {
+    path: '/conditions-prestation',
+    title: 'Conditions de prestation - Nathaniel Dujardin',
+    description:
+      'Cadre des prestations web: devis, tarifs, paiement, contenus, modifications, délais, livraison, propriété et support après mise en ligne.',
+    priority: '0.3',
+  },
+  {
+    path: '/politique-confidentialite',
+    title: 'Politique de confidentialité - Nathaniel Dujardin',
+    description:
+      'Politique de confidentialité du site: formulaire de contact, services utilisés, mesure d’audience et droits liés aux données personnelles.',
+    priority: '0.3',
+  },
+  {
+    path: '/cookies',
+    title: 'Gestion des cookies - Nathaniel Dujardin',
+    description:
+      'Gestion des cookies et du consentement pour Microsoft Clarity, Google Analytics et la mesure d’audience du site.',
     priority: '0.3',
   },
 ]

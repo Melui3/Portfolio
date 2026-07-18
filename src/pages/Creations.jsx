@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { creations, categoryMeta } from '../data/creations'
 
@@ -31,17 +31,17 @@ function CreationCard({ creation, onOpen }) {
             type="button"
             onClick={() => onOpen(creation)}
             className="block w-full h-full cursor-zoom-in text-left"
-            aria-label={`Agrandir ${creation.title}`}
+            aria-label={`Lire la vidéo ${creation.title}`}
           >
-            <video
-              src={mediaSrc}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className={mediaClassName}
-            />
+            <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-dust/90 via-leather to-ink p-6 text-center transition-transform duration-500 group-hover:scale-[1.02]">
+              <span className="grid h-12 w-12 place-items-center rounded-full border border-gold/45 bg-ink/70 text-gold shadow-[0_10px_30px_rgba(0,0,0,0.28)]" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+              <span className="font-display text-xl text-cream">{creation.title}</span>
+              <span className="font-body text-xs uppercase tracking-widest text-muted">Voir la vidéo</span>
+            </div>
           </button>
         ) : mediaSrc ? (
           <button
@@ -99,6 +99,54 @@ function CreationCard({ creation, onOpen }) {
 }
 
 function MediaLightbox({ creation, onClose }) {
+  const dialogRef = useRef(null)
+  const closeButtonRef = useRef(null)
+
+  useEffect(() => {
+    if (!creation) return undefined
+
+    const previouslyFocused = document.activeElement
+    const focusTimer = window.setTimeout(() => closeButtonRef.current?.focus(), 0)
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        onClose()
+        return
+      }
+
+      if (event.key !== 'Tab') return
+
+      const focusableElements = dialogRef.current?.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, video[controls], [tabindex]:not([tabindex="-1"])',
+      )
+      if (!focusableElements?.length) return
+
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault()
+        lastElement.focus()
+      }
+
+      if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault()
+        firstElement.focus()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.clearTimeout(focusTimer)
+      window.removeEventListener('keydown', handleKeyDown)
+      if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+        previouslyFocused.focus()
+      }
+    }
+  }, [creation, onClose])
+
   if (!creation) return null
 
   const mediaSrc = `${import.meta.env.BASE_URL}${creation.image.replace(/^\//, '')}`
@@ -112,10 +160,12 @@ function MediaLightbox({ creation, onClose }) {
       aria-label={creation.title}
       onClick={onClose}
     >
-      <div className="relative w-full max-w-5xl" onClick={(event) => event.stopPropagation()}>
+      <div ref={dialogRef} className="relative w-full max-w-5xl" onClick={(event) => event.stopPropagation()}>
         <button
+          ref={closeButtonRef}
           type="button"
           onClick={onClose}
+          aria-label="Fermer l'aperçu"
           className="absolute -top-12 right-0 px-4 py-2 border border-gold/40 bg-leather/90 font-body text-sm text-gold hover:text-cream hover:border-gold transition-all duration-200"
         >
           Fermer
@@ -156,16 +206,11 @@ export default function Creations() {
     if (!selectedCreation) return undefined
 
     const previousOverflow = document.body.style.overflow
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') setSelectedCreation(null)
-    }
 
     document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', handleKeyDown)
 
     return () => {
       document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', handleKeyDown)
     }
   }, [selectedCreation])
 
@@ -185,7 +230,9 @@ export default function Creations() {
         {FILTERS.map(({ key, label }) => (
           <button
             key={key}
+            type="button"
             onClick={() => setFilter(key)}
+            aria-pressed={filter === key}
             className={`font-body text-sm px-4 py-1.5 border transition-all duration-200 ${
               filter === key
                 ? 'border-gold bg-gold/10 text-gold'

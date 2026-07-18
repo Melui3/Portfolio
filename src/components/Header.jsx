@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 const navLinks = [
   { to: '/',           label: 'Accueil'    },
   { to: '/projets',    label: 'Projets'    },
+  { to: '/services',   label: 'Services'   },
   { to: '/creations',  label: 'Créations'  },
   { to: '/apropos',    label: 'À propos'   },
   { to: '/contact',    label: 'Contact'    },
@@ -12,12 +13,24 @@ const navLinks = [
 export default function Header() {
   const [scrolled,    setScrolled]    = useState(false)
   const [menuOpen,    setMenuOpen]    = useState(false)
+  const mobileMenuId = 'site-mobile-menu'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (!menuOpen) return undefined
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [menuOpen])
 
   return (
     <header
@@ -37,7 +50,7 @@ export default function Header() {
         >
           <span className="relative grid h-14 w-14 place-items-center md:h-16 md:w-16">
             <img
-              src={`${import.meta.env.BASE_URL}logo-nateos-full.png`}
+              src={`${import.meta.env.BASE_URL}logo-nateos-mark.png`}
               alt=""
               className="h-full w-full object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.35)]"
             />
@@ -51,7 +64,7 @@ export default function Header() {
         </NavLink>
 
         {/* Nav desktop */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6" aria-label="Navigation principale">
           {navLinks.map(({ to, label }) => (
             <NavLink
               key={to}
@@ -70,15 +83,18 @@ export default function Header() {
             to="/contact"
             className="font-body text-sm px-5 py-2 border border-gold/50 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 tracking-wide rounded-[15px]"
           >
-            Devis gratuit
+            Parler de mon site
           </NavLink>
         </nav>
 
         {/* Burger mobile */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          type="button"
+          className="lg:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
+          aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-controls={mobileMenuId}
+          aria-expanded={menuOpen}
         >
           <span className={`block w-6 h-px bg-parchment transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
           <span className={`block w-6 h-px bg-parchment transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
@@ -87,8 +103,14 @@ export default function Header() {
       </div>
 
       {/* Menu mobile */}
-      <div className={`md:hidden overflow-hidden transition-all duration-400 ${menuOpen ? 'max-h-96' : 'max-h-0'}`}>
-        <nav className="flex flex-col px-6 py-4 gap-4 bg-leather/95 backdrop-blur-sm border-t border-gold-dim/20">
+      <div
+        id={mobileMenuId}
+        aria-hidden={!menuOpen}
+        className={`lg:hidden overflow-hidden transition-all duration-400 ${
+          menuOpen ? 'visible max-h-96' : 'invisible max-h-0'
+        }`}
+      >
+        <nav className="flex flex-col px-6 py-4 gap-4 bg-leather/95 backdrop-blur-sm border-t border-gold-dim/20" aria-label="Navigation mobile">
           {navLinks.map(({ to, label }) => (
             <NavLink
               key={to}

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { SITE_EMAIL } from '../seo'
 
 export default function Legal() {
@@ -15,7 +16,11 @@ export default function Legal() {
           <h2 className="font-display text-xl text-cream mb-3">Éditeur du site</h2>
           <p>Nathaniel Dujardin</p>
           <p>Développeur web freelance — activité en cours de création</p>
+          <p>Directeur de la publication: Nathaniel Dujardin</p>
           <p>France</p>
+          <p className="mt-3 text-muted text-sm">
+            Les informations d’immatriculation seront ajoutées dès finalisation du statut professionnel.
+          </p>
           <p>
             <a href={`mailto:${SITE_EMAIL}`} className="text-gold hover:text-cream transition-colors duration-200">
               {SITE_EMAIL}
@@ -51,6 +56,27 @@ export default function Legal() {
             qu'après acceptation depuis le bandeau de consentement.
             Les champs du formulaire de contact sont masqués pour éviter l'enregistrement des messages saisis.
           </p>
+        </section>
+
+        <div className="separator" />
+
+        <section>
+          <h2 className="font-display text-xl text-cream mb-3">Confidentialité et cookies</h2>
+          <p>
+            Les informations détaillées sur le formulaire, les données personnelles et la mesure
+            d’audience sont disponibles sur les pages dédiées.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-3">
+            <Link to="/conditions-prestation" className="text-gold hover:text-cream transition-colors duration-200">
+              Conditions de prestation
+            </Link>
+            <Link to="/politique-confidentialite" className="text-gold hover:text-cream transition-colors duration-200">
+              Politique de confidentialité
+            </Link>
+            <Link to="/cookies" className="text-gold hover:text-cream transition-colors duration-200">
+              Gestion des cookies
+            </Link>
+          </div>
         </section>
 
         <div className="separator" />

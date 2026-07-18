@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import {
+  ANALYTICS_CONSENT_STORAGE_KEY,
+  SHOW_ANALYTICS_CONSENT_EVENT,
+} from '../analyticsConsent'
 
-const STORAGE_KEY = 'nateos:analytics-consent'
 const CLARITY_PROJECT_ID = import.meta.env.VITE_CLARITY_PROJECT_ID?.trim()
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim()
 const HAS_ANALYTICS_TOOL = Boolean(CLARITY_PROJECT_ID || GA_MEASUREMENT_ID)
@@ -62,8 +65,30 @@ export default function ClarityConsent() {
   const location = useLocation()
   const [choice, setChoice] = useState(() => {
     if (typeof window === 'undefined') return 'pending'
-    return window.localStorage.getItem(STORAGE_KEY) || 'pending'
+    return window.localStorage.getItem(ANALYTICS_CONSENT_STORAGE_KEY) || 'pending'
   })
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const showConsent = () => {
+      window.localStorage.removeItem(ANALYTICS_CONSENT_STORAGE_KEY)
+      setChoice('pending')
+    }
+
+    const syncConsent = (event) => {
+      if (event.key !== ANALYTICS_CONSENT_STORAGE_KEY) return
+      setChoice(event.newValue || 'pending')
+    }
+
+    window.addEventListener(SHOW_ANALYTICS_CONSENT_EVENT, showConsent)
+    window.addEventListener('storage', syncConsent)
+
+    return () => {
+      window.removeEventListener(SHOW_ANALYTICS_CONSENT_EVENT, showConsent)
+      window.removeEventListener('storage', syncConsent)
+    }
+  }, [])
 
   useEffect(() => {
     if (choice !== 'accepted') return
@@ -82,8 +107,17 @@ export default function ClarityConsent() {
   if (!HAS_ANALYTICS_TOOL || choice !== 'pending') return null
 
   const saveChoice = (value) => {
-    window.localStorage.setItem(STORAGE_KEY, value)
+    const analyticsLoaded = Boolean(
+      document.getElementById('microsoft-clarity-script') ||
+      document.getElementById('google-analytics-script'),
+    )
+
+    window.localStorage.setItem(ANALYTICS_CONSENT_STORAGE_KEY, value)
     setChoice(value)
+
+    if (value === 'refused' && analyticsLoaded) {
+      window.location.reload()
+    }
   }
 
   return (

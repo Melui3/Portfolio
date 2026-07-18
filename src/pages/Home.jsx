@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom'
 import { clientProjects } from '../data/projects'
 import { creations, categoryMeta } from '../data/creations'
+import {
+  audienceSegments,
+  faqItems,
+  projectAssurances,
+  serviceBoundaries as serviceScope,
+  services as serviceOffers,
+  workflowSteps,
+} from '../data/services'
 
 const featuredCreations = creations.filter((creation) =>
   ['logo-nate-os', 'logo-moonrage-2'].includes(creation.id)
@@ -22,107 +30,6 @@ const trustSignals = [
   {
     title: 'SEO de base',
     text: 'Structure, titres, métas et indexation pensés dès le départ.',
-  },
-]
-
-const services = [
-  {
-    title: 'Landing page',
-    price: 'À partir de 400 €',
-    range: '400 à 600 €',
-    delay: '1 à 2 semaines',
-    summary:
-      "Une page unique pour présenter une offre, lancer une activité ou transformer une visite en prise de contact.",
-    includes: [
-      '1 page complète structurée pour convaincre',
-      'Message, sections et appels à l’action clairs',
-      'Formulaire ou lien de contact visible',
-      'Responsive mobile, tablette et desktop',
-      'SEO de base et mise en ligne incluse',
-    ],
-  },
-  {
-    title: 'Site vitrine',
-    price: 'À partir de 700 €',
-    range: '700 à 1 000 €',
-    delay: '2 à 4 semaines',
-    summary:
-      'Un site complet pour présenter votre activité, vos services, votre histoire et donner confiance avant le premier contact.',
-    includes: [
-      '3 à 5 pages selon le besoin',
-      'Présentation claire de vos services',
-      'Parcours pensé pour rassurer et convertir',
-      'Formulaire de contact et liens utiles',
-      'Responsive, SEO de base et mise en ligne',
-    ],
-  },
-  {
-    title: 'Site avec espace membre',
-    price: 'À partir de 1 400 €',
-    range: '1 400 à 2 000 €',
-    delay: '4 à 6 semaines',
-    summary:
-      'Un site avec connexion pour donner accès à des contenus, documents ou espaces réservés à certains utilisateurs.',
-    includes: [
-      'Connexion et comptes utilisateurs',
-      'Pages ou contenus protégés',
-      'Parcours pensé pour les membres',
-      'Interface claire pour accéder aux contenus',
-      'Base technique propre et évolutive',
-    ],
-  },
-  {
-    title: 'Réservation / fonctionnalités avancées',
-    price: 'À partir de 2 000 €',
-    range: '2 000 à 3 000 €',
-    delay: '5 à 8 semaines',
-    summary:
-      'Des fonctionnalités sur mesure pour simplifier une organisation, automatiser une demande ou gérer un parcours plus précis.',
-    includes: [
-      'Réservation, demande de devis ou parcours dédié',
-      'Interfaces adaptées à votre manière de travailler',
-      'Moins de tâches répétitives à gérer à la main',
-      'Tests sur les parcours importants',
-      'Accompagnement à la prise en main',
-    ],
-  },
-  {
-    title: 'Identité visuelle',
-    price: 'À partir de 250 €',
-    range: '250 à 500 €',
-    delay: '3 à 7 jours',
-    summary:
-      "Une direction visuelle exploitable pour le web: ambiance, couleurs, typographies et cohérence des supports numériques.",
-    includes: [
-      'Palette, typographies et principes visuels',
-      'Cohérence entre logo, site et supports',
-      "Moodboard et direction d’interface",
-      "Conseils d’usage pour rester cohérent",
-      "Design d’usage, pas illustration sur mesure",
-    ],
-  },
-]
-
-const serviceBoundaries = [
-  {
-    title: 'Inclus dans l’accompagnement',
-    items: [
-      'Cadrage du besoin avant le devis',
-      'Conseils sur la structure et les contenus',
-      'Responsive mobile et desktop',
-      'SEO de base pour partir proprement',
-      'Mise en ligne et vérifications finales',
-    ],
-  },
-  {
-    title: 'Hors périmètre',
-    items: [
-      'Illustration ou dessin sur mesure',
-      'Logo complexe dessiné de zéro',
-      'Rédaction complète de tous vos textes',
-      'Publicité payante ou gestion réseaux sociaux',
-      'Maintenance longue durée sans accord dédié',
-    ],
   },
 ]
 
@@ -225,15 +132,15 @@ function CreationPreviewCard({ creation }) {
     >
       <div className="media-frame relative aspect-[16/10] overflow-hidden border-b border-gold-dim/20 bg-dust/60">
         {mediaSrc && isVideo ? (
-          <video
-            src={mediaSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className={mediaClassName}
-          />
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-dust/90 via-leather to-ink p-6 text-center transition-transform duration-500 group-hover:scale-[1.02]">
+            <span className="grid h-12 w-12 place-items-center rounded-full border border-gold/45 bg-ink/70 text-gold shadow-[0_10px_30px_rgba(0,0,0,0.28)]" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+            <span className="font-display text-xl text-cream">{creation.title}</span>
+            <span className="font-body text-xs uppercase tracking-widest text-muted">Voir dans créations</span>
+          </div>
         ) : mediaSrc ? (
           <img
             src={mediaSrc}
@@ -282,6 +189,13 @@ function ServiceCard({ service, index }) {
       </div>
       <p className="font-body text-sm text-parchment/75 leading-relaxed mb-5">{service.summary}</p>
 
+      {service.bestFor && (
+        <>
+          <p className="font-body text-xs text-gold tracking-widest uppercase mb-2">Idéal pour</p>
+          <p className="font-body text-sm text-muted leading-relaxed mb-5">{service.bestFor}</p>
+        </>
+      )}
+
       <p className="font-body text-xs text-gold tracking-widest uppercase mb-3">Ce qui est inclus</p>
       <ul className="space-y-3">
         {service.includes.map((item) => (
@@ -295,6 +209,20 @@ function ServiceCard({ service, index }) {
   )
 }
 
+function FaqPreview({ item }) {
+  return (
+    <details className="scroll-reveal group border border-gold-dim/20 bg-leather/20 p-5">
+      <summary className="cursor-pointer list-none font-display text-xl text-cream">
+        <span className="flex items-center justify-between gap-4">
+          {item.question}
+          <span className="font-body text-gold transition-transform duration-200 group-open:rotate-45">+</span>
+        </span>
+      </summary>
+      <p className="mt-3 font-body text-sm text-muted leading-relaxed">{item.answer}</p>
+    </details>
+  )
+}
+
 // ─── Page Home ─────────────────────────────────────────────────────────────
 export default function Home() {
   return (
@@ -305,7 +233,7 @@ export default function Home() {
         {/* Ornement décoratif fond */}
         <div className="sigil-orbit absolute right-[-3rem] md:right-[-1rem] top-1/2 -translate-y-1/2 w-96 h-96 md:w-[30rem] md:h-[30rem] opacity-20 pointer-events-none">
           <img
-            src={`${import.meta.env.BASE_URL}logo-nateos-full.png`}
+            src={`${import.meta.env.BASE_URL}logo-nateos-mark.png`}
             alt=""
             className="h-full w-full object-contain mix-blend-screen"
           />
@@ -316,13 +244,13 @@ export default function Home() {
             Nate OS Enterprise
           </p>
           <h1 className="font-display text-5xl md:text-7xl text-cream mb-6 leading-tight fade-up fade-up-delay-2">
-            Un site premium, clair et prêt à{' '}
-            <em className="text-gold not-italic">convaincre vos clients.</em>
+            Un site web clair, premium et prêt à{' '}
+            <em className="text-gold not-italic">faire passer à l’action.</em>
           </h1>
           <p className="font-body text-lg text-parchment/75 max-w-xl mb-10 fade-up fade-up-delay-3">
-            Je conçois des sites vitrines, landing pages et interfaces sur-mesure pour les
-            indépendants, associations et petites entreprises qui veulent inspirer confiance,
-            être compris vite et recevoir plus facilement des demandes.
+            Je conçois des sites vitrines, landing pages et interfaces sur-mesure pour les indépendants,
+            artisans, associations et petites entreprises qui veulent inspirer confiance, être compris vite
+            et recevoir plus facilement des demandes.
           </p>
           <div className="flex flex-wrap gap-4 fade-up fade-up-delay-4">
             <Link
@@ -332,10 +260,10 @@ export default function Home() {
               Demander un devis gratuit
             </Link>
             <Link
-              to="/projets"
+              to="/services"
               className="font-body px-8 py-3 border border-gold/50 text-parchment hover:border-gold hover:text-cream transition-all duration-200 tracking-wide rounded-[15px]"
             >
-              Voir un projet client réel
+              Voir les services
             </Link>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -346,6 +274,29 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── Pour qui ─── */}
+      <section className="pb-16 scroll-reveal">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+          {audienceSegments.map((segment) => (
+            <div key={segment.title} className="motion-card border border-gold-dim/25 bg-ink/35 p-5">
+              <h2 className="font-display text-xl text-cream mb-2">{segment.title}</h2>
+              <p className="font-body text-sm text-muted leading-relaxed">{segment.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="pb-16 scroll-reveal">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+          {projectAssurances.map((assurance) => (
+            <div key={assurance.title} className="motion-card border border-gold-dim/25 bg-leather/25 p-5">
+              <h2 className="font-display text-xl text-cream mb-2">{assurance.title}</h2>
+              <p className="font-body text-sm text-muted leading-relaxed">{assurance.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -377,33 +328,6 @@ export default function Home() {
 
       {/* Séparateur */}
       <div className="separator">
-        <span className="font-body text-xs text-muted tracking-widest uppercase">Créations</span>
-      </div>
-
-      {/* ── Créations visuelles ── */}
-      <section className="py-16 scroll-reveal">
-        <div className="flex flex-col gap-3 mb-10 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="font-display text-3xl text-cream mb-2">Créations visuelles</h2>
-            <p className="font-body text-muted">Quelques identités et visuels pensés pour poser une ambiance dès le premier regard.</p>
-          </div>
-          <Link
-            to="/creations"
-            className="font-body text-sm text-gold hover:text-cream transition-colors duration-200"
-          >
-            Voir les créations →
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featuredCreations.map((creation) => (
-            <CreationPreviewCard key={creation.id} creation={creation} />
-          ))}
-        </div>
-      </section>
-
-      {/* Séparateur */}
-      <div className="separator">
         <span className="font-body text-xs text-muted tracking-widest uppercase">Services & tarifs</span>
       </div>
 
@@ -414,26 +338,34 @@ export default function Home() {
             <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-3">Tarifs indicatifs</p>
             <h2 className="font-display text-3xl text-cream mb-2">Services web & direction visuelle</h2>
             <p className="font-body text-muted max-w-2xl">
-              Les fourchettes servent à cadrer le budget dès le départ. Le devis final dépend du contenu,
-              du nombre de pages, des fonctionnalités et du niveau d’accompagnement attendu.
+              Les fourchettes donnent un repère avant de discuter. Le devis final dépend du contenu,
+              du nombre de pages, des fonctionnalités et de l’accompagnement nécessaire.
             </p>
           </div>
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center border border-gold bg-gold px-6 py-3 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200 rounded-[15px]"
-          >
-            Demander un devis gratuit
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              to="/services"
+              className="inline-flex items-center justify-center border border-gold/50 px-6 py-3 font-body text-sm text-parchment hover:border-gold hover:text-cream transition-all duration-200 rounded-[15px]"
+            >
+              Voir toutes les offres
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center border border-gold bg-gold px-6 py-3 font-body text-sm text-ink hover:bg-cream hover:text-ink transition-all duration-200 rounded-[15px]"
+            >
+              Demander un devis gratuit
+            </Link>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+          {serviceOffers.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
 
         <div className="scroll-reveal mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-          {serviceBoundaries.map((block) => (
+          {serviceScope.map((block) => (
             <div key={block.title} className="border border-gold-dim/25 bg-ink/35 p-6">
               <p className="font-body text-xs text-gold tracking-widest uppercase mb-4">{block.title}</p>
               <ul className="space-y-3">
@@ -474,17 +406,68 @@ export default function Home() {
         <p className="font-body text-muted mb-12">Simple, transparent, sans mauvaise surprise.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {[
-            { num: '01', title: 'On en parle',     desc: 'Vous me racontez votre projet, vos besoins, votre budget. Pas de jargon de ma part.' },
-            { num: '02', title: 'Je propose',       desc: 'Je vous envoie un devis clair avec ce qui est inclus, les délais, et le tarif.' },
-            { num: '03', title: 'On construit',     desc: 'Je développe votre site par étapes. Vous validez à chaque grande étape.' },
-            { num: '04', title: 'Vous êtes en ligne', desc: 'Je m\'occupe de la mise en ligne. Votre site est prêt, vous êtes autonome.' },
-          ].map(({ num, title, desc }) => (
+          {workflowSteps.map(({ num, title, desc }) => (
             <div key={num} className="motion-card scroll-reveal relative pl-4 border-l border-gold-dim/30">
               <span className="font-display text-5xl text-gold/10 absolute -top-2 -left-1 select-none">{num}</span>
               <p className="font-display text-lg text-cream mb-2 mt-4">{title}</p>
               <p className="font-body text-sm text-muted leading-relaxed">{desc}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Séparateur */}
+      <div className="separator">
+        <span className="font-body text-xs text-muted tracking-widest uppercase">FAQ</span>
+      </div>
+
+      {/* ─── FAQ ─── */}
+      <section className="py-16">
+        <div className="flex flex-col gap-3 mb-10 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="font-display text-3xl text-cream mb-2">Les questions qui bloquent souvent</h2>
+            <p className="font-body text-muted max-w-2xl">
+              Le but, c’est que vous sachiez à quoi vous attendre avant même d’envoyer un message.
+            </p>
+          </div>
+          <Link
+            to="/services"
+            className="font-body text-sm text-gold hover:text-cream transition-colors duration-200"
+          >
+            Lire tous les détails →
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {faqItems.slice(0, 4).map((item) => (
+            <FaqPreview key={item.question} item={item} />
+          ))}
+        </div>
+      </section>
+
+      {/* Séparateur */}
+      <div className="separator">
+        <span className="font-body text-xs text-muted tracking-widest uppercase">Créations</span>
+      </div>
+
+      {/* ── Créations visuelles ── */}
+      <section className="py-16 scroll-reveal">
+        <div className="flex flex-col gap-3 mb-10 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="font-display text-3xl text-cream mb-2">Créations visuelles</h2>
+            <p className="font-body text-muted">Quelques identités et visuels pensés pour poser une ambiance dès le premier regard.</p>
+          </div>
+          <Link
+            to="/creations"
+            className="font-body text-sm text-gold hover:text-cream transition-colors duration-200"
+          >
+            Voir les créations →
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredCreations.map((creation) => (
+            <CreationPreviewCard key={creation.id} creation={creation} />
           ))}
         </div>
       </section>

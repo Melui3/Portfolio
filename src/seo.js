@@ -15,7 +15,7 @@ export const SEO_ROUTES = [
     path: '/projets',
     title: 'Projets web - Nathaniel Dujardin',
     description:
-      'Découvrez mes projets clients, concepts réalistes et concepts passion: interfaces web, branding, UX et déploiements complets.',
+      'Découvrez mes projets clients, applications web et jeux comme F1 Manager 2026, outils en démo et concepts : des réalisations à visiter et à essayer.',
     priority: '0.9',
   },
   {

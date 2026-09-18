@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SignatureHero from '../components/SignatureHero'
 import { clientProjects } from '../data/projects'
 import { creations, categoryMeta } from '../data/creations'
 import {
@@ -226,56 +227,20 @@ function FaqPreview({ item }) {
 // ─── Page Home ─────────────────────────────────────────────────────────────
 export default function Home() {
   return (
-    <div className="max-w-6xl mx-auto px-6">
-
-      {/* ── Hero ── */}
-      <section className="min-h-[80vh] flex flex-col justify-center py-20 relative overflow-hidden">
-        {/* Ornement décoratif fond */}
-        <div className="sigil-orbit absolute right-[-3rem] md:right-[-1rem] top-1/2 -translate-y-1/2 w-96 h-96 md:w-[30rem] md:h-[30rem] opacity-20 pointer-events-none">
-          <img
-            src={`${import.meta.env.BASE_URL}logo-nateos-mark.png`}
-            alt=""
-            className="h-full w-full object-contain mix-blend-screen"
-          />
-        </div>
-
-        <div className="max-w-3xl fade-up">
-          <p className="font-body text-gold tracking-[0.3em] uppercase text-sm mb-6 fade-up fade-up-delay-1">
-            Nate OS Enterprise
-          </p>
-          <h1 className="font-display text-5xl md:text-7xl text-cream mb-6 leading-tight fade-up fade-up-delay-2">
-            Un site web clair, premium et prêt à{' '}
-            <em className="text-gold not-italic">faire passer à l’action.</em>
-          </h1>
-          <p className="font-body text-lg text-parchment/75 max-w-xl mb-10 fade-up fade-up-delay-3">
-            Je conçois des sites vitrines, landing pages et interfaces sur-mesure pour les indépendants,
-            artisans, associations et petites entreprises qui veulent inspirer confiance, être compris vite
-            et recevoir plus facilement des demandes.
-          </p>
-          <div className="flex flex-wrap gap-4 fade-up fade-up-delay-4">
-            <Link
-              to="/contact"
-              className="font-body px-8 py-3 bg-gold text-ink hover:bg-gold/90 transition-colors duration-200 tracking-wide rounded-[15px]"
-            >
-              Demander un devis gratuit
-            </Link>
-            <Link
-              to="/services"
-              className="font-body px-8 py-3 border border-gold/50 text-parchment hover:border-gold hover:text-cream transition-all duration-200 tracking-wide rounded-[15px]"
-            >
-              Voir les services
-            </Link>
-          </div>
-          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {trustSignals.map((signal) => (
-              <div key={signal.title} className="border border-gold-dim/25 bg-ink/35 p-4">
-                <p className="font-display text-base text-cream mb-1">{signal.title}</p>
-                <p className="font-body text-xs leading-relaxed text-muted">{signal.text}</p>
-              </div>
-            ))}
-          </div>
+    <>
+      <SignatureHero />
+      <section className="signature-assurances" aria-label="Les engagements Nate Os">
+        <div className="signature-assurances-inner">
+          {trustSignals.map((signal, index) => (
+            <div key={signal.title} className="signature-assurance">
+              <span className="signature-assurance-number" aria-hidden="true">0{index + 1}</span>
+              <div><h2>{signal.title}</h2><p>{signal.text}</p></div>
+            </div>
+          ))}
         </div>
       </section>
+
+      <div className="home-body max-w-6xl mx-auto px-6">
 
       {/* ─── Pour qui ─── */}
       <section className="pb-16 scroll-reveal">
@@ -306,7 +271,7 @@ export default function Home() {
       </div>
 
       {/* ── Projets clients ── */}
-      <section className="py-16 scroll-reveal">
+      <section id="realisations" className="py-16 scroll-reveal">
         <h2 className="font-display text-3xl text-cream mb-2">Un vrai lancement client</h2>
         <p className="font-body text-muted mb-10">
           Honey Group partait de zéro: le site devait poser une image crédible dès le lancement de l’entreprise.
@@ -486,6 +451,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }

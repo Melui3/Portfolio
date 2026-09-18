@@ -40,7 +40,7 @@ export default function Header() {
           : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-center justify-between">
 
         {/* Logo */}
         <NavLink

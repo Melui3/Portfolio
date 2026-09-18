@@ -1,5 +1,5 @@
 // ─── PROJETS DATA ────────────────────────────────────────────────────────────
-// category: 'real-client' | 'demo-tool' | 'realistic-concept' | 'passion-concept'
+// category: 'real-client' | 'application' | 'demo-tool' | 'realistic-concept' | 'passion-concept'
 // status: 'live' | 'demo' | 'wip' | 'soon'
 // details: sections affichées dans l'accordéon de la carte projet
 // ─────────────────────────────────────────────────────────────────────────────
@@ -11,6 +11,13 @@ export const projectCategories = [
     plural: 'Clients réels',
     intro: 'Des projets livrés pour de vrais besoins, avec contraintes métier, déploiement et suivi.',
     empty: 'Aucun client réel dans cette catégorie pour le moment.',
+  },
+  {
+    key: 'application',
+    label: 'Application web',
+    plural: 'Applications & jeux',
+    intro: 'Des applications à utiliser et des jeux à explorer : des parcours complets, des choix qui comptent et une progression que l’on retrouve à la prochaine visite.',
+    empty: 'Les prochaines applications arrivent ici.',
   },
   {
     key: 'demo-tool',
@@ -65,6 +72,39 @@ export const projects = [
       {
         label: 'Le responsive',
         body: "Le site devait rester agréable sur téléphone, parce qu'un voyage se prépare souvent depuis un mobile: consultation rapide, partage à un proche, vérification d'une destination ou prise de contact après avoir vu une offre.",
+      },
+    ],
+  },
+  {
+    id: 'f1-manager-2026',
+    title: 'F1 Manager 2026',
+    tagline: 'Votre écurie, vos décisions, votre saison',
+    description:
+      'Un jeu de gestion jouable dans le navigateur : choisissez votre écurie et votre pilote, gérez votre budget et prenez les décisions de course. Garage et courses en 3D, stratégie de pneus, classements et sauvegarde de la progression donnent vie à votre saison.',
+    tags: ['Application web', 'Jeu de gestion', 'Courses 3D', 'Stratégie', 'Sauvegarde locale'],
+    url: 'https://melui3.github.io/F1-Manager-2026/#/choose-team',
+    ctaLabel: 'Jouer à F1 Manager',
+    github: null,
+    image: '/projects/f1-manager-2026.webp',
+    imageFit: 'contain',
+    category: 'application',
+    status: 'live',
+    details: [
+      {
+        label: "L'objectif",
+        body: 'Permettre aux passionnés de Formule 1 de vivre une saison depuis le stand : choisir une écurie, miser sur un pilote et faire évoluer son équipe. Je voulais une expérience dans laquelle on prend des décisions, on en voit les conséquences et on retrouve sa progression en revenant jouer.',
+      },
+      {
+        label: "L'identité visuelle",
+        body: 'Le noir carbone, le rouge course et les textes blancs reprennent les codes du paddock. Le garage et les courses en 3D apportent le plaisir de découvrir les monoplaces et de suivre l’action, tandis que les couleurs et les repères visuels permettent de distinguer rapidement les équipes et les informations importantes.',
+      },
+      {
+        label: 'La démarche UX',
+        body: 'Le parcours accompagne le joueur étape par étape : choisir son écurie, sélectionner son pilote, puis retrouver la prochaine course dans le calendrier. Pendant le Grand Prix, les choix de rythme, de pneus et d’arrêt aux stands restent accessibles. Le budget, les classements et la sauvegarde permettent ensuite de comprendre où en est son équipe et de reprendre sa partie.',
+      },
+      {
+        label: 'Le responsive',
+        body: 'Sur ordinateur, le joueur dispose d’une vue d’ensemble pour comparer les équipes et suivre la course. Sur téléphone, les informations se réorganisent et les commandes restent accessibles au toucher. L’objectif est de pouvoir consulter sa saison et continuer à jouer sans perdre les repères essentiels.',
       },
     ],
   },

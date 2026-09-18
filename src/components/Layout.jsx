@@ -2,10 +2,12 @@ import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import useDepthPreviews from '../hooks/useDepthPreviews'
 
 export default function Layout({ children }) {
   const location = useLocation()
   const mainRef = useRef(null)
+  useDepthPreviews(mainRef)
 
   useEffect(() => {
     const root = mainRef.current

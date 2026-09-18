@@ -171,14 +171,24 @@ a[class*="px-"] {
   animation: pageIn 0.55s ease both;
 }
 
-.scroll-reveal {
+.scroll-reveal:not(.is-visible) {
   opacity: 0;
-  transform: translateY(28px);
-  will-change: opacity, transform;
+  transform: translate3d(0, 28px, 0);
+}
+
+.motion-card.scroll-reveal:not(.is-visible) {
+  transform: perspective(1200px) translate3d(0, 28px, 0) rotateX(3deg);
 }
 
 .scroll-reveal.is-visible {
-  animation: revealUpSoft 0.75s ease var(--reveal-delay, 0ms) both;
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.75s ease var(--reveal-delay, 0ms),
+    transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1) var(--reveal-delay, 0ms),
+    border-color 0.35s ease,
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .motion-card {
@@ -189,7 +199,6 @@ a[class*="px-"] {
     border-color 0.35s ease,
     background-color 0.35s ease,
     box-shadow 0.35s ease;
-  will-change: transform;
 }
 
 .motion-card:hover {
@@ -230,7 +239,9 @@ a[class*="px-"] {
     transform: none;
   }
 
-  .scroll-reveal {
+  .scroll-reveal,
+  .scroll-reveal:not(.is-visible),
+  .motion-card.scroll-reveal:not(.is-visible) {
     opacity: 1;
     transform: none;
   }

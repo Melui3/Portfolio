@@ -150,11 +150,13 @@ function ProjectCard({ project }) {
           <div
             id={detailsId}
             aria-hidden={!open}
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${
-              open ? 'max-h-[900px] opacity-100' : 'max-h-0 opacity-0'
+            className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out ${
+              open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
             }`}
           >
-            <ProjectDetails details={project.details} />
+            <div className="min-h-0 overflow-hidden">
+              <ProjectDetails details={project.details} />
+            </div>
           </div>
         )}
       </div>
@@ -205,8 +207,8 @@ export default function Projects() {
         <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-4">Portfolio</p>
         <h1 className="font-display text-5xl text-cream mb-4">Mes projets</h1>
         <p className="font-body text-muted max-w-xl">
-          Projets clients, outils en version démo, concepts réalistes et projets passion. Le réel passe en premier,
-          les outils montrent la logique produit, les concepts montrent la direction visuelle et l’expérience.
+          Projets clients, applications et jeux, outils en version démo et concepts.
+          Découvrez les réalisations, essayez les applications et explorez la démarche derrière chaque projet.
         </p>
       </div>
 

@@ -82,6 +82,12 @@ export default function Privacy() {
             Les champs du formulaire sont masqués pour éviter que les messages saisis apparaissent dans
             les enregistrements d’audience.
           </p>
+          <p className="mt-3">
+            Après votre accord, les clics vers le contact, les clics sur l’adresse email et les envois
+            acceptés par le service de formulaire peuvent être comptabilisés. Ces événements ne
+            contiennent ni votre nom, ni votre adresse email, ni votre message. Un clic sur l’adresse
+            email n’est pas considéré comme un message reçu.
+          </p>
         </section>
 
         <div className="separator" />

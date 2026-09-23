@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
+import '../styles/clientJourney.css'
 import {
+  aftercarePoints,
+  contactUrlForService,
   audienceSegments,
   faqItems,
   projectAssurances,
@@ -11,7 +15,7 @@ import {
 
 function OfferCard({ service, index }) {
   return (
-    <article className="motion-card scroll-reveal relative overflow-hidden border border-gold-dim/25 bg-leather/30 p-6 hover:border-gold-dim/60 hover:bg-leather/60 transition-all duration-400">
+    <article className="motion-card scroll-reveal relative flex flex-col overflow-hidden border border-gold-dim/25 bg-leather/30 p-6 hover:border-gold-dim/60 hover:bg-leather/60 transition-all duration-400">
       <span className="absolute right-0 top-0 h-5 w-5 border-r border-t border-gold/35" />
       <p className="font-body text-xs text-gold tracking-widest uppercase mb-4">
         Offre {String(index + 1).padStart(2, '0')}
@@ -58,6 +62,11 @@ function OfferCard({ service, index }) {
             {item}
           </span>
         ))}
+      </div>
+      <div className="service-contact">
+        <Link to={contactUrlForService(service)} className="journey-button journey-button-outline">
+          {service.contactLabel}<ArrowUpRight size={17} aria-hidden="true" />
+        </Link>
       </div>
     </article>
   )
@@ -145,6 +154,14 @@ export default function Services() {
           {services.map((service, index) => (
             <OfferCard key={service.title} service={service} index={index} />
           ))}
+        </div>
+      </section>
+
+      <section id="apres-livraison" className="aftercare-section mb-16">
+        <p className="journey-eyebrow">Une fois le site en ligne</p>
+        <h2>Et après la livraison ?</h2>
+        <div className="aftercare-grid">
+          {aftercarePoints.map((point) => <div key={point.title}><h3>{point.title}</h3><p>{point.text}</p></div>)}
         </div>
       </section>
 

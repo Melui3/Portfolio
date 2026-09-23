@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { projectCategories, projects, projectsByCategory } from '../data/projects'
 
 const STATUS_LABEL = {
@@ -24,8 +24,9 @@ function ProjectDetails({ details }) {
   )
 }
 
-function ProjectCard({ project }) {
-  const [open, setOpen] = useState(false)
+function ProjectCard({ project, selected }) {
+  const [open, setOpen] = useState(selected)
+  useEffect(() => { if (selected) setOpen(true) }, [selected])
   const status = STATUS_LABEL[project.status]
   const category = categoryByKey[project.category]
   const detailsId = `project-details-${project.id}`
@@ -39,7 +40,7 @@ function ProjectCard({ project }) {
     : 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.035]'
 
   return (
-    <article className="motion-card scroll-reveal group relative overflow-hidden border border-gold-dim/25 bg-leather/30 hover:bg-leather/60 hover:border-gold-dim/60 transition-all duration-400">
+    <article id={`project-${project.id}`} className="motion-card scroll-reveal group relative scroll-mt-28 overflow-hidden border border-gold-dim/25 bg-leather/30 hover:bg-leather/60 hover:border-gold-dim/60 transition-all duration-400">
       <span className="absolute top-0 right-0 w-5 h-5 border-t border-r border-gold/30 group-hover:border-gold/60 transition-colors duration-300" />
 
       {mediaSrc && (
@@ -172,7 +173,7 @@ function EmptyCategory({ message }) {
   )
 }
 
-function CategorySection({ category, items }) {
+function CategorySection({ category, items, selectedProject }) {
   return (
     <section className="scroll-reveal">
       <div className="mb-6">
@@ -186,7 +187,7 @@ function CategorySection({ category, items }) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {items.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} selected={selectedProject === project.id} />
           ))}
         </div>
       )}
@@ -196,6 +197,17 @@ function CategorySection({ category, items }) {
 
 export default function Projects() {
   const [filter, setFilter] = useState('all')
+  const [params] = useSearchParams()
+  const selectedProject = projects.find((project) => project.id === params.get('projet'))?.id
+
+  useEffect(() => {
+    if (!selectedProject) return
+    setFilter('all')
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(`project-${selectedProject}`)?.scrollIntoView({ block: 'start', behavior: 'instant' })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [selectedProject])
 
   const visibleCategories = filter === 'all'
     ? projectCategories
@@ -238,6 +250,7 @@ export default function Projects() {
           <CategorySection
             key={category.key}
             category={category}
+            selectedProject={selectedProject}
             items={filter === 'all' ? projectsByCategory(category.key) : projectsByCategory(filter)}
           />
         ))}

@@ -1,5 +1,7 @@
 export const services = [
   {
+    id: 'landing-page',
+    contactLabel: 'Parler de ma landing page',
     title: 'Landing page',
     price: 'À partir de 400 €',
     range: '400 à 600 €',
@@ -22,6 +24,8 @@ export const services = [
     deliverables: ['Page en ligne', 'Version mobile', 'Formulaire ou CTA', 'Balises SEO de base'],
   },
   {
+    id: 'site-vitrine',
+    contactLabel: 'Parler de mon site vitrine',
     title: 'Site vitrine',
     price: 'À partir de 700 €',
     range: '700 à 1 000 €',
@@ -44,6 +48,8 @@ export const services = [
     deliverables: ['Pages principales', 'Navigation claire', 'Formulaire', 'Mise en ligne', 'Accompagnement'],
   },
   {
+    id: 'espace-membre',
+    contactLabel: 'Parler de mon espace membre',
     title: 'Site avec espace membre',
     price: 'À partir de 1 400 €',
     range: '1 400 à 2 000 €',
@@ -66,6 +72,8 @@ export const services = [
     deliverables: ['Connexion', 'Pages privées', 'Interface membre', 'Tests de parcours', 'Mise en ligne'],
   },
   {
+    id: 'sur-mesure',
+    contactLabel: 'Parler de mon outil sur mesure',
     title: 'Réservation / fonctionnalités avancées',
     price: 'À partir de 2 000 €',
     range: '2 000 à 3 000 €',
@@ -88,6 +96,8 @@ export const services = [
     deliverables: ['Parcours sur mesure', 'Interface dédiée', 'Tests', 'Documentation simple', 'Accompagnement'],
   },
   {
+    id: 'identite-visuelle',
+    contactLabel: 'Parler de mon identité visuelle',
     title: 'Identité visuelle web',
     price: 'À partir de 250 €',
     range: '250 à 500 €',
@@ -108,6 +118,27 @@ export const services = [
       'Design d’usage, pas illustration sur mesure',
     ],
     deliverables: ['Palette', 'Typographies', 'Moodboard', 'Direction UI', 'Conseils d’usage'],
+  },
+]
+
+export const contactUrlForService = (service) => `/contact?service=${encodeURIComponent(service.id)}`
+
+export const aftercarePoints = [
+  {
+    title: 'Vos contenus au quotidien',
+    text: 'Les textes, photos ou horaires que vous souhaitez modifier vous-même sont identifiés dès le départ. Si une interface de gestion est prévue dans votre projet, vous pouvez mettre à jour ces contenus. Sinon, je prends en charge les changements avec vous.',
+  },
+  {
+    title: 'Un hébergement adapté',
+    text: 'Un site de présentation et une application avec comptes utilisateurs n’ont pas les mêmes besoins. Le choix d’hébergement, les services nécessaires et leurs frais récurrents sont à définir avant le lancement, y compris pour un espace de gestion.',
+  },
+  {
+    title: 'Corrections et évolutions',
+    text: 'Un bug à corriger et une nouvelle page à créer sont deux demandes différentes. Je prends en charge les interventions techniques. Les conditions du support sont précisées dans le devis ; les ajouts de pages, sections ou fonctionnalités sont chiffrés et validés avant intervention.',
+  },
+  {
+    title: 'Une remise clairement définie',
+    text: 'Le devis précise les éléments remis à la livraison et les conditions d’accès au site. Nous identifions les comptes et les services nécessaires pour que vous sachiez ce qui vous est transmis et comment le site pourra évoluer.',
   },
 ]
 

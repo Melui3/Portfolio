@@ -47,8 +47,9 @@ export default function About() {
 
       <div className="mb-14 scroll-reveal">
         <p className="font-body text-gold tracking-[0.3em] uppercase text-xs mb-4">À propos</p>
-        <h1 className="font-display text-5xl text-cream mb-4">Un développeur web avec une vraie attention au design</h1>
+        <h1 className="font-display text-5xl text-cream mb-4">Nathaniel, designer et développeur web.</h1>
         <p className="font-body text-muted max-w-2xl">
+          Derrière Nate Os, il y a moi : votre interlocuteur du premier échange à la livraison.
           Le développement et le design web sont une passion de longue date. Je crée des sites
           sur-mesure pour les personnes qui veulent une présence en ligne plus claire, plus crédible
           et plus agréable à parcourir, sans se perdre dans le jargon technique.

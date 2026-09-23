@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -8,6 +8,12 @@ export default function Layout({ children }) {
   const location = useLocation()
   const mainRef = useRef(null)
   useDepthPreviews(mainRef)
+
+  useLayoutEffect(() => {
+    const target = location.hash ? document.getElementById(location.hash.slice(1)) : null
+    if (target) target.scrollIntoView({ block: 'start', behavior: 'instant' })
+    else window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [location.pathname, location.hash])
 
   useEffect(() => {
     const root = mainRef.current

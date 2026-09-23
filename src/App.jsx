@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout    from './components/Layout'
 import ClarityConsent from './components/ClarityConsent'
+import ContactEvents from './components/ContactEvents'
 import Seo       from './components/Seo'
 import Home      from './pages/Home'
 import Projects  from './pages/Projects'
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <BrowserRouter basename={basename}>
       <Seo />
+      <ContactEvents />
       <Layout>
         <Routes>
           <Route path="/"                element={<Home />}      />

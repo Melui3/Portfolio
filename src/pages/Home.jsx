@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight, Check, ChevronDown } from 'lucide-react'
 import SignatureHero from '../components/SignatureHero'
+import ProjectPreview from '../components/ProjectPreview'
+import '../styles/projects.css'
 import { projects } from '../data/projects'
 import { creations } from '../data/creations'
 import { contactUrlForService, faqItems, services, workflowSteps } from '../data/services'
 import '../styles/clientJourney.css'
 
-const honey = projects.find((project) => project.id === 'honey-group')
+const featured = projects.find((project) => project.id === 'f1-manager-2026')
 const examples = [
   { id: 'prospect', label: 'Outil personnel · Démo', text: 'Centraliser les recherches, les contacts et leur suivi.', cta: 'Essayer la démo' },
   { id: 'les-pattes-heureuses', label: 'Concept réaliste', text: 'Une présence lumineuse et rassurante pour un cabinet vétérinaire.', cta: 'Visiter le concept' },
-  { id: 'f1-manager-2026', label: 'Application & jeu', text: 'Une saison à gérer, des décisions à prendre, une progression à retrouver.', cta: 'Jouer à F1 Manager' },
+  { id: 'sunstrider-agency', label: 'Concept passion', text: 'Un parcours éditorial immersif dans les archives de Quel’Thalas.', cta: 'Explorer les archives' },
 ].map((example) => ({ ...projects.find((project) => project.id === example.id), ...example }))
 const offers = [
   { id: 'landing-page', heading: 'Lancer votre offre' },
@@ -24,7 +26,7 @@ function Example({ project }) {
   return (
     <article className="journey-example motion-card scroll-reveal">
       <a href={project.url} target="_blank" rel="noopener noreferrer" className="media-frame" aria-label={`${project.cta} : ${project.title}`}>
-        <img src={imageUrl(project.image)} alt={`Aperçu de ${project.title}`} loading="lazy" width="1200" height="750" />
+        <ProjectPreview project={project} />
       </a>
       <div className="journey-example-copy">
         <p className="journey-eyebrow">{project.label}</p>
@@ -48,30 +50,37 @@ export default function Home() {
 
       <section id="realisations" className="journey-section journey-container">
         <div className="journey-section-heading scroll-reveal">
-          <div><p className="journey-eyebrow">Une entreprise, un besoin, un site livré</p><h2>Du concret, dès le départ.</h2></div>
+          <div><p className="journey-eyebrow">Du design à l’usage</p><h2>Une application à essayer.</h2></div>
           <Link to="/projets" className="journey-link">Toutes les réalisations <ArrowRight size={17} aria-hidden="true" /></Link>
         </div>
-        <article className="journey-client scroll-reveal">
-          <a href={honey.url} target="_blank" rel="noopener noreferrer" className="media-frame" aria-label="Visiter le site de Honey Group">
-            <img src={imageUrl(honey.image)} alt="Honey Group : présentation des voyages à Madagascar sur ordinateur et téléphone" width="1200" height="750" loading="lazy" />
+        <article className="journey-client journey-showcase scroll-reveal">
+          <a href={featured.url} target="_blank" rel="noopener noreferrer" className="journey-showcase-art" aria-label="Jouer à F1 Manager 2026 — nouvel onglet">
+            <span className="journey-eyebrow">À la une · F1 Manager 2026</span>
+            <ProjectPreview project={featured} />
+            <span className="journey-showcase-caption">Votre écurie. Vos décisions. Votre saison. <ArrowUpRight size={20} aria-hidden="true" /></span>
           </a>
           <div className="journey-client-copy">
-            <p className="journey-eyebrow">Réalisation client · Tourisme</p>
-            <h3>Honey Group</h3>
-            <p className="journey-client-intro">Lancer son entreprise avec une première présence en ligne.</p>
+            <p className="journey-eyebrow">Application jouable · Gestion & stratégie</p>
+            <h3>F1 Manager 2026</h3>
+            <p className="journey-client-intro">Prenez les commandes de votre écurie.</p>
+            <p className="journey-showcase-description">Un jeu de gestion à lancer directement dans votre navigateur. Choisissez votre écurie, découvrez votre monoplace en 3D et prenez les décisions qui rythment votre saison.</p>
             <dl>
-              <div><dt>Le point de départ</dt><dd>Une agence de voyage venait de se lancer à Madagascar, sans site pour présenter son activité.</dd></div>
-              <div><dt>Mon travail</dt><dd>Concevoir l’identité du site, organiser les destinations et développer le parcours jusqu’à la demande de devis.</dd></div>
-              <div><dt>Ce qui a été livré</dt><dd>Un site en ligne, des offres de voyage consultables et une prise de contact accessible sur ordinateur comme sur téléphone.</dd></div>
+              <div><dt>À vous de jouer</dt><dd>Budget, pneus, rythme de course et arrêts aux stands : vos choix font partie du jeu.</dd></div>
+              <div><dt>Votre progression</dt><dd>Une sauvegarde locale pour retrouver votre saison dans le même navigateur.</dd></div>
             </dl>
             <div className="journey-actions">
-              <a href={honey.url} target="_blank" rel="noopener noreferrer" className="journey-button">Voir le site en ligne <ArrowUpRight size={17} aria-hidden="true" /></a>
-              <Link to="/projets?projet=honey-group" className="journey-link">Lire la démarche <ArrowRight size={16} aria-hidden="true" /></Link>
+              <a href={featured.url} target="_blank" rel="noopener noreferrer" className="journey-button">Jouer à F1 Manager <ArrowUpRight size={17} aria-hidden="true" /></a>
+              <Link to="/projets?projet=f1-manager-2026" className="journey-link">La démarche <ArrowRight size={16} aria-hidden="true" /></Link>
             </div>
           </div>
         </article>
         <div className="journey-examples-heading"><h3>D’autres besoins, d’autres univers.</h3><p>Des outils et des concepts à essayer, chacun avec sa propre identité.</p></div>
         <div className="journey-examples">{examples.map((project) => <Example key={project.id} project={project} />)}</div>
+      </section>
+
+      <section className="journey-container journey-creative">
+        <div><p className="journey-eyebrow">Créations visuelles</p><h2>Le sens du détail.</h2><Link to="/creations" className="journey-link">Voir les créations <ArrowRight size={17} aria-hidden="true" /></Link></div>
+        <div className="journey-creation-list">{selectedCreations.map((creation) => <Link to="/creations" key={creation.id}><img src={imageUrl(creation.image)} alt="" loading="lazy" width="96" height="96" /><span>{creation.title}</span><ArrowUpRight size={16} aria-hidden="true" /></Link>)}</div>
       </section>
 
       <section id="services" className="journey-section journey-offers-band">
@@ -106,11 +115,6 @@ export default function Home() {
       <section className="journey-section journey-container journey-faq">
         <div className="scroll-reveal"><p className="journey-eyebrow">Avant de vous lancer</p><h2>Des réponses, pas des surprises.</h2><Link to="/services#apres-livraison" className="journey-link">Et après la mise en ligne ? <ArrowRight size={17} aria-hidden="true" /></Link></div>
         <div>{faqItems.filter((item) => ['Est-ce que je serai propriétaire du site ?', 'Est-ce que tu peux m’aider si je n’ai pas tous les textes ?', 'Comment se passe le paiement ?'].includes(item.question)).map((item) => <details key={item.question}><summary>{item.question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div>
-      </section>
-
-      <section className="journey-container journey-creative">
-        <div><p className="journey-eyebrow">Créations visuelles</p><h2>Le sens du détail.</h2><Link to="/creations" className="journey-link">Voir les créations <ArrowRight size={17} aria-hidden="true" /></Link></div>
-        <div className="journey-creation-list">{selectedCreations.map((creation) => <Link to="/creations" key={creation.id}><img src={imageUrl(creation.image)} alt="" loading="lazy" width="96" height="96" /><span>{creation.title}</span><ArrowUpRight size={16} aria-hidden="true" /></Link>)}</div>
       </section>
 
       <section className="journey-section journey-container journey-final">

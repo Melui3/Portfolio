@@ -161,3 +161,32 @@
 @media (prefers-reduced-motion: reduce) {
   .journey-button { transition: none; }
 }
+
+/* Burgundy light and antique gold carry the portfolio identity across the home page. */
+.journey-showcase { gap: 0; overflow: hidden; border: 1px solid #c28d3947; border-radius: 5px; background: linear-gradient(135deg,#3b2021,#1c1612); }
+.journey-showcase-art { display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: 35px; align-self: stretch; background: radial-gradient(ellipse at 20% 15%,#932e3a5c,transparent 75%); }
+.journey-showcase-art .project-preview { transform: rotate(-2deg); transition: transform .4s; }
+.journey-showcase-art:hover .project-preview { transform: none; }
+.journey-showcase-caption { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: #d4b68c; font-size: 15px; font-style: italic; }
+.journey-showcase-caption svg { flex-shrink: 0; }
+.journey-showcase .journey-client-copy { padding: 36px; }
+.journey-showcase h3 { font-size: 42px; font-weight: 400; }
+.journey-showcase-description { font-size: 17px; line-height: 1.6; margin-top: 18px; }
+.journey-example { background: linear-gradient(145deg,#31201c,#1a1411); border-color: #c28d3945; }
+.journey-example .media-frame { aspect-ratio: auto; padding: 18px; background: radial-gradient(ellipse at top left,#72212e75,transparent),#271c16; }
+.journey-example .project-preview img { object-fit: cover; }
+.journey-example .project-preview-screen { aspect-ratio: 16/9; }
+.journey-examples-heading { border-image: linear-gradient(90deg,#c28d3970,#71091266,transparent) 1; }
+.journey-offers-band { background: radial-gradient(ellipse at 85% 20%,#71091245,transparent 65%),#201713; }
+.journey-offer { padding: 26px; background: linear-gradient(150deg,#4430234a,#17131177); border: 1px solid #c28d3933; border-top: 2px solid #b88947; border-radius: 3px; }
+.journey-final { position: relative; background: radial-gradient(ellipse at center,#71091244,transparent 70%); }
+.journey-promises { background: linear-gradient(90deg,#301b18,#191310,#301b18); }
+@media (max-width: 900px) { .journey-showcase-art, .journey-showcase .journey-client-copy { padding: 24px; } }
+@media (max-width: 700px) {
+  .journey-showcase { gap: 0; }
+  .journey-showcase-art { padding: 26px 20px; }
+  .journey-showcase .journey-client-copy { padding: 25px; }
+  .journey-showcase h3 { font-size: 34px; }
+  .journey-example .media-frame { aspect-ratio: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .journey-showcase-art .project-preview { transform: none; } }

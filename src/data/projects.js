@@ -1,278 +1,248 @@
-// ─── PROJETS DATA ────────────────────────────────────────────────────────────
-// category: 'real-client' | 'application' | 'demo-tool' | 'realistic-concept' | 'passion-concept'
-// status: 'live' | 'demo' | 'wip' | 'soon'
-// details: sections affichées dans l'accordéon de la carte projet
-// ─────────────────────────────────────────────────────────────────────────────
-
+// Projets présentés dans le portfolio. Les concepts et démos sont identifiés explicitement.
 export const projectCategories = [
   {
-    key: 'real-client',
-    label: 'Client réel',
-    plural: 'Clients réels',
-    intro: 'Des projets livrés pour de vrais besoins, avec contraintes métier, déploiement et suivi.',
-    empty: 'Aucun client réel dans cette catégorie pour le moment.',
+    "key": "application",
+    "label": "Application web",
+    "plural": "Applications & jeux",
+    "intro": "Des expériences à jouer et des décisions à prendre. Ici, l’interface fait partie du plaisir.",
+    "empty": "Les prochaines applications arrivent ici."
   },
   {
-    key: 'application',
-    label: 'Application web',
-    plural: 'Applications & jeux',
-    intro: 'Des applications à utiliser et des jeux à explorer : des parcours complets, des choix qui comptent et une progression que l’on retrouve à la prochaine visite.',
-    empty: 'Les prochaines applications arrivent ici.',
+    "key": "demo-tool",
+    "label": "Outil en démo",
+    "plural": "Outils en version démo",
+    "intro": "Des outils conçus pour un usage concret, à explorer avec des données de démonstration.",
+    "empty": "Aucun outil en version démo pour le moment."
   },
   {
-    key: 'demo-tool',
-    label: 'Outil en démo',
-    plural: 'Outils en version démo',
-    intro: 'Des outils personnels ou internes rendus visitables avec des données fictives, pour montrer la logique produit sans exposer de données privées.',
-    empty: 'Aucun outil en version démo pour le moment.',
+    "key": "realistic-concept",
+    "label": "Concepts réalistes",
+    "plural": "Concepts réalistes",
+    "intro": "Des activités imaginaires, des parcours concrets : rassurer, donner envie et faciliter le prochain pas.",
+    "empty": "Les prochains concepts réalistes arrivent ici."
   },
   {
-    key: 'realistic-concept',
-    label: 'Concepts réalistes',
-    plural: 'Concepts réalistes',
-    intro: 'Des concepts pensés comme de vrais produits: crédibles, utiles, et prêts à devenir des projets clients.',
-    empty: 'Les prochains concepts réalistes arrivent ici.',
-  },
-  {
-    key: 'passion-concept',
-    label: 'Concept Passion',
-    plural: 'Concepts Passion',
-    intro: 'Des expérimentations guidées par une référence, une idée ou un univers que j’avais envie d’explorer.',
-    empty: 'Aucun concept passion dans cette catégorie pour le moment.',
-  },
+    "key": "passion-concept",
+    "label": "Concept Passion",
+    "plural": "Concepts Passion",
+    "intro": "Des univers qui m’inspirent, transformés en expériences à parcourir et à essayer.",
+    "empty": "Aucun concept passion dans cette catégorie pour le moment."
+  }
 ]
 
 export const projects = [
   {
-    id: 'honey-group',
-    title: 'Honey Group',
-    tagline: 'Première présence web pour une agence de voyage à Madagascar',
-    description:
-      "Un site pensé pour lancer l'image de l'entreprise, présenter ses voyages, rassurer les futurs clients et rendre la prise de contact évidente dès les premières secondes.",
-    tags: ['Tourisme', 'Site vitrine', 'Expérience client', 'Mobile', 'Identité visuelle'],
-    url: 'https://www.honeygroupmadatourism.com/',
-    github: null,
-    image: '/projects/honey-group.webp',
-    imageFit: 'contain',
-    category: 'real-client',
-    status: 'live',
-    details: [
-      {
-        label: "L'objectif",
-        body: "Créer la première présence en ligne de Honey Group, une agence de voyage lancée autour de Madagascar. Le site devait donner une image professionnelle dès le départ, expliquer clairement l'offre, présenter les destinations et faciliter la demande de devis.",
-      },
-      {
-        label: "L'identité visuelle",
-        body: "L'univers devait évoquer le voyage, la nature et la chaleur de Madagascar sans perdre en sérieux. Les couleurs solaires, les touches de bleu et les visuels de destinations donnent à la jeune entreprise une image accueillante, structurée et mémorable.",
-      },
-      {
-        label: 'La démarche UX',
-        body: "Le parcours a été pensé pour aider un visiteur qui ne connaît pas encore l'agence: comprendre qui elle est, découvrir les expériences proposées, comparer les destinations et trouver rapidement comment demander un devis. L'objectif était de réduire l'hésitation et de rendre le contact évident.",
-      },
-      {
-        label: 'Le responsive',
-        body: "Le site devait rester agréable sur téléphone, parce qu'un voyage se prépare souvent depuis un mobile: consultation rapide, partage à un proche, vérification d'une destination ou prise de contact après avoir vu une offre.",
-      },
+    "id": "f1-manager-2026",
+    "title": "F1 Manager 2026",
+    "tagline": "Le paddock devient votre terrain de jeu",
+    "description": "Choisir son écurie, découvrir sa monoplace en 3D et construire sa saison. Un jeu de gestion dans le navigateur où stratégie, budget et décisions de course donnent le rythme.",
+    "tags": [
+      "Jeu de gestion",
+      "Garage 3D",
+      "Stratégie de course",
+      "Sauvegarde locale"
     ],
+    "url": "https://melui3.github.io/F1-Manager-2026/#/choose-team",
+    "ctaLabel": "Jouer à F1 Manager",
+    "github": null,
+    "image": "/projects/f1-manager-2026-refresh.jpg",
+    "category": "application",
+    "status": "live",
+    "details": [
+      {
+        "label": "L'objectif",
+        "body": "Permettre aux passionnés de Formule 1 de vivre une saison depuis le stand : choisir une écurie, miser sur un pilote et faire évoluer son équipe. Je voulais une expérience dans laquelle on prend des décisions, on en voit les conséquences et on retrouve sa progression en revenant jouer."
+      },
+      {
+        "label": "L'identité visuelle",
+        "body": "Le noir carbone, le rouge course et les textes blancs reprennent les codes du paddock. Le garage et les courses en 3D apportent le plaisir de découvrir les monoplaces et de suivre l’action, tandis que les couleurs et les repères visuels permettent de distinguer rapidement les équipes et les informations importantes."
+      },
+      {
+        "label": "La démarche UX",
+        "body": "Le parcours accompagne le joueur étape par étape : choisir son écurie, sélectionner son pilote, puis retrouver la prochaine course dans le calendrier. Pendant le Grand Prix, les choix de rythme, de pneus et d’arrêt aux stands restent accessibles. Le budget, les classements et la sauvegarde permettent ensuite de comprendre où en est son équipe et de reprendre sa partie."
+      },
+      {
+        "label": "Le responsive",
+        "body": "Sur ordinateur, le joueur dispose d’une vue d’ensemble pour comparer les équipes et suivre la course. Sur téléphone, les informations se réorganisent et les commandes restent accessibles au toucher. L’objectif est de pouvoir consulter sa saison et continuer à jouer sans perdre les repères essentiels."
+      }
+    ]
   },
   {
-    id: 'f1-manager-2026',
-    title: 'F1 Manager 2026',
-    tagline: 'Votre écurie, vos décisions, votre saison',
-    description:
-      'Un jeu de gestion jouable dans le navigateur : choisissez votre écurie et votre pilote, gérez votre budget et prenez les décisions de course. Garage et courses en 3D, stratégie de pneus, classements et sauvegarde de la progression donnent vie à votre saison.',
-    tags: ['Application web', 'Jeu de gestion', 'Courses 3D', 'Stratégie', 'Sauvegarde locale'],
-    url: 'https://melui3.github.io/F1-Manager-2026/#/choose-team',
-    ctaLabel: 'Jouer à F1 Manager',
-    github: null,
-    image: '/projects/f1-manager-2026.webp',
-    imageFit: 'contain',
-    category: 'application',
-    status: 'live',
-    details: [
-      {
-        label: "L'objectif",
-        body: 'Permettre aux passionnés de Formule 1 de vivre une saison depuis le stand : choisir une écurie, miser sur un pilote et faire évoluer son équipe. Je voulais une expérience dans laquelle on prend des décisions, on en voit les conséquences et on retrouve sa progression en revenant jouer.',
-      },
-      {
-        label: "L'identité visuelle",
-        body: 'Le noir carbone, le rouge course et les textes blancs reprennent les codes du paddock. Le garage et les courses en 3D apportent le plaisir de découvrir les monoplaces et de suivre l’action, tandis que les couleurs et les repères visuels permettent de distinguer rapidement les équipes et les informations importantes.',
-      },
-      {
-        label: 'La démarche UX',
-        body: 'Le parcours accompagne le joueur étape par étape : choisir son écurie, sélectionner son pilote, puis retrouver la prochaine course dans le calendrier. Pendant le Grand Prix, les choix de rythme, de pneus et d’arrêt aux stands restent accessibles. Le budget, les classements et la sauvegarde permettent ensuite de comprendre où en est son équipe et de reprendre sa partie.',
-      },
-      {
-        label: 'Le responsive',
-        body: 'Sur ordinateur, le joueur dispose d’une vue d’ensemble pour comparer les équipes et suivre la course. Sur téléphone, les informations se réorganisent et les commandes restent accessibles au toucher. L’objectif est de pouvoir consulter sa saison et continuer à jouer sans perdre les repères essentiels.',
-      },
+    "id": "prospect",
+    "title": "Prospect",
+    "tagline": "Moins de fichiers. Une vue claire sur la prospection.",
+    "description": "Recherches locales, fiches prospects, campagnes et historique de contact réunis dans un même espace. La démo permet de découvrir le parcours avec des données fictives et des actions simulées.",
+    "tags": [
+      "Outil interne",
+      "Dashboard",
+      "Suivi de campagnes",
+      "Démo anonymisée"
     ],
+    "url": "https://melui3.github.io/Prospect/?demo=1#/dashboard",
+    "ctaLabel": "Ouvrir la démo",
+    "github": null,
+    "image": "/projects/prospect-demo-refresh.jpg",
+    "category": "demo-tool",
+    "status": "demo",
+    "details": [
+      {
+        "label": "L'objectif",
+        "body": "Créer un outil personnel pour organiser ma prospection sans me disperser entre plusieurs fichiers, recherches et notes. L'idée était de centraliser les prospects, garder une trace des campagnes et savoir rapidement quoi faire ensuite."
+      },
+      {
+        "label": "L'identité visuelle",
+        "body": "L'interface reprend une direction sombre, sobre et concentrée, proche de l'univers Nate Os. Le but n'était pas de faire une application décorative, mais un espace de travail clair, lisible et agréable à utiliser longtemps."
+      },
+      {
+        "label": "La démarche UX",
+        "body": "Le parcours a été pensé autour d'un vrai usage: chercher des prospects, les classer, consulter leurs informations, suivre les statuts, préparer des messages et garder une vue d'ensemble. La démo montre le fonctionnement sans exposer ma vraie base de données."
+      },
+      {
+        "label": "Le responsive",
+        "body": "L'outil devait rester consultable sur mobile pour vérifier une information, suivre une campagne ou consulter une fiche rapidement. Les actions principales restent visibles, mais l'usage principal reste volontairement plus confortable sur ordinateur."
+      }
+    ]
   },
   {
-    id: 'prospect',
-    title: 'Prospect',
-    tagline: 'Outil interne de prospection en version démo',
-    description:
-      "Un outil personnel conçu pour rechercher, qualifier et suivre des prospects locaux depuis une seule interface. La version présentée est une démo anonymisée: les données sont fictives et les actions sensibles sont bloquées.",
-    tags: ['Outil interne', 'Prospection', 'Dashboard', 'Suivi', 'Démo anonymisée'],
-    url: 'https://melui3.github.io/Prospect/?demo=1#/dashboard',
-    ctaLabel: 'Ouvrir la démo',
-    github: null,
-    image: '/projects/prospect-demo.webp',
-    imageFit: 'contain',
-    category: 'demo-tool',
-    status: 'demo',
-    details: [
-      {
-        label: "L'objectif",
-        body: "Créer un outil personnel pour organiser ma prospection sans me disperser entre plusieurs fichiers, recherches et notes. L'idée était de centraliser les prospects, garder une trace des campagnes et savoir rapidement quoi faire ensuite.",
-      },
-      {
-        label: "L'identité visuelle",
-        body: "L'interface reprend une direction sombre, sobre et concentrée, proche de l'univers Nate Os. Le but n'était pas de faire une application décorative, mais un espace de travail clair, lisible et agréable à utiliser longtemps.",
-      },
-      {
-        label: 'La démarche UX',
-        body: "Le parcours a été pensé autour d'un vrai usage: chercher des prospects, les classer, consulter leurs informations, suivre les statuts, préparer des messages et garder une vue d'ensemble. La démo montre le fonctionnement sans exposer ma vraie base de données.",
-      },
-      {
-        label: 'Le responsive',
-        body: "L'outil devait rester consultable sur mobile pour vérifier une information, suivre une campagne ou consulter une fiche rapidement. Les actions principales restent visibles, mais l'usage principal reste volontairement plus confortable sur ordinateur.",
-      },
+    "id": "les-pattes-heureuses",
+    "title": "Les Pattes Heureuses",
+    "tagline": "La confiance commence avant la première visite",
+    "description": "Un cabinet vétérinaire fictif à Rennes, présenté avec douceur et clarté. Équipe, soins, tarifs et préparation du rendez-vous accompagnent les propriétaires, du premier doute aux informations pratiques.",
+    "tags": [
+      "Site vitrine",
+      "Santé animale",
+      "Parcours de rendez-vous",
+      "Responsive"
     ],
+    "url": "https://melui3.github.io/les-pattes-heureuses/",
+    "github": null,
+    "image": "/projects/les-pattes-heureuses-refresh.jpg",
+    "category": "realistic-concept",
+    "status": "live",
+    "details": [
+      {
+        "label": "L’objectif",
+        "body": "Rendre un cabinet de proximité immédiatement rassurant : savoir qui accueille son animal, comprendre les soins et préparer sa visite sans chercher les informations essentielles."
+      },
+      {
+        "label": "L’identité visuelle",
+        "body": "Un vert profond, des fonds ivoire et des photographies lumineuses installent une atmosphère calme. Les grandes courbes et la typographie mêlant sobriété et italique prolongent cette attention au soin."
+      },
+      {
+        "label": "Le parcours",
+        "body": "La présentation de l’équipe, les soins à déplier et les tarifs donnent des repères concrets. Le formulaire prépare un récapitulatif de demande : aucun rendez-vous réel ni envoi de données dans ce concept."
+      },
+      {
+        "label": "Les détails utiles",
+        "body": "Horaires, accès et consignes en cas d’urgence sont regroupés pour être retrouvés rapidement. Les conseils de première visite aident à anticiper les questions du propriétaire."
+      }
+    ]
   },
   {
-    id: 'les-pattes-heureuses',
-    title: 'Les Pattes Heureuses',
-    tagline: 'Site vitrine fictif pour cabinet vétérinaire',
-    description:
-      'Concept réaliste de cabinet vétérinaire pensé pour rassurer les propriétaires, présenter les soins, afficher les tarifs et faciliter la prise de rendez-vous.',
-    tags: ['Santé animale', 'Site vitrine', 'Prise de RDV', 'Tarifs', 'Responsive'],
-    url: 'https://melui3.github.io/les-pattes-heureuses/',
-    github: null,
-    image: '/projects/les-pattes-heureuses.webp',
-    imageFit: 'contain',
-    category: 'realistic-concept',
-    status: 'live',
-    details: [
-      {
-        label: "L'objectif",
-        body: "Créer un site fictif crédible pour un cabinet vétérinaire de proximité. Le but était de rassurer les propriétaires, présenter clairement les soins proposés et rendre la prise de rendez-vous plus simple dès les premières secondes.",
-      },
-      {
-        label: "L'identité visuelle",
-        body: "L'univers devait être doux, propre et professionnel, sans tomber dans quelque chose de trop enfantin. Les verts, les bleus calmes, les fonds crème et les photos lumineuses servent à créer une sensation de confiance, de soin et de proximité.",
-      },
-      {
-        label: 'La démarche UX',
-        body: "Le parcours a été pensé pour répondre vite aux questions essentielles: quels animaux sont pris en charge, quels soins sont proposés, quels sont les tarifs, comment prendre rendez-vous et quoi faire en cas d'urgence.",
-      },
-      {
-        label: 'Le responsive',
-        body: "Le site devait rester très pratique sur mobile, parce qu'un propriétaire peut avoir besoin de consulter les horaires, appeler le cabinet ou demander un rendez-vous rapidement depuis son téléphone.",
-      },
+    "id": "le-coup-de-feu",
+    "title": "Le Coup de Feu",
+    "tagline": "Une cuisine précise. Une expérience qui a du répondant.",
+    "description": "Un restaurant fictif inspiré de Hell’s Kitchen : une carte filtrable, deux brigades à choisir et une réservation transformée en ticket de service. Une identité théâtrale qui reste simple à parcourir.",
+    "tags": [
+      "Restaurant fictif",
+      "Carte interactive",
+      "Réservation démo",
+      "Direction artistique"
     ],
+    "url": "https://melui3.github.io/le-coup-de-feu/",
+    "github": null,
+    "image": "/projects/le-coup-de-feu-refresh.jpg",
+    "category": "realistic-concept",
+    "status": "live",
+    "details": [
+      {
+        "label": "L’objectif",
+        "body": "Faire ressentir l’énergie d’un service avant même de découvrir la carte. Ce concept indépendant joue avec les codes de Hell’s Kitchen et transforme la visite en petite expérience narrative."
+      },
+      {
+        "label": "L’identité visuelle",
+        "body": "Charbon, crème et rouge feu, titres condensés et scènes de cuisine donnent le ton. Les photographies de plats équilibrent l’humour et la tension par une présentation gourmande et soignée."
+      },
+      {
+        "label": "Les interactions",
+        "body": "Filtrer les plats, rejoindre une brigade rouge ou bleue, choisir sa place et générer un ticket de réservation : chaque interaction prolonge le thème. Le compteur de jours sans incendie ajoute une surprise."
+      },
+      {
+        "label": "Un concept explicite",
+        "body": "Le restaurant, les tarifs et les avis sont fictifs. La réservation produit un ticket de démonstration sans envoyer de données, tout en présentant un parcours complet et compréhensible."
+      }
+    ]
   },
   {
-    id: 'le-coup-de-feu',
-    title: 'Le Coup de Feu',
-    tagline: 'Restaurant fictif sous pression',
-    description:
-      "Concept réaliste de restaurant gastronomique à forte personnalité, pensé pour présenter l'univers, faire découvrir le menu et rendre la réservation simple malgré une ambiance volontairement intense.",
-    tags: ['Restaurant', 'Réservation', 'Menu filtrable', 'UX', 'Responsive', 'Identité visuelle'],
-    url: 'https://melui3.github.io/le-coup-de-feu/',
-    github: null,
-    image: '/projects/le-coup-de-feu.webp',
-    imageFit: 'contain',
-    category: 'realistic-concept',
-    status: 'live',
-    details: [
-      {
-        label: "L'objectif",
-        body: "Créer un site fictif crédible pour un restaurant gastronomique avec une identité très marquée. Le site devait donner envie de découvrir l'adresse, présenter le menu, poser l'ambiance et guider rapidement vers la réservation.",
-      },
-      {
-        label: "L'identité visuelle",
-        body: "L'univers repose sur un noir charbon, des accents dorés, du rouge feu et une ambiance de cuisine ouverte sous tension. L'idée était de mélanger le côté premium d'un restaurant gastronomique avec un ton plus mordant, mémorable et volontairement théâtral.",
-      },
-      {
-        label: 'La démarche UX',
-        body: "Le parcours a été pensé pour répondre aux questions principales d'un visiteur: quelle est l'ambiance, qu'est-ce qu'on mange, peut-on réserver facilement, quelle table choisir et est-ce que l'expérience vaut le détour. Le menu filtrable, les avis, la galerie, la FAQ et la réservation rendent le site vivant sans perdre en lisibilité.",
-      },
-      {
-        label: 'Le responsive',
-        body: "Le site devait rester pratique sur mobile, parce qu'un client peut vouloir consulter le menu, vérifier les disponibilités, montrer l'adresse ou réserver rapidement depuis son téléphone.",
-      },
+    "id": "piastries",
+    "title": "Piastries",
+    "tagline": "La gourmandise en pole position",
+    "description": "Une pâtisserie fictive aux couleurs papaye et crème, avec la F1 en fil conducteur. Carte de produits, panier, profil invité et pass de retrait composent une expérience de commande entièrement locale.",
+    "tags": [
+      "Identité de marque",
+      "Panier interactif",
+      "Commande démo",
+      "Univers F1"
     ],
+    "url": "https://melui3.github.io/Piastries/",
+    "github": null,
+    "image": "/projects/piastries-refresh.jpg",
+    "category": "passion-concept",
+    "status": "live",
+    "details": [
+      {
+        "label": "L’objectif",
+        "body": "Aller au-delà d’une vitrine : donner envie de découvrir les pâtisseries, composer un panier et aller jusqu’au retrait fictif. La référence à Oscar Piastri et McLaren nourrit le ton sans empêcher de comprendre le parcours."
+      },
+      {
+        "label": "L’identité visuelle",
+        "body": "Orange papaye, crème et touches sombres mettent les produits au premier plan. Les noms, les badges et le vocabulaire du paddock relient l’identité de marque à chaque étape de la visite."
+      },
+      {
+        "label": "Le parcours de commande",
+        "body": "La carte se filtre par catégories. Les produits ajoutés alimentent le panier et le stand de retrait ; le parcours de démonstration mène ensuite à un pass paddock, sans vente réelle."
+      },
+      {
+        "label": "La démo",
+        "body": "Un profil invité permet de découvrir l’espace compte sans adresse email. Panier, commandes et profil restent dans le navigateur : une expérience à essayer, avec un statut fictif clairement annoncé."
+      }
+    ]
   },
   {
-    id: 'piastries',
-    title: 'Piastries',
-    tagline: 'Boulangerie fictive inspirée F1',
-    description:
-      'Concept de marque gourmand et moderne, inspiré de l’univers McLaren et d’Oscar Piastri, mais pensé pour rester lisible et accueillant même sans connaître la référence F1.',
-    tags: ['Branding', 'UX', 'Responsive', 'React', 'Vite'],
-    url: 'https://melui3.github.io/Piastries/',
-    github: null,
-    image: '/projects/piastries.webp',
-    imageFit: 'contain',
-    category: 'passion-concept',
-    status: 'live',
-    details: [
-      {
-        label: "L'objectif",
-        body: "Créer une identité de marque fictive inspirée de l'univers de la F1 et plus particulièrement de McLaren et d'Oscar Piastri, avec un ton chaleureux, moderne et gourmand.",
-      },
-      {
-        label: "L'identité visuelle",
-        body: "Palette inspirée de McLaren (orange, noir, blanc), univers accueillant, logo avec un croissant, et identité capable de fonctionner même si on ne comprend pas la référence F1.",
-      },
-      {
-        label: 'La démarche UX',
-        body: 'Le site devait être simple à parcourir, donner faim, mettre les produits en valeur et inspirer confiance dès les premières secondes.',
-      },
-      {
-        label: 'Le responsive',
-        body: 'Le design devait rester agréable sur mobile, puisque beaucoup de clients consulteraient le menu ou les horaires sur téléphone.',
-      },
+    "id": "sunstrider-agency",
+    "title": "Sunstrider",
+    "tagline": "La mémoire du soleil, racontée à travers une interface",
+    "description": "Des archives immersives consacrées à la dynastie des Haut-Soleil. Portraits, chronologie et exploration de Quel’Thalas composent un parcours éditorial où l’histoire reste aussi importante que l’atmosphère.",
+    "tags": [
+      "Univers Warcraft",
+      "Design éditorial",
+      "Archives interactives",
+      "Direction artistique"
     ],
-  },
-  {
-    id: 'sunstrider-agency',
-    title: 'Sunstrider Agency',
-    tagline: "Portail royal fictif de Quel'Thalas",
-    description:
-      "Concept de portail officiel fictif pour Quel'Thalas, pensé comme une vitrine royale immersive, lisible et capable de guider le visiteur entre histoire, monarchie, lieux, culture et informations pratiques.",
-    tags: ['Worldbuilding', 'Portail fictif', 'UX', 'Responsive', 'Identité visuelle'],
-    url: 'https://melui3.github.io/sunstrider-agency/',
-    github: null,
-    image: '/projects/sunstrider-agency.webp',
-    imageFit: 'contain',
-    category: 'passion-concept',
-    status: 'live',
-    details: [
+    "url": "https://melui3.github.io/sunstrider-agency/",
+    "github": null,
+    "image": "/projects/sunstrider-agency-refresh.jpg",
+    "category": "passion-concept",
+    "status": "live",
+    "details": [
       {
-        label: "L'objectif",
-        body: "Créer un portail fictif qui donne l'impression d'un vrai site officiel pour Quel'Thalas. Le but était d'accueillir le visiteur, poser l'ambiance du royaume et lui donner rapidement accès aux grandes rubriques: histoire, monarchie, lieux à découvrir, culture, visite et contacts.",
+        "label": "L’objectif",
+        "body": "Raconter la maison Sunstrider à travers ses figures, ses lieux et ses grandes ruptures. Ce projet de fans indépendant propose plusieurs portes d’entrée dans l’univers, y compris pour un visiteur qui le découvre."
       },
       {
-        label: "L'identité visuelle",
-        body: "J'ai construit une direction artistique premium, avec noir profond, burgundy, or antique et ivoire chaud. L'idée était de mélanger le côté royal et arcane des Sin'dorei avec une interface élégante, lisible et pas juste décorative.",
+        "label": "L’identité visuelle",
+        "body": "Ivoire, or patiné et cramoisi accompagnent les illustrations de Quel’Thalas. De grands titres, des respirations généreuses et une composition éditoriale évoquent des archives précieuses plutôt qu’une simple succession de fiches."
       },
       {
-        label: 'La démarche UX',
-        body: "Le parcours devait rester évident même pour quelqu'un qui ne connaît pas l'univers. Les boutons, les cartes et les rubriques guident vers les informations principales, comme sur un vrai portail public, tout en gardant le côté immersif.",
+        "label": "La navigation",
+        "body": "La dynastie, la chronologie, les territoires et l’héritage structurent la visite. Les portraits mènent aux personnages, les époques aux récits ; la recherche dans les archives facilite un accès plus direct."
       },
       {
-        label: 'Le responsive',
-        body: "Le site devait rester agréable sur téléphone: navigation compacte, textes lisibles, grands appels à l'action et sections bien séparées pour consulter facilement l'histoire, les lieux ou les informations de visite depuis un petit écran.",
-      },
-    ],
-  },
+        "label": "Les sources",
+        "body": "Une rubrique dédiée explique les sources et la méthode. Les illustrations sont identifiées comme des interprétations artistiques et le caractère indépendant du projet est clairement indiqué."
+      }
+    ]
+  }
 ]
 
-export const projectsByCategory = (category) =>
-  category === 'all' ? projects : projects.filter((project) => project.category === category)
-
-export const clientProjects = projects.filter((project) => project.category === 'real-client')
-export const labProjects = projects.filter((project) => project.category !== 'real-client')
+export const projectsByCategory = (category) => category === 'all' ? projects : projects.filter((project) => project.category === category)

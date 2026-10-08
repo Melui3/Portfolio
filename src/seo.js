@@ -15,7 +15,7 @@ export const SEO_ROUTES = [
     path: '/projets',
     title: 'Projets web - Nathaniel Dujardin',
     description:
-      'Découvrez mes projets clients, applications web et jeux comme F1 Manager 2026, outils en démo et concepts : des réalisations à visiter et à essayer.',
+      'Explorez mes applications, jeux, outils en démo et concepts : six univers singuliers, du design éditorial à la 3D, à visiter et à essayer.',
     priority: '0.9',
   },
   {
@@ -78,6 +78,13 @@ export const SEO_ROUTES = [
 
 const routeByPath = Object.fromEntries(SEO_ROUTES.map((route) => [route.path, route]))
 
+export const NOT_FOUND_SEO = {
+  path: '/404',
+  title: 'Page introuvable - Nathaniel Dujardin',
+  description: 'Cette page n’existe pas. Retrouvez les projets, services et coordonnées de Nathaniel Dujardin.',
+  robots: 'noindex, follow',
+}
+
 export function normalizePath(pathname) {
   if (!pathname || pathname === '/') return '/'
 
@@ -92,7 +99,7 @@ export function canonicalUrl(pathname = '/') {
 
 export function getSeoForPath(pathname) {
   const path = normalizePath(pathname)
-  return routeByPath[path] || routeByPath['/']
+  return routeByPath[path] || NOT_FOUND_SEO
 }
 
 export function personStructuredData() {

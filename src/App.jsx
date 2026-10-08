@@ -13,6 +13,7 @@ import Legal     from './pages/Legal'
 import Privacy   from './pages/Privacy'
 import Cookies   from './pages/Cookies'
 import Terms     from './pages/Terms'
+import NotFound  from './pages/NotFound'
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/politique-confidentialite" element={<Privacy />} />
           <Route path="/cookies"         element={<Cookies />}   />
           <Route path="/conditions-prestation" element={<Terms />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
       <ClarityConsent />

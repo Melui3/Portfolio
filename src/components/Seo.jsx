@@ -34,7 +34,7 @@ function upsertLink(rel, href) {
 
 function upsertJsonLd(data) {
   const id = 'structured-data'
-  let element = document.getElementById(id)
+  let element = document.getElementById(id) || document.head.querySelector('script[type="application/ld+json"]')
 
   if (!element) {
     element = document.createElement('script')
@@ -43,6 +43,7 @@ function upsertJsonLd(data) {
     document.head.appendChild(element)
   }
 
+  element.id = id
   element.textContent = JSON.stringify(data)
 }
 
@@ -57,7 +58,7 @@ export default function Seo() {
     document.title = route.title
 
     upsertMeta('name', 'description', route.description)
-    upsertMeta('name', 'robots', 'index, follow')
+    upsertMeta('name', 'robots', route.robots || 'index, follow')
     upsertMeta('property', 'og:type', 'website')
     upsertMeta('property', 'og:locale', 'fr_FR')
     upsertMeta('property', 'og:site_name', SITE_NAME)

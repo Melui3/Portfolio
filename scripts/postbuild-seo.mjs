@@ -3,6 +3,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   canonicalUrl,
+  NOT_FOUND_SEO,
   SEO_ROUTES,
   SITE_IMAGE_URL,
   SITE_NAME,
@@ -45,7 +46,7 @@ function seoMeta(route, robots = 'index, follow') {
     `<meta name="twitter:title" content="${title}" />`,
     `<meta name="twitter:description" content="${description}" />`,
     `<meta name="twitter:image" content="${image}" />`,
-    `<script type="application/ld+json">${safeJson(structuredDataForRoute(route))}</script>`,
+    `<script id="structured-data" type="application/ld+json">${safeJson(structuredDataForRoute(route))}</script>`,
   ].join('\n    ')
 }
 
@@ -104,8 +105,7 @@ for (const route of SEO_ROUTES) {
   await writeFile(outputPath, renderRouteHtml(template, route), 'utf8')
 }
 
-const fallbackRoute = SEO_ROUTES[0]
-await writeFile(join(distDir, '404.html'), renderRouteHtml(template, fallbackRoute, 'noindex, follow'), 'utf8')
+await writeFile(join(distDir, '404.html'), renderRouteHtml(template, NOT_FOUND_SEO, NOT_FOUND_SEO.robots), 'utf8')
 await writeFile(join(distDir, 'sitemap.xml'), renderSitemap(), 'utf8')
 
 console.log(`Generated SEO HTML for ${SEO_ROUTES.length} routes.`)

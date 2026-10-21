@@ -5,8 +5,7 @@ import { creations, categoryMeta } from '../data/creations'
 const FILTERS = [
   { key: 'all',        label: 'Tout'              },
   { key: 'logo',       label: 'Logos'             },
-  { key: 'banniere',   label: 'Bannières'         },
-  { key: 'transition', label: 'Transitions Twitch'},
+  { key: 'identity', label: 'Identités visuelles' },
 ]
 
 function CreationCard({ creation, onOpen }) {
@@ -30,16 +29,17 @@ function CreationCard({ creation, onOpen }) {
           <button
             type="button"
             onClick={() => onOpen(creation)}
-            className="block w-full h-full cursor-zoom-in text-left"
+            className="relative block w-full h-full cursor-zoom-in text-left"
             aria-label={`Lire la vidéo ${creation.title}`}
           >
-            <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-dust/90 via-leather to-ink p-6 text-center transition-transform duration-500 group-hover:scale-[1.02]">
+            <video src={mediaSrc} muted playsInline preload="metadata" onLoadedMetadata={(event) => { const video = event.currentTarget; if (video.currentTime === 0) video.currentTime = Math.min(1, video.duration / 2) }} aria-hidden="true" tabIndex={-1} className="absolute inset-0 h-full w-full object-contain" />
+            <div className="relative flex h-full w-full flex-col items-center justify-center gap-3 bg-ink/25 p-6 text-center transition-transform duration-500 group-hover:scale-[1.02]">
               <span className="grid h-12 w-12 place-items-center rounded-full border border-gold/45 bg-ink/70 text-gold shadow-[0_10px_30px_rgba(0,0,0,0.28)]" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
-              <span className="font-display text-xl text-cream">{creation.title}</span>
+              <span className="font-display text-xl text-cream bg-ink/80 px-3 py-1">{creation.title}</span>
               <span className="font-body text-xs uppercase tracking-widest text-muted">Voir la vidéo</span>
             </div>
           </button>
@@ -194,13 +194,45 @@ function MediaLightbox({ creation, onClose }) {
   )
 }
 
+function MoonrageCase({ onOpen }) {
+  const finalLogo = creations.find((creation) => creation.id === 'logo-moonrage-2')
+  const firstLogo = creations.find((creation) => creation.id === 'logo-moonrage-1')
+  const motion = creations.filter((creation) => ['banniere', 'transition'].includes(creation.category))
+  const mediaUrl = (path) => import.meta.env.BASE_URL + path.replace(/^\//, '')
+  return (
+    <section id="moonrage" className="scroll-reveal border border-gold-dim/25 bg-leather/20 p-5 md:p-8" aria-labelledby="moonrage-title">
+      <div className="grid gap-8 md:grid-cols-2 items-center">
+        <div>
+          <p className="font-body text-xs uppercase tracking-widest text-gold mb-3">Identité visuelle · Twitch</p>
+          <h2 id="moonrage-title" className="font-display text-4xl text-cream mb-4">Moonrage</h2>
+          <p className="font-body text-parchment/80 leading-relaxed mb-4">Une même énergie, du logo au dernier écran du stream. Une identité gaming déclinée en bannières et animations pour donner à la chaîne des repères reconnaissables.</p>
+          <p className="font-body text-muted leading-relaxed mb-4">Le logo a été affiné après retours. Les références Dragon Ball et les scènes animées prolongent l’univers du streamer, tandis que l’écran de fin glisse un clin d’œil à son chat.</p>
+          <p className="font-body text-sm text-gold">Logo · Bannières animées · Transitions — Inkscape & Canva</p>
+        </div>
+        <button type="button" onClick={() => onOpen(finalLogo)} aria-label="Agrandir le logo final Moonrage" className="media-frame block w-full aspect-[16/10] bg-ink/50 border border-gold-dim/20 p-6 cursor-zoom-in">
+          <img src={mediaUrl(finalLogo.image)} alt="Logo final de Moonrage" loading="lazy" className="w-full h-full object-contain" />
+        </button>
+      </div>
+      <div className="mt-8">
+        <h3 className="font-display text-2xl text-cream mb-2">L’identité en mouvement</h3>
+        <p className="font-body text-sm text-muted mb-5">Ouvrez chaque aperçu pour découvrir l’animation avec ses commandes de lecture.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">{motion.map((creation) => <CreationCard key={creation.id} creation={creation} onOpen={onOpen} />)}</div>
+      </div>
+      <details className="mt-8 border-t border-gold-dim/25 pt-5">
+        <summary className="cursor-pointer font-body text-gold">Du premier logo à la version finale</summary>
+        <p className="font-body text-muted mt-4 mb-5">Après retours, le trait et la lisibilité ont été affinés tout en conservant la direction gaming initiale.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">{[firstLogo, finalLogo].map((creation) => <CreationCard key={creation.id} creation={creation} onOpen={onOpen} />)}</div>
+      </details>
+    </section>
+  )
+}
+
 export default function Creations() {
   const [filter, setFilter] = useState('all')
   const [selectedCreation, setSelectedCreation] = useState(null)
 
-  const filtered = filter === 'all'
-    ? creations
-    : creations.filter((c) => c.category === filter)
+  const filtered = filter === 'identity' ? [] : creations.filter((creation) => creation.id === 'logo-nate-os' || (filter === 'logo' && creation.id === 'logo-moonrage-2'))
+  const showMoonrage = filter === 'all' || filter === 'identity'
 
   useEffect(() => {
     if (!selectedCreation) return undefined
@@ -244,7 +276,7 @@ export default function Creations() {
         ))}
       </div>
 
-      {filtered.length === 0 ? (
+      {filtered.length === 0 && !showMoonrage ? (
         <div className="scroll-reveal text-center py-24 text-muted font-body">
           Aucune création dans cette catégorie pour le moment.
         </div>
@@ -255,6 +287,8 @@ export default function Creations() {
           ))}
         </div>
       )}
+
+      {showMoonrage && <div className="mt-10"><MoonrageCase onOpen={setSelectedCreation} /></div>}
 
       <MediaLightbox creation={selectedCreation} onClose={() => setSelectedCreation(null)} />
     </div>

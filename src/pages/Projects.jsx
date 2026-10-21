@@ -6,7 +6,7 @@ import ProjectPreview from '../components/ProjectPreview'
 import '../styles/projects.css'
 
 const statusLabels = { live: 'En ligne', demo: 'Démo interactive', wip: 'En cours', soon: 'Bientôt' }
-const featured = projects.find((project) => project.id === 'f1-manager-2026')
+const featured = projects.find((project) => project.id === 'les-pattes-heureuses')
 
 function ProjectCard({ project, selected, number }) {
   const [open, setOpen] = useState(selected)
@@ -22,6 +22,7 @@ function ProjectCard({ project, selected, number }) {
       <div className="project-card-copy">
         <p className={`project-status ${canVisit ? 'project-status-live' : ''}`}><span aria-hidden="true" />{statusLabels[project.status]}</p>
         <h3>{project.title}</h3>
+        {project.badges?.length > 0 && <ul className="project-tags" aria-label="Nature du projet">{project.badges.map((badge) => <li key={badge}>{badge}</li>)}</ul>}
         <p className="project-tagline">{project.tagline}</p>
         <p className="project-description">{project.description}</p>
         <ul className="project-tags" aria-label="Caractéristiques du projet">{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
@@ -56,10 +57,10 @@ export default function Projects() {
           <p>Une saison à gagner, un quotidien à simplifier, une histoire à explorer. Chaque projet a son univers. Chaque interface, sa raison d’être.</p>
           <a href="#collection" className="projects-discover">Explorer les {projects.length} projets <ArrowDown size={17} aria-hidden="true" /></a>
         </div>
-        <Link to="/projets?projet=f1-manager-2026" onClick={() => setFilter('all')} className="projects-feature" aria-label="Découvrir le projet F1 Manager 2026">
-          <div className="projects-feature-heading"><span><Sparkles size={15} aria-hidden="true" /> À vous de jouer</span><span>La sélection</span></div>
+        <Link to="/projets?projet=les-pattes-heureuses" onClick={() => setFilter('all')} className="projects-feature" aria-label="Découvrir le projet Les Pattes Heureuses">
+          <div className="projects-feature-heading"><span><Sparkles size={15} aria-hidden="true" /> Une activité, une identité</span><span>La sélection</span></div>
           <ProjectPreview project={featured} priority />
-          <div className="projects-feature-caption"><div><p>Gestion · Stratégie · Garage 3D</p><h2>F1 Manager 2026</h2></div><span className="projects-round-arrow"><ArrowUpRight size={25} aria-hidden="true" /></span></div>
+          <div className="projects-feature-caption"><div><p>Site vitrine · Santé animale · Parcours clair</p><h2>Les Pattes Heureuses</h2></div><span className="projects-round-arrow"><ArrowUpRight size={25} aria-hidden="true" /></span></div>
         </Link>
       </section>
       <div id="collection" className="projects-collection">

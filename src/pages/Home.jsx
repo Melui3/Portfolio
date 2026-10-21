@@ -8,10 +8,10 @@ import { creations } from '../data/creations'
 import { contactUrlForService, faqItems, services, workflowSteps } from '../data/services'
 import '../styles/clientJourney.css'
 
-const featured = projects.find((project) => project.id === 'f1-manager-2026')
+const featured = projects.find((project) => project.id === 'les-pattes-heureuses')
 const examples = [
   { id: 'prospect', label: 'Outil personnel · Démo', text: 'Centraliser les recherches, les contacts et leur suivi.', cta: 'Essayer la démo' },
-  { id: 'les-pattes-heureuses', label: 'Concept réaliste', text: 'Une présence lumineuse et rassurante pour un cabinet vétérinaire.', cta: 'Visiter le concept' },
+  { id: 'f1-manager-2026', label: 'Application & jeu · Projet passion', text: 'Choisir son écurie, gérer sa saison et prendre ses décisions de course.', cta: 'Jouer à F1 Manager' },
   { id: 'sunstrider-agency', label: 'Concept passion', text: 'Un parcours éditorial immersif dans les archives de Quel’Thalas.', cta: 'Explorer les archives' },
 ].map((example) => ({ ...projects.find((project) => project.id === example.id), ...example }))
 const offers = [
@@ -50,27 +50,27 @@ export default function Home() {
 
       <section id="realisations" className="journey-section journey-container">
         <div className="journey-section-heading scroll-reveal">
-          <div><p className="journey-eyebrow">Du design à l’usage</p><h2>Une application à essayer.</h2></div>
+          <div><p className="journey-eyebrow">Du design à l’usage</p><h2>Une présence qui inspire confiance.</h2></div>
           <Link to="/projets" className="journey-link">Toutes les réalisations <ArrowRight size={17} aria-hidden="true" /></Link>
         </div>
         <article className="journey-client journey-showcase scroll-reveal">
-          <a href={featured.url} target="_blank" rel="noopener noreferrer" className="journey-showcase-art" aria-label="Jouer à F1 Manager 2026 — nouvel onglet">
-            <span className="journey-eyebrow">À la une · F1 Manager 2026</span>
+          <a href={featured.url} target="_blank" rel="noopener noreferrer" className="journey-showcase-art" aria-label="Explorer Les Pattes Heureuses — nouvel onglet">
+            <span className="journey-eyebrow">À la une · Les Pattes Heureuses</span>
             <ProjectPreview project={featured} />
-            <span className="journey-showcase-caption">Votre écurie. Vos décisions. Votre saison. <ArrowUpRight size={20} aria-hidden="true" /></span>
+            <span className="journey-showcase-caption">Un accueil rassurant. Un parcours clair. <ArrowUpRight size={20} aria-hidden="true" /></span>
           </a>
           <div className="journey-client-copy">
-            <p className="journey-eyebrow">Application jouable · Gestion & stratégie</p>
-            <h3>F1 Manager 2026</h3>
-            <p className="journey-client-intro">Prenez les commandes de votre écurie.</p>
-            <p className="journey-showcase-description">Un jeu de gestion à lancer directement dans votre navigateur. Choisissez votre écurie, découvrez votre monoplace en 3D et prenez les décisions qui rythment votre saison.</p>
+            <p className="journey-eyebrow">Site vitrine · Concept fictif</p>
+            <h3>Les Pattes Heureuses</h3>
+            <p className="journey-client-intro">La confiance commence avant la première visite.</p>
+            <p className="journey-showcase-description">Un cabinet vétérinaire fictif dont le site accompagne les propriétaires : découvrir l’équipe, comprendre les soins et préparer leur visite.</p>
             <dl>
-              <div><dt>À vous de jouer</dt><dd>Budget, pneus, rythme de course et arrêts aux stands : vos choix font partie du jeu.</dd></div>
-              <div><dt>Votre progression</dt><dd>Une sauvegarde locale pour retrouver votre saison dans le même navigateur.</dd></div>
+              <div><dt>Une identité rassurante</dt><dd>Vert profond, ivoire et photographies lumineuses donnent le ton.</dd></div>
+              <div><dt>Des repères utiles</dt><dd>Soins, tarifs, horaires et préparation du rendez-vous sont faciles à retrouver.</dd></div>
             </dl>
             <div className="journey-actions">
-              <a href={featured.url} target="_blank" rel="noopener noreferrer" className="journey-button">Jouer à F1 Manager <ArrowUpRight size={17} aria-hidden="true" /></a>
-              <Link to="/projets?projet=f1-manager-2026" className="journey-link">La démarche <ArrowRight size={16} aria-hidden="true" /></Link>
+              <a href={featured.url} target="_blank" rel="noopener noreferrer" className="journey-button">Explorer le site <ArrowUpRight size={17} aria-hidden="true" /></a>
+              <Link to="/projets?projet=les-pattes-heureuses" className="journey-link">La démarche <ArrowRight size={16} aria-hidden="true" /></Link>
             </div>
           </div>
         </article>
@@ -80,7 +80,7 @@ export default function Home() {
 
       <section className="journey-container journey-creative">
         <div><p className="journey-eyebrow">Créations visuelles</p><h2>Le sens du détail.</h2><Link to="/creations" className="journey-link">Voir les créations <ArrowRight size={17} aria-hidden="true" /></Link></div>
-        <div className="journey-creation-list">{selectedCreations.map((creation) => <Link to="/creations" key={creation.id}><img src={imageUrl(creation.image)} alt="" loading="lazy" width="96" height="96" /><span>{creation.title}</span><ArrowUpRight size={16} aria-hidden="true" /></Link>)}</div>
+        <div className="journey-creation-list">{selectedCreations.map((creation) => <Link to="/creations" key={creation.id}><img src={imageUrl(creation.image)} alt="" loading="lazy" width="96" height="96" /><span>{creation.id === 'logo-moonrage-2' ? 'Moonrage — Identité Twitch' : creation.title}</span><ArrowUpRight size={16} aria-hidden="true" /></Link>)}</div>
       </section>
 
       <section id="services" className="journey-section journey-offers-band">

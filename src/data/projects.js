@@ -1,38 +1,14 @@
 // Projets présentés dans le portfolio. Les concepts et démos sont identifiés explicitement.
 export const projectCategories = [
-  {
-    "key": "application",
-    "label": "Application web",
-    "plural": "Applications & jeux",
-    "intro": "Des expériences à jouer et des décisions à prendre. Ici, l’interface fait partie du plaisir.",
-    "empty": "Les prochaines applications arrivent ici."
-  },
-  {
-    "key": "demo-tool",
-    "label": "Outil en démo",
-    "plural": "Outils en version démo",
-    "intro": "Des outils conçus pour un usage concret, à explorer avec des données de démonstration.",
-    "empty": "Aucun outil en version démo pour le moment."
-  },
-  {
-    "key": "realistic-concept",
-    "label": "Concepts réalistes",
-    "plural": "Concepts réalistes",
-    "intro": "Des activités imaginaires, des parcours concrets : rassurer, donner envie et faciliter le prochain pas.",
-    "empty": "Les prochains concepts réalistes arrivent ici."
-  },
-  {
-    "key": "passion-concept",
-    "label": "Concept Passion",
-    "plural": "Concepts Passion",
-    "intro": "Des univers qui m’inspirent, transformés en expériences à parcourir et à essayer.",
-    "empty": "Aucun concept passion dans cette catégorie pour le moment."
-  }
+  { key: 'website', label: 'Site vitrine', plural: 'Sites vitrines', intro: "Des identités singulières et des parcours clairs pour présenter une activité ou un univers.", empty: 'Les prochains sites arrivent ici.' },
+  { key: 'application', label: 'Application', plural: 'Applications & jeux', intro: "Des expériences interactives où chaque décision fait partie du parcours.", empty: 'Les prochaines applications arrivent ici.' },
+  { key: 'tool', label: 'Outil', plural: 'Outils', intro: "Des interfaces conçues pour organiser le travail et simplifier le quotidien.", empty: 'Les prochains outils arrivent ici.' },
 ]
 
 export const projects = [
   {
     "id": "f1-manager-2026",
+    "badges": ["Projet passion"],
     "title": "F1 Manager 2026",
     "tagline": "Le paddock devient votre terrain de jeu",
     "description": "Choisir son écurie, découvrir sa monoplace en 3D et construire sa saison. Un jeu de gestion dans le navigateur où stratégie, budget et décisions de course donnent le rythme.",
@@ -42,7 +18,7 @@ export const projects = [
       "Stratégie de course",
       "Sauvegarde locale"
     ],
-    "url": "https://melui3.github.io/F1-Manager-2026/#/choose-team",
+    "url": "https://melui3.github.io/F1-Manager-2026/",
     "ctaLabel": "Jouer à F1 Manager",
     "github": null,
     "image": "/projects/f1-manager-2026-refresh.jpg",
@@ -82,7 +58,7 @@ export const projects = [
     "ctaLabel": "Ouvrir la démo",
     "github": null,
     "image": "/projects/prospect-demo-refresh.jpg",
-    "category": "demo-tool",
+    "category": "tool",
     "status": "demo",
     "details": [
       {
@@ -117,7 +93,8 @@ export const projects = [
     "url": "https://melui3.github.io/les-pattes-heureuses/",
     "github": null,
     "image": "/projects/les-pattes-heureuses-refresh.jpg",
-    "category": "realistic-concept",
+    "category": "website",
+    "badges": ["Concept fictif"],
     "status": "live",
     "details": [
       {
@@ -152,7 +129,8 @@ export const projects = [
     "url": "https://melui3.github.io/le-coup-de-feu/",
     "github": null,
     "image": "/projects/le-coup-de-feu-refresh.jpg",
-    "category": "realistic-concept",
+    "category": "website",
+    "badges": ["Concept fictif"],
     "status": "live",
     "details": [
       {
@@ -187,7 +165,8 @@ export const projects = [
     "url": "https://melui3.github.io/Piastries/",
     "github": null,
     "image": "/projects/piastries-refresh.jpg",
-    "category": "passion-concept",
+    "category": "website",
+    "badges": ["Projet passion", "Concept fictif"],
     "status": "live",
     "details": [
       {
@@ -222,7 +201,8 @@ export const projects = [
     "url": "https://melui3.github.io/sunstrider-agency/",
     "github": null,
     "image": "/projects/sunstrider-agency-refresh.jpg",
-    "category": "passion-concept",
+    "category": "website",
+    "badges": ["Projet passion"],
     "status": "live",
     "details": [
       {

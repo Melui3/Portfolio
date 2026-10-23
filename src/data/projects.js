@@ -44,6 +44,45 @@ export const projects = [
     ]
   },
   {
+    "id": "chromia",
+    "title": "Chromia",
+    "tagline": "Des couleurs de départ à une identité qui prend forme",
+    "description": "Un atelier de palettes pour explorer trois directions de marque, les comparer sur des maquettes et comprendre leurs contrastes. Les projets se sauvegardent sur l’appareil et les couleurs s’exportent pour passer de l’idée à la création.",
+    "tags": [
+      "Palettes de couleurs",
+      "Aperçus de marque",
+      "Contrastes",
+      "Exports CSS & SVG"
+    ],
+    "url": "https://melui3.github.io/chromia/",
+    "ctaLabel": "Essayer Chromia",
+    "github": null,
+    "image": "/projects/chromia.png",
+    "category": "tool",
+    "badges": [
+      "Bêta publique"
+    ],
+    "status": "live",
+    "details": [
+      {
+        "label": "L’objectif",
+        "body": "Aider à construire une direction visuelle à partir de quelques couleurs et d’une intention de marque. L’atelier permet de voir les associations dans leur contexte, de comparer les pistes et de comprendre les choix avant de les retenir."
+      },
+      {
+        "label": "L’identité visuelle",
+        "body": "Une interface claire, des fonds doux et des accents violets laissent les palettes au premier plan. Les aperçus de site, de boutique, d’affiche et d’identité montrent comment une même direction se décline sur plusieurs supports."
+      },
+      {
+        "label": "Le parcours",
+        "body": "Renseigner le projet, sa personnalité et son support, choisir ses couleurs, puis explorer trois directions. La comparaison, le guide des couleurs et les contrôles de contraste accompagnent la décision. Les exports HEX, CSS et SVG permettent ensuite de réutiliser le travail ; les logos proposés restent des prototypes."
+      },
+      {
+        "label": "Les projets locaux",
+        "body": "L’atelier fonctionne dans le navigateur, sans compte. Les projets peuvent être sauvegardés sur l’appareil, dupliqués, exportés et réimportés. Un panneau de confidentialité permet de désactiver la sauvegarde ; le fichier de projet permet de conserver une copie hors du navigateur."
+      }
+    ]
+  },
+  {
     "id": "prospect",
     "title": "Prospect",
     "tagline": "Moins de fichiers. Une vue claire sur la prospection.",

@@ -15,7 +15,7 @@ export const SEO_ROUTES = [
     path: '/projets',
     title: 'Projets web - Nathaniel Dujardin',
     description:
-      'Explorez mes applications, jeux, outils en démo et concepts : six univers singuliers, du design éditorial à la 3D, à visiter et à essayer.',
+      'Explorez mes applications, jeux, outils et concepts : sept univers singuliers, du design éditorial à la 3D, à visiter et à essayer.',
     priority: '0.9',
   },
   {
